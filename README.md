@@ -1,6 +1,6 @@
-# Product Name
+# Conf World
 
-Welcome to the documentation pages of the *Product Name* of **openCX**!
+Welcome to the documentation pages of the *Conf World* of **openCX**!
 
 You can find here detailed about the (sub)product, hereby mentioned as module, from a high-level vision to low-level implementation decisions, a kind of Software Development Report (see [template](https://github.com/softeng-feup/open-cx/blob/master/docs/templates/Development-Report.md)), organized by discipline (as of RUP): 
 
@@ -26,32 +26,25 @@ Please contact us!
 
 Thank you!
 
-*team members names*
+*Bernardo António Magalhães Ferreira*
+*Diogo Ferreira de Sousa*
+*Diogo Samuel Gonçalves Fernandes*
+*Hugo Miguel Monteiro Guimarães*
 
 ---
 
 ## Product Vision
-Start by defining a clear and concise vision for your module, to help members of the team, contributors, and users into focusing their often disparate views into a concise, visual, and short textual form. It provides a "high concept" of the product for marketers, developers, and managers.
 
-A product vision describes the essential of the product and sets the direction to where a product is headed, and what the product will deliver in the future. 
+- Old Vision: Our app will consist of a map with information about conferences. Those conferences will be represented by pinpoints and may be filtered by their main topic (Computer Science, Maths, Physics, etc) and by their deadline date. After the conference is found, the app will redirect the user to the chosen conference's website.
 
-**We favor a catchy and concise statement, ideally one sentence.**
-
-To learn more about how to write a good product vision, please see also:
-* [How To Create A Convincing Product Vision To Guide Your Team, by uxstudioteam.com](https://uxstudioteam.com/ux-blog/product-vision/)
-* [Product Management: Product Vision, by ProductPlan](https://www.productplan.com/glossary/product-vision/)
-* [Vision, by scrumbook.org](http://scrumbook.org/value-stream/vision.html)
-* [How to write a vision, by dummies.com](https://www.dummies.com/business/marketing/branding/how-to-write-vision-and-mission-statements-for-your-brand/)
-* [20 Inspiring Vision Statement Examples (2019 Updated), by lifehack.org](https://www.lifehack.org/articles/work/20-sample-vision-statement-for-the-new-startup.html)
+- New Vision: The goal is to help those who struggle with finding a conference with all the information they need. ***Conf World*** allows you to find the conferences you want that fit right into your schedule.
 
 ---
 ## Elevator Pitch
-Draft a small text to help you quickly introduce and describe your product in a short time and a few words (~800 characters), a technique usually known as elevator pitch.
 
-Take a look at the following links to learn some techniques:
-* [Crafting an Elevator Pitch](https://www.mindtools.com/pages/article/elevator-pitch.htm)
-* [The Best Elevator Pitch Examples, Templates, and Tactics - A Guide to Writing an Unforgettable Elevator Speech, by strategypeak.com](https://strategypeak.com/elevator-pitch-examples/)
-* [Top 7 Killer Elevator Pitch Examples, by toggl.com](https://blog.toggl.com/elevator-pitch-examples/)
+Most conferences suffer from a common problem. They have not only a final *rendezvous* date, but also many paper submission deadlines, making it difficult to analyze if the conference can fit the user's tight schedule. ***Conf World*** is a mobile app capable of filtering conferences based upon a time interval and conferences types, allowing the user to completely bypass this issue. 
+
+> O stor sugeriu ~800 carateres, está bem assim?
 
 ---
 ## Requirements
@@ -60,20 +53,72 @@ In this section, you should describe all kinds of requirements for your module: 
 
 Start by contextualizing your module, describing the main concepts, terms, roles, scope and boundaries of the application domain addressed by the project.
 
-### Use case diagram 
+### Use Case Diagram 
+![Use Case Diagram](img/use-case.png)
+#### Save Conference
+* **Actor**. User
 
-Create a use-case diagram in UML with all high-level use cases possibly addressed by your module.
+* **Description**. The user may be more interested in some conferences than others. Thus he is capable of saving conferences.
 
-Give each use case a concise, results-oriented name. Use cases should reflect the tasks the user needs to be able to accomplish using the system. Include an action verb and a noun. 
+* **Preconditions and Postconditions**. Before saving conferences the user should be logged in. After saving the conference, it will appear in the map with a yellow pinpoint.
 
-Briefly describe each use case mentioning the following:
+* **Normal Flow**. 
+    1. The user presses one conference on the map.
+    2. The user presses the save conference button which appears next to the conference website hyperlink.
+    3. If the user is logged in, the conference is saved.
 
-* **Actor**. Name only the actor that will be initiating this use case, i.e. a person or other entity external to the software system being specified who interacts with the system and performs use cases to accomplish tasks. 
-* **Description**. Provide a brief description of the reason for and outcome of this use case, or a high-level description of the sequence of actions and the outcome of executing the use case. 
-* **Preconditions and Postconditions**. Include any activities that must take place, or any conditions that must be true, before the use case can be started (preconditions). Describe also the state of the system at the conclusion of the use case execution (postconditions). 
+* **Exception**. 
+    1. The user presses one conference on the map
+    2. The user presses the save conference button which appears next to the conference website hyperlink.
+    3. The user isn't logged in, an error message will appear
 
-* **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system. 
-* **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions. 
+#### See Map
+* **Actor**. User
+
+* **Description**. This use case exists so that the client can see where conferences are located.
+
+* **Preconditions and Postconditions**. The client should press the Open Map button at the main menu. After pressing it, the app will show the global map with many pinpoints, each one representing one conference.
+
+* **Normal Flow**. 
+    1. The client presses the  *Open Map* button to open the world map.
+    2. Now the user can search around the world for conferences
+    3. When the user finds the desired conference (marked on the map with a pinpoint), the user can press it and view its information
+    4. The user can click on the conference hyperlink to go to its website.  
+
+#### Filter conference 
+* **Actor**. User
+
+* **Description**. The user can filter the conferences in order that only relevant ones appear. The user can filter them using the follow criteria.
+
+* **Postconditions**. After using the filter, only certain conferences around the world will appear.
+
+    ##### Conference Type
+
+    * **Preconditions**.
+
+    * **Normal Flow**.
+        1. The user selects the option that shows the conference types.
+        2. On the map, only conferences occurring between these two dates will appear.
+            
+    ##### Date
+
+    * **Preconditions**. Before filtering by date, the user should press the button to filter conferences.
+    
+    * **Normal Flow**. 
+        1. The user scrolls the sidebar, selecting the start and deadline date.
+        2. On the map, only conferences that occur between these two dates will appear. 
+        
+    ##### Saved Conferences
+
+    * **Preconditions**. Before filtering by saved conferences the user should be logged in and have at least one saved conference.
+
+    * **Normal Flow**.
+        1. The user selects the option to only show the saved conferences.
+        1. If the user is logged in, only the saved conferences will appear on the map.
+
+    * **Exception Flow**. 
+        1. The user selects the option to only show the saved conferences.
+        3. If the user isn't logged in or doesn't have any saved conference, nothing will happen.
 
 ### User stories
 This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
