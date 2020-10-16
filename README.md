@@ -142,6 +142,116 @@ For each user story you should write also the acceptance tests (textually in Ghe
 **Value and effort**.
 At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method) and the team should add an estimation of the effort to implement it, for example, using t-shirt sizes (XS, S, M, L, XL).
 
+
+**Story #1**
+
+*As a user, I want to open up the map, so that I can see all the available conferences next to me.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given There is a View Map button
+  When I tap the View Map button
+  Then The world map will open
+  And I will see all conferences represented by pinpoints
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+**Story #2**
+//Temos que refazer isto do search system, em principio metemos tudo nesta story
+*As a user, I want to search for specific conferences, so that I can better find what I’m interested in.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Filter by name button.
+  And I write the conference name.
+  Then The world map will open centered on the conference pinpoint.
+  And I will be able to select the conference.
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+**Story #3**
+
+*As a user, I want to access a conference’s details, so that I can see the available information about it.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I have the conference pinpoint on my screen
+  When I tap a conference's pinpoint.
+  Then The app will redirect me to the conference's website.
+  And I will be able to see all the information about it.
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+**Story #4**
+
+*As a user, I want to log in, so that I can access my saved conferences.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I am in the Main Menu
+  And I am not Logged In yet.
+  When I tap the Login button.
+  And Enter my credentials
+  Then The app will log me into my account
+  And I will be able to access my saved conferences.
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+**Story #5**
+
+*As a user I want to save a conference, so that I can easily access its information.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I have selected a conference on the Map
+  And I am Logged In.
+  When I tap the save conference button.
+  Then The app will save my conference
+  And I will be able to access it the the saved menu.
+```
+
+```gherkin
+Scenario:
+  Given I have selected a conference on the Map
+  And I am not Logged In.
+  When I tap the save conference button.
+  Then The app will ask me to Log In
+  And I will be able to save the conference if the login is successful.
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+
 ### Domain model
 
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
