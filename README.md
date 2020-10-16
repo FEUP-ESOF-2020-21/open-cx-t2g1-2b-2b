@@ -35,9 +35,7 @@ Thank you!
 
 ## Product Vision
 
-- Old Vision: Our app will consist of a map with information about conferences. Those conferences will be represented by pinpoints and may be filtered by their main topic (Computer Science, Maths, Physics, etc) and by their deadline date. After the conference is found, the app will redirect the user to the chosen conference's website.
-
-- New Vision: The goal is to help those who struggle with finding a conference with all the information they need. ***Conf World*** allows you to find the conferences you want that fit right into your schedule.
+Finding a conference to attend and all its relevant information can be difficult to do in a fast, easy way. Conf World allows you to find the conferences you want that fit right into your schedule.
 
 ---
 ## Elevator Pitch
