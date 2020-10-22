@@ -160,9 +160,10 @@ Scenario:
 **Value and effort**.
 *Wow, such empty*
 
+
 **Story #2**
-//Temos que refazer isto do search system, em principio metemos tudo nesta story
-*As a user, I want to search for specific conferences, so that I can better find what I’m interested in.*
+
+*As a user, I want to save a conference I wish to attend, so that I can mark it(save) on the map for easy access.*
 
 **User interface mockups**.
 *Wow, such empty*
@@ -170,15 +171,25 @@ Scenario:
 **Acceptance tests**.
 ```gherkin
 Scenario:
-  Given I am on the Filtering Menu.
-  When I tap the Filter by name button.
-  And I write the conference name.
-  Then The world map will open centered on the conference pinpoint.
-  And I will be able to select the conference.
+  Given I have selected a conference on the Map
+  And I am Logged In.
+  When I tap the save conference button.
+  Then The app will save my conference
+  And I will be able to access it in the saved menu.
+```
+
+```gherkin
+Scenario:
+  Given I have selected a conference on the Map
+  And I am not Logged In.
+  When I tap the save conference button.
+  Then The app will ask me to Log In
+  And I will be able to save the conference if the login is successful.
 ```
 
 **Value and effort**.
 *Wow, such empty*
+
 
 **Story #3**
 
@@ -201,6 +212,59 @@ Scenario:
 
 **Story #4**
 
+*As a user I want to select a timespan, so that I can see all available conferences in that timespan.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I am in the Filter Conference Menu
+  When I tap the Date button.
+  And Enter a timespan
+  Then The app will show me all conferences that occurr within that timespawn
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+**Story #5**
+*As a user, I want to search for conferences that match my interests, so that I can better find what I'm looking for.*
+
+**User interface mockups**.
+*Wow, such empty*
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the search button.
+  And I write the conference name.
+  Then The world map will open centered on the conference pinpoint.
+  And I will be able to select the conference.
+```
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Type button.
+  And I select a conference type.
+  Then The world map will only show pinpoints with conferences regarding the selected type.
+  And I will be able to select the conference.
+```
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Saved Conferencees button.
+  Then The world map will only show pinpoints with saved conferences
+  And I will be able to select the conference.
+```
+
+**Value and effort**.
+*Wow, such empty*
+
+**Story #6**
+
 *As a user, I want to log in, so that I can access my saved conferences.*
 
 **User interface mockups**.
@@ -215,35 +279,6 @@ Scenario:
   And Enter my credentials
   Then The app will log me into my account
   And I will be able to access my saved conferences.
-```
-
-**Value and effort**.
-*Wow, such empty*
-
-**Story #5**
-
-*As a user I want to save a conference, so that I can easily access its information.*
-
-**User interface mockups**.
-*Wow, such empty*
-
-**Acceptance tests**.
-```gherkin
-Scenario:
-  Given I have selected a conference on the Map
-  And I am Logged In.
-  When I tap the save conference button.
-  Then The app will save my conference
-  And I will be able to access it the the saved menu.
-```
-
-```gherkin
-Scenario:
-  Given I have selected a conference on the Map
-  And I am not Logged In.
-  When I tap the save conference button.
-  Then The app will ask me to Log In
-  And I will be able to save the conference if the login is successful.
 ```
 
 **Value and effort**.
