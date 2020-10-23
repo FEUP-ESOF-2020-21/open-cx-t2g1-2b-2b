@@ -158,7 +158,11 @@ Scenario:
 ```
 
 **Value and effort**.
-*Wow, such empty*
+
+*Value:* Must Have
+
+*Effort:* XL
+
 
 
 #### Story 2
@@ -190,7 +194,10 @@ Scenario:
 ```
 
 **Value and effort**.
-*Wow, such empty*
+
+*Value:* Should Have
+
+*Effort:* M
 
 
 #### Story 3
@@ -212,7 +219,10 @@ Scenario:
 ```
 
 **Value and effort**.
-*Wow, such empty*
+
+*Value:* Must Have
+
+*Effort:* M
 
 #### Story 4
 
@@ -233,7 +243,10 @@ Scenario:
 ```
 
 **Value and effort**.
-*Wow, such empty*
+
+*Value:* Must Have
+
+*Effort:* L
 
 #### Story 5
 *As a user, I want to search for conferences that match my interests, so that I can better find what I'm looking for.*
@@ -262,7 +275,10 @@ Scenario:
 ```
 
 **Value and effort**.
-*Wow, such empty*
+
+*Value:* Must Have
+
+*Effort:* M
 
 **Story #6**
 
@@ -286,7 +302,10 @@ Scenario:
 ```
 
 **Value and effort**.
-*Wow, such empty*
+
+*Value:* Could Have
+
+*Effort:* M
 
 
 ### Domain model
