@@ -3,6 +3,14 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/widgets.dart';
 
+/*
+void main() {
+  runApp(MaterialApp(
+    home: HomePageState(),
+  ));
+}
+ */
+
 void main() {
   runApp(MyApp());
 }
@@ -28,27 +36,87 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  MyMapState createState() => MyMapState();
-  //MyHomePageState createState() => MyHomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class HomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ListView (
-          children: <Widget>[
-            MyButton(
-                name: 'See World Map'
+        appBar: AppBar(
+          title: Text("Conf World"),
+          centerTitle: true,
+          backgroundColor: Colors.green[500],
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*
+              Container(
+                // Usar expanded em vez de containter depois
+                child: Image.asset(
+                  'assets/main-menu.png',
+                  height: 100,
+                  width: 100,
+                ),
+
+              ),
+               */
+              FlatButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyMap()),
+                  );
+                },
+                child: MyButton(
+                  name: 'See World Map',
+                ),
+              ),
+              FlatButton(
+                child: MyButton(
+                  name: 'Exit',
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class MyMap extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(title: new Text('Conf World')),
+        body: new FlutterMap(
+          options: new MapOptions(
+            center: new LatLng(51.5, -0.09),
+            zoom: 13.0,
+          ),
+          layers: [
+            new TileLayerOptions(
+                urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                subdomains: ['a', 'b', 'c']
             ),
-            MyButton(
-                name: 'Exit',
+            new MarkerLayerOptions(
+              markers: [
+                new Marker(
+                  width: 80.0,
+                  height: 80.0,
+                  point: new LatLng(51.5, -0.09),
+                  builder: (ctx) =>
+                  new Container(
+                    child: new FlutterLogo(), // Aparece o marcador
+                  ),
+                ),
+              ],
             ),
           ],
-      ),
+        ),
     );
   }
 }
@@ -70,37 +138,5 @@ class MyButton extends StatelessWidget {
       ),
       alignment: Alignment.center,
     );
-  }
-}
-
-class MyMapState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(title: new Text('Conf World')),
-        body: new FlutterMap(
-            options: new MapOptions(
-                center: new LatLng(40.71, -74.00), minZoom: 50.0),
-            layers: [
-              new TileLayerOptions(
-                  urlTemplate:"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  subdomains: ['a', 'b', 'c']),
-              new MarkerLayerOptions(markers: [
-                new Marker(
-                    width: 45.0,
-                    height: 45.0,
-                    point: new LatLng(40.73, -74.00),
-                    builder: (context) => new Container(
-                      child: IconButton(
-                        icon: Icon(Icons.location_on),
-                        color: Colors.red,
-                        iconSize: 45.0,
-                        onPressed: () {
-                          print('Marker tapped');
-                        },
-                      ),
-                    ))
-              ])
-            ]));
   }
 }
