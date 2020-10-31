@@ -5,13 +5,6 @@ import 'package:flutter/widgets.dart';
 
 /*
 void main() {
-  runApp(MaterialApp(
-    home: HomePageState(),
-  ));
-}
- */
-
-void main() {
   runApp(MyApp());
 }
 
@@ -36,10 +29,18 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  HomePageState createState() => HomePageState();
+  //MyHomePageState createState() => MyHomePageState();
 }
 
-class HomePageState extends State<MyHomePage> {
+*/
+
+void main() {
+  runApp(MaterialApp(
+    home: HomePageState(),
+  ));
+}
+
+class HomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,15 +62,15 @@ class HomePageState extends State<MyHomePage> {
                   height: 100,
                   width: 100,
                 ),
-
               ),
+              
                */
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyMap()),
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
                   );
                 },
                 child: MyButton(
@@ -87,7 +88,7 @@ class HomePageState extends State<MyHomePage> {
   }
 }
 
-class MyMap extends StatelessWidget {
+class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
