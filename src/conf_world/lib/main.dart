@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/widgets.dart';
+import 'SecondRoute.dart';
+import 'CostumeButton.dart';
 
 /*
 void main() {
@@ -64,7 +66,7 @@ class HomePageState extends StatelessWidget {
                 ),
               ),
               
-               */
+              */
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
@@ -88,56 +90,3 @@ class HomePageState extends StatelessWidget {
   }
 }
 
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(title: new Text('Conf World')),
-        body: new FlutterMap(
-          options: new MapOptions(
-            center: new LatLng(51.5, -0.09),
-            zoom: 13.0,
-          ),
-          layers: [
-            new TileLayerOptions(
-                urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                subdomains: ['a', 'b', 'c']
-            ),
-            new MarkerLayerOptions(
-              markers: [
-                new Marker(
-                  width: 80.0,
-                  height: 80.0,
-                  point: new LatLng(51.5, -0.09),
-                  builder: (ctx) =>
-                  new Container(
-                    child: new FlutterLogo(), // Aparece o marcador
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-    );
-  }
-}
-
-class MyButton extends StatelessWidget {
-  MyButton({Key key, this.name}) : super(key: key);
-
-  final String name;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text(this.name),
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: Colors.lightGreenAccent,
-      ),
-      alignment: Alignment.center,
-    );
-  }
-}
