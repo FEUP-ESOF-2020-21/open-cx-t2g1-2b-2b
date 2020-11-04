@@ -1,3 +1,4 @@
+import 'package:conf_world/ConferenceIcon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
@@ -21,12 +22,36 @@ class SecondRoute extends StatelessWidget {
           new MarkerLayerOptions(
             markers: [
               new Marker(
-                width: 80.0,
-                height: 80.0,
+                width: 200.0,
+                height: 50.0,
                 point: new LatLng(51.5, -0.09),
                 builder: (ctx) =>
                 new Container(
-                  child: new FlutterLogo(), // Aparece o marcador
+                  child: new ConferenceIcon(
+                    name: 'Computer Science Conference',
+                  ),
+                ),
+              ),
+              new Marker(
+                width: 200.0,
+                height: 50.0,
+                point: new LatLng(51.53, -0.11),
+                builder: (ctx) =>
+                new Container(
+                  child: new ConferenceIcon(
+                    name: 'Applied Mathematics and Physics',
+                  ),
+                ),
+              ),
+              new Marker(
+                width: 200.0,
+                height: 50.0,
+                point: new LatLng(51.48, -0.08),
+                builder: (ctx) =>
+                new Container(
+                  child: new ConferenceIcon(
+                    name: 'Robotics and AI',
+                  ),
                 ),
               ),
             ],
