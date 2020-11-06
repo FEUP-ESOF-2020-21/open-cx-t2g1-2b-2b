@@ -376,14 +376,22 @@ Software project management is an art and science of planning and leading softwa
 
 In the context of ESOF, we expect that each team adopts a project management tool capable of registering tasks, assign tasks to people, add estimations to tasks, monitor tasks progress, and therefore being able to track their projects.
 
-Example of tools to do this are:
-  * [Trello.com](https://trello.com)
-  * [Github Projects](https://github.com/features/project-management/com)
-  * [Pivotal Tracker](https://www.pivotaltracker.com)
-  * [Jira](https://www.atlassian.com/software/jira)
+For this project, we are using Github Projects. You can see our board using the following link:
+  * [Github Projects](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/projects/1)
 
 We recommend to use the simplest tool that can possibly work for the team.
 
+
+### Sprint Reviews
+##### First Sprint
+
+- First user story, which contains:
+      - Added Main Menu
+      - Added World Map
+          - Added pinpoints in World Map with conferences(currently hard coded)
+
+Effort: M
+  
 
 ---
 
