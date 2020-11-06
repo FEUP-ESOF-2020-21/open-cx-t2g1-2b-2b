@@ -40,7 +40,7 @@ class MapRoute extends StatelessWidget {
                 point: new LatLng(51.53, -0.11),
                 builder: (ctx) =>
                 new ConferenceIcon(
-                  name: 'Computer Science Conference',
+                  name: 'Applied Mathematics and Physics',
                 ),
               ),
               new Marker(
@@ -50,7 +50,7 @@ class MapRoute extends StatelessWidget {
                 point: new LatLng(51.48, -0.08),
                 builder: (ctx) =>
                 new ConferenceIcon(
-                    name: 'Computer Science Conference',
+                    name: 'Robotics and AI',
                 ),
               ),
             ],
