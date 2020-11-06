@@ -161,7 +161,9 @@ Scenario:
 
 *Value:* Must Have
 
-*Effort:* XL
+*Effort:* L
+
+*Effort Estimation History (from oldest to newest):* XL, L
 
 
 
@@ -197,8 +199,9 @@ Scenario:
 
 *Value:* Should Have
 
-*Effort:* M
+*Effort:* L
 
+*Effort Estimation History (from oldest to newest):* M, L
 
 #### Story 3
 
@@ -224,6 +227,8 @@ Scenario:
 
 *Effort:* M
 
+*Effort Estimation History (from oldest to newest):* M
+
 #### Story 4
 
 *As a user I want to select a timespan, so that I can see all available conferences in that timespan.*
@@ -247,6 +252,8 @@ Scenario:
 *Value:* Must Have
 
 *Effort:* L
+
+*Effort Estimation History (from oldest to newest):* L
 
 #### Story 5
 *As a user, I want to search for conferences that match my interests, so that I can better find what I'm looking for.*
@@ -280,6 +287,8 @@ Scenario:
 
 *Effort:* M
 
+*Effort Estimation History (from oldest to newest):* M
+
 **Story #6**
 
 *As a user, I want to log in, so that I can access my saved conferences.*
@@ -307,6 +316,7 @@ Scenario:
 
 *Effort:* M
 
+*Effort Estimation History (from oldest to newest):* M
 
 ### Domain model
 
@@ -374,25 +384,22 @@ For the purpose of ESOF, we will use a very simple approach, just to manage feat
 
 Software project management is an art and science of planning and leading software projects, in which software projects are planned, implemented, monitored and controlled.
 
-In the context of ESOF, we expect that each team adopts a project management tool capable of registering tasks, assign tasks to people, add estimations to tasks, monitor tasks progress, and therefore being able to track their projects.
-
 For this project, we are using Github Projects. You can see our board using the following link:
   * [Github Projects](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/projects/1)
 
-We recommend to use the simplest tool that can possibly work for the team.
 
 
 ### Sprint Reviews
 ##### First Sprint
 
 - First user story, which contains:
-      - Added Main Menu
-      - Added World Map
-          - Added pinpoints in World Map with conferences(currently hard coded)
+    - Added Main Menu
+    - Added World Map
+    - Added pinpoints in World Map with conferences. This functionality is currently hard coded.
 
-Effort: M
+Sprint Effort: L
+
   
-
 ---
 
 ## Evolution - contributions to open-cx
