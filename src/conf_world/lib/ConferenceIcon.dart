@@ -8,32 +8,34 @@ class ConferenceIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        new RawMaterialButton(
-          onPressed: () {},
-          constraints: BoxConstraints.expand(width: 40, height: 40),
-          fillColor: Colors.lightGreenAccent,
-          child: Icon(
-            Icons.people,
-            size: 20,
+    return new Stack(
+        children: [
+          new Container(
+            alignment: Alignment.center,
+            child: IconButton(
+              icon: Icon(Icons.location_pin),
+              color: Colors.lightGreen,
+              iconSize: 40.0,
+              onPressed: (){},
+            ),
           ),
-          padding: EdgeInsets.all(10),
-          shape: CircleBorder(),
-        ),
         new Container(
-          child: Text(this.name, style: TextStyle(fontSize: 14), textAlign: TextAlign.center,),
+          alignment: Alignment.center,
+          child: Text(
+            this.name,
+            style: TextStyle(fontSize: 14),
+            textAlign: TextAlign.center,
+          ),
           padding: EdgeInsets.all(5),
           constraints: BoxConstraints.expand(width: 200, height: 45),
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            color: Colors.lightGreenAccent,
+            color: Colors.lightGreen,
           ),
-          alignment: Alignment.center,
-          transform: Matrix4.translationValues(-75.0, -45.0, 0),
+
+          transform: Matrix4.translationValues(0.0, -45.0, 0),
         ),
       ]
     );
-
   }
 }

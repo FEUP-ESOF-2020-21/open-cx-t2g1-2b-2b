@@ -24,36 +24,33 @@ class MapRoute extends StatelessWidget {
           new MarkerLayerOptions(
             markers: [
               new Marker(
+                anchorPos: AnchorPos.align(AnchorAlign.top),
                 width: 200.0,
                 height: 50.0,
                 point: new LatLng(51.5, -0.09),
                 builder: (ctx) =>
-                new Container(
-                  child: new ConferenceIcon(
-                    name: 'Computer Science Conference',
-                  ),
+                new ConferenceIcon(
+                  name: 'Computer Science Conference',
                 ),
               ),
               new Marker(
+                anchorPos: AnchorPos.align(AnchorAlign.top),
                 width: 200.0,
                 height: 50.0,
                 point: new LatLng(51.53, -0.11),
                 builder: (ctx) =>
-                new Container(
-                  child: new ConferenceIcon(
-                    name: 'Applied Mathematics and Physics',
-                  ),
+                new ConferenceIcon(
+                  name: 'Applied Mathematics and Physics',
                 ),
               ),
               new Marker(
+                anchorPos: AnchorPos.align(AnchorAlign.top),
                 width: 200.0,
                 height: 50.0,
                 point: new LatLng(51.48, -0.08),
                 builder: (ctx) =>
-                new Container(
-                  child: new ConferenceIcon(
+                new ConferenceIcon(
                     name: 'Robotics and AI',
-                  ),
                 ),
               ),
             ],
