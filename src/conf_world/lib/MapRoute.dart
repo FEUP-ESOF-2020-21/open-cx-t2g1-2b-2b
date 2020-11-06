@@ -4,11 +4,13 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/widgets.dart';
 
-class SecondRoute extends StatelessWidget {
+class MapRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text('Conf World')),
+      appBar: new AppBar(
+          title: new Text('Conf World'),
+          backgroundColor: Colors.green[500]),
       body: new FlutterMap(
         options: new MapOptions(
           center: new LatLng(51.5, -0.09),

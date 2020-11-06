@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'SecondRoute.dart';
+import 'MapRoute.dart';
 import 'MyButton.dart';
 
 /*
@@ -70,7 +70,7 @@ class HomePageState extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                    MaterialPageRoute(builder: (context) => MapRoute()),
                   );
                 },
                 child: MyButton(
