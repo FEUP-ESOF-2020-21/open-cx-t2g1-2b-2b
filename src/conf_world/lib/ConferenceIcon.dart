@@ -1,3 +1,5 @@
+import 'package:conf_world/ConferenceDetails.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -16,7 +18,18 @@ class ConferenceIcon extends StatelessWidget {
               icon: Icon(Icons.location_pin),
               color: Colors.lightGreen,
               iconSize: 40.0,
-              onPressed: (){},
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (builder) {
+                      return ConferenceDetails(
+                        name: name,
+                        date: "date",
+                        description: "description",
+                      );
+                    },
+                );
+              },
             ),
           ),
         new Container(
