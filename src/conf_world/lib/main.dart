@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'MapRoute.dart';
+import 'MapRoute2.dart';
 import 'MyButton.dart';
 
 /*
@@ -70,7 +70,7 @@ class HomePageState extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MapRoute()),
+                    MaterialPageRoute(builder: (context) => MapRoute2()),
                   );
                 },
                 child: MyButton(
@@ -78,6 +78,7 @@ class HomePageState extends StatelessWidget {
                 ),
               ),
               FlatButton(
+                onPressed: null,
                 child: MyButton(
                   name: 'Exit',
                 ),
@@ -87,4 +88,3 @@ class HomePageState extends StatelessWidget {
         ));
   }
 }
-
