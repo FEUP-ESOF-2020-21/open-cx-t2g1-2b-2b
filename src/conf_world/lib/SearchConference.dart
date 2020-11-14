@@ -56,23 +56,58 @@ class FIlterByTypeState extends State<FilterByType> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget> [
           Container (
-            child: Text('Conferences Types'),
+            child: Text(
+              'Conferences Types',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 40,
+                color: Colors.white
+              ),
+            ),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               color: Colors.green.shade200,
             ),
             margin: EdgeInsets.fromLTRB(40, 40, 40, 15),
-            height: 420,
+            height: 450,
           ),
           Container(
-            child: Text('nice'),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.blue,
-
+            color: Colors.blue,
+            child: Column (
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Container (
+                  child: FlatButton(
+                    onPressed: () {},
+                    child: Text('Filter Conferences',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ),
+                    height: 50,
+                  ),
+                  color: Colors.white,
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  margin: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                ),
+                Container (
+                  child: FlatButton(
+                    onPressed: () {},
+                    child: Text('Back to Main Menu',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ),
+                    height: 50,
+                  ),
+                  color: Colors.white,
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  margin: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                ),
+              ],
             ),
-            margin : EdgeInsets.all(0),
-            height: 200,
           ),
         ]
       ),
