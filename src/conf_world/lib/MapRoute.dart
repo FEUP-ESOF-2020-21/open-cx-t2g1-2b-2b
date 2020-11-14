@@ -1,4 +1,4 @@
-import 'dart:js';
+//import 'dart:js';
 
 import 'package:conf_world/ConferenceIcon.dart';
 import 'package:flutter/material.dart';
