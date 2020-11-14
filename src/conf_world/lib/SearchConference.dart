@@ -1,3 +1,4 @@
+import 'package:conf_world/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'MyButton.dart';
@@ -5,37 +6,40 @@ import 'MyButton.dart';
 class SearchConference extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        FlatButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => FilterByType()),
-            );
-          },
-          child: MyButton(
-            name: 'Type',
+    return Container(
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FilterByType()),
+              );
+            },
+            child: MyButton(
+              name: 'Type',
+            ),
           ),
-        ),
-        FlatButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {},
-          child: MyButton(
-            name: 'Date',
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {},
+            child: MyButton(
+              name: 'Date',
+            ),
           ),
-        ),
-        FlatButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {},
-          child: MyButton(
-            name: 'SaveConferences',
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {},
+            child: MyButton(
+              name: 'SaveConferences',
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -78,7 +82,12 @@ class FIlterByTypeState extends State<FilterByType> {
               children: <Widget>[
                 Container (
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchConference()),
+                      );
+                    },
                     child: Text('Filter Conferences',
                       style: TextStyle(
                         fontSize: 20,
@@ -93,7 +102,12 @@ class FIlterByTypeState extends State<FilterByType> {
                 ),
                 Container (
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePageState()),
+                      );
+                    },
                     child: Text('Back to Main Menu',
                       style: TextStyle(
                         fontSize: 20,
