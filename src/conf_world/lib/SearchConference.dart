@@ -11,7 +11,12 @@ class SearchConference extends StatelessWidget {
       children: <Widget>[
         FlatButton(
           padding: EdgeInsets.zero,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FilterByType()),
+            );
+          },
           child: MyButton(
             name: 'Type',
           ),
@@ -34,3 +39,27 @@ class SearchConference extends StatelessWidget {
     );
   }
 }
+
+class FilterByType extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new FIlterByTypeState();
+  }
+}
+
+class FIlterByTypeState extends State<FilterByType> {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      home : Scaffold (
+        /*
+        Container(
+          decoration: BoxDecoration(shape:
+        ),
+        */
+      ),
+    );
+  }
+
+}
+
