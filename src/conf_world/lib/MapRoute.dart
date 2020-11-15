@@ -1,5 +1,4 @@
-//import 'dart:js';
-
+import 'package:conf_world/ConferenceDetails.dart';
 import 'package:conf_world/ConferenceIcon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -7,8 +6,12 @@ import 'package:latlong/latlong.dart';
 import 'package:flutter/widgets.dart';
 
 class MapRoute extends StatelessWidget {
+  ConferenceMarker markerList = new ConferenceMarker();
+
   @override
   Widget build(BuildContext context) {
+    markerList.initMarkers();
+    markerList.addMarker();
     return new FlutterMap(
       options: new MapOptions(
         center: new LatLng(51.5, -0.09),
@@ -19,35 +22,7 @@ class MapRoute extends StatelessWidget {
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             subdomains: ['a', 'b', 'c']),
         new MarkerLayerOptions(
-          markers: [
-            new Marker(
-              anchorPos: AnchorPos.align(AnchorAlign.top),
-              width: 200.0,
-              height: 50.0,
-              point: new LatLng(51.5, -0.09),
-              builder: (ctx) => new ConferenceIcon(
-                name: 'Computer Science Conference',
-              ),
-            ),
-            new Marker(
-              anchorPos: AnchorPos.align(AnchorAlign.top),
-              width: 200.0,
-              height: 50.0,
-              point: new LatLng(51.53, -0.11),
-              builder: (ctx) => new ConferenceIcon(
-                name: 'Applied Mathematics and Physics',
-              ),
-            ),
-            new Marker(
-              anchorPos: AnchorPos.align(AnchorAlign.top),
-              width: 200.0,
-              height: 50.0,
-              point: new LatLng(51.48, -0.08),
-              builder: (ctx) => new ConferenceIcon(
-                name: 'Robotics and AI',
-              ),
-            ),
-          ],
+          markers: markerList.markers
         ),
       ],
     );
