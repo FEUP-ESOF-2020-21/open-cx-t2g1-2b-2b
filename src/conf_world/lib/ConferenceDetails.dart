@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ConferenceDetails extends StatelessWidget {
-  ConferenceDetails({Key key, this.name, this.date, this.description}) : super(key: key);
+  ConferenceDetails({Key key, this.name, this.date, this.type, this.description}) : super(key: key);
 
   final String name;
+  final String type;
   final String date;
   final String description;
 

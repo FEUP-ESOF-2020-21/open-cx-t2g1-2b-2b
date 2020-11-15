@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'MapRoute2.dart';
+import 'Navigation.dart';
 import 'MyButton.dart';
 
 /*
@@ -54,23 +54,12 @@ class HomePageState extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*
-              Container(
-                // Usar expanded em vez de containter depois
-                child: Image.asset(
-                  'assets/main-menu.png',
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-              
-              */
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MapRoute2()),
+                    MaterialPageRoute(builder: (context) => Navigation()),
                   );
                 },
                 child: MyButton(

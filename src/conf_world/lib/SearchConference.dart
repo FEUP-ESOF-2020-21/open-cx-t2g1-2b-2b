@@ -1,4 +1,5 @@
 import 'package:conf_world/main.dart';
+import 'package:conf_world/Navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'MyButton.dart';
@@ -44,83 +45,61 @@ class SearchConference extends StatelessWidget {
   }
 }
 
+// -- Filter by Type -- //
 class FilterByType extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new FIlterByTypeState();
+    return new FilterByTypeState();
   }
 }
 
-class FIlterByTypeState extends State<FilterByType> {
+class FilterByTypeState extends State<FilterByType> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Conference Types"),
+        centerTitle: true,
+        backgroundColor: Colors.green[500],
+      ),
       body: Column (
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget> [
-          Container (
-            child: Text(
-              'Conferences Types',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.white
-              ),
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Navigation()),
+              );
+            },
+            child: MyButton(
+              name: 'Computer Science Conferences',
             ),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.green.shade200,
-            ),
-            margin: EdgeInsets.fromLTRB(40, 40, 40, 15),
-            height: 450,
           ),
-          Container(
-            color: Colors.blue,
-            child: Column (
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Container (
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SearchConference()),
-                      );
-                    },
-                    child: Text('Filter Conferences',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    height: 50,
-                  ),
-                  color: Colors.white,
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  margin: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                ),
-                Container (
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePageState()),
-                      );
-                    },
-                    child: Text('Back to Main Menu',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    height: 50,
-                  ),
-                  color: Colors.white,
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  margin: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                ),
-              ],
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Navigation()),
+              );
+            },
+            child: MyButton(
+              name: 'Math Conferences',
+            ),
+          ),
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Navigation()),
+              );
+            },
+            child: MyButton(
+              name: 'See World Map',
             ),
           ),
         ]

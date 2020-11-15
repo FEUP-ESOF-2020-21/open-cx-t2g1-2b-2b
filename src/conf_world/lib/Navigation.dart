@@ -1,18 +1,15 @@
-import 'package:conf_world/ConferenceIcon.dart';
 import 'package:conf_world/SearchConference.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
 import 'package:flutter/widgets.dart';
 import 'SearchConference.dart';
 import 'MapRoute.dart';
 
-class MapRoute2 extends StatefulWidget {
+class Navigation extends StatefulWidget {
   @override
-  _MapRoute2State createState() => _MapRoute2State();
+  _NavigationState createState() => _NavigationState();
 }
 
-class _MapRoute2State extends State<MapRoute2> {
+class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -33,16 +30,23 @@ class _MapRoute2State extends State<MapRoute2> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+                Icons.home,
+                color: Colors.lightGreenAccent,
+            ),
             label: 'Map',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(
+                Icons.search,
+                color: Colors.lightGreenAccent,
+            ),
             label: 'Filter Conferences',
           ),
         ],
+        backgroundColor: Colors.grey,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.lightGreenAccent,
         onTap: _onItemTapped,
       ),
     );
