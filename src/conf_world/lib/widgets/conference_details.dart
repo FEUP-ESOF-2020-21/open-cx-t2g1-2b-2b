@@ -13,13 +13,13 @@ class ConferenceDetails extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       color: Colors.green[500],
-      child: new Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 1,
-            child: new Container(
+            child: Container(
                 color: Colors.green[600],
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
@@ -41,7 +41,7 @@ class ConferenceDetails extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: new Container(
+            child: Container(
                 color: Colors.green[600],
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
@@ -77,8 +77,30 @@ class ConferenceDetails extends StatelessWidget {
                 )),
           ),
           Expanded(
+            flex: 1,
+            child: Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'URL: ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      'https://FakeLinkIsBestLink.com',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.green[1000]),
+                    ),
+                  ],
+                )),
+          ),
+          Expanded(
             flex: 6,
-            child: new Container(
+            child: Container(
                 color: Colors.green[600],
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
