@@ -10,29 +10,72 @@ class ConferenceDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Stack(
-      children: [
-        new Container(
-          color: Colors.lightGreen,
-          child: new Center(
-            child: new Text(
-              conference.name,
-              textAlign: TextAlign.start,
-            ),
-          ),
-        ),
-        new Container(
-          color: Colors.white,
-          child:  new Text(
-            conference.date,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        new Container(
-          color: Colors.white,
-          child: new Text(conference.description),
-        ),
-      ],
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      color: Colors.green[500],
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          new Container(
+              color: Colors.green[600],
+              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+              padding: EdgeInsets.all(4),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Name: ',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Colors.amber, fontStyle: FontStyle.italic),
+                  ),
+                  Text(
+                    conference.name,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(color: Colors.green[1000]),
+                  ),
+                ],
+              )),
+          new Container(
+              color: Colors.green[600],
+              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+              padding: EdgeInsets.all(4),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Date: ',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Colors.amber, fontStyle: FontStyle.italic),
+                  ),
+                  Text(
+                    conference.date,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(color: Colors.green[1000]),
+                  ),
+                ],
+              )),
+          new Container(
+              color: Colors.green[600],
+              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+              padding: EdgeInsets.all(4),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Description: ',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                        color: Colors.amber, fontStyle: FontStyle.italic),
+                  ),
+                  Text(
+                    conference.description,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(color: Colors.green[1000]),
+                  ),
+                ],
+              )),
+        ],
+      ),
     );
   }
 }
