@@ -6,12 +6,23 @@ import 'package:latlong/latlong.dart';
 import 'package:flutter/widgets.dart';
 
 class MapRoute extends StatelessWidget {
-  ConferenceMarker markerList = new ConferenceMarker();
+  var conferences = <ConferenceInfo>[];
+  ConferenceMarker markerList;
+
+  final String filter;
+
+  MapRoute([this.filter = 'false']) {
+    this.conferences = <ConferenceInfo>[
+      new ConferenceInfo('Computer Science Conference', 'CS', 'date', 'description', 51.5, -0.09),
+      new ConferenceInfo('Applied Mathematics and Physics', 'MATH', 'date', 'description', 51.53, -0.11),
+      new ConferenceInfo('Robotics and AI', 'CS', 'date', 'description', 51.48, -0.08),
+    ];
+
+    this.markerList = new ConferenceMarker(this.conferences, this.filter);
+  }
 
   @override
   Widget build(BuildContext context) {
-    markerList.initMarkers();
-    markerList.addMarker();
     return new FlutterMap(
       options: new MapOptions(
         center: new LatLng(51.5, -0.09),

@@ -71,7 +71,7 @@ class FilterByTypeState extends State<FilterByType> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Navigation()),
+                MaterialPageRoute(builder: (context) => Navigation(filter: 'CS')),
               );
             },
             child: MyButton(
@@ -83,7 +83,7 @@ class FilterByTypeState extends State<FilterByType> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Navigation()),
+                MaterialPageRoute(builder: (context) => Navigation(filter: 'MATH')),
               );
             },
             child: MyButton(
@@ -95,11 +95,11 @@ class FilterByTypeState extends State<FilterByType> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Navigation()),
+                MaterialPageRoute(builder: (context) => Navigation(filter: 'false')),
               );
             },
             child: MyButton(
-              name: 'See World Map',
+              name: 'See world map without filters',
             ),
           ),
         ]

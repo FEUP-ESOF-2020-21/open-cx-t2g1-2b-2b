@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ConferenceIcon extends StatelessWidget {
-  ConferenceIcon({Key key, this.name}) : super(key: key);
+  ConferenceIcon({Key key, this.conference}) : super(key: key);
 
-  final String name;
+  final ConferenceInfo conference;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +23,7 @@ class ConferenceIcon extends StatelessWidget {
                     context: context,
                     builder: (builder) {
                       return ConferenceDetails(
-                        name: name,
-                        date: "date",
-                        description: "description",
+                        conference: conference,
                       );
                     },
                 );
@@ -35,7 +33,7 @@ class ConferenceIcon extends StatelessWidget {
         new Container(
           alignment: Alignment.center,
           child: Text(
-            this.name,
+            conference.name,
             style: TextStyle(fontSize: 14),
             textAlign: TextAlign.center,
           ),

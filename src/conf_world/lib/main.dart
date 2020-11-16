@@ -45,10 +45,10 @@ class HomePageState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Conf World"),
-          centerTitle: true,
-          backgroundColor: Colors.green[500],
-        ),
+      title: Text("Conf World"),
+      centerTitle: true,
+      backgroundColor: Colors.green[500],
+    ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +59,7 @@ class HomePageState extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Navigation()),
+                    MaterialPageRoute(builder: (context) => Navigation(filter: 'false')),
                   );
                 },
                 child: MyButton(

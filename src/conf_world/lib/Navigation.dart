@@ -5,16 +5,22 @@ import 'SearchConference.dart';
 import 'MapRoute.dart';
 
 class Navigation extends StatefulWidget {
+  final String filter;
+
+  const Navigation({Key key, this.filter = 'false'}) : super(key: key);
+
   @override
-  _NavigationState createState() => _NavigationState();
+  _NavigationState createState() => _NavigationState(this.filter);
 }
 
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[MapRoute(), SearchConference()];
+  //static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions;
 
+  _NavigationState(String filter) {
+    _widgetOptions = <Widget>[MapRoute(filter), SearchConference()];
+  }
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
