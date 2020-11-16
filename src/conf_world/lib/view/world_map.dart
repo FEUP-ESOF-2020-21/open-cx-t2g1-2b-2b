@@ -8,7 +8,7 @@ class MapRoute extends StatelessWidget {
   Database db;
   final String filter;
 
-  MapRoute([this.filter = 'false']) {
+  MapRoute(this.filter) {
     this.db = new Database(this.filter);
   }
 

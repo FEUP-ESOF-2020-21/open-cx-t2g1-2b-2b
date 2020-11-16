@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'search_conference.dart';
+import 'filter_conference.dart';
 import 'world_map.dart';
 
 class Navigation extends StatefulWidget {
