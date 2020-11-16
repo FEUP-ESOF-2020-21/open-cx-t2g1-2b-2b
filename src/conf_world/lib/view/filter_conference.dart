@@ -35,7 +35,7 @@ class SearchConference extends StatelessWidget {
             padding: EdgeInsets.zero,
             onPressed: () {},
             child: MyButton(
-              name: 'SaveConferences',
+              name: 'Saved Conferences',
             ),
           ),
         ],
