@@ -1,8 +1,7 @@
-import 'package:conf_world/main.dart';
-import 'package:conf_world/Navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'MyButton.dart';
+import './navigation.dart';
+import '../widgets/my_button.dart';
 
 class SearchConference extends StatelessWidget {
   @override

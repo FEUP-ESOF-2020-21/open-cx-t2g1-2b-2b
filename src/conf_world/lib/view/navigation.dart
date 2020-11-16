@@ -1,8 +1,7 @@
-import 'package:conf_world/SearchConference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'SearchConference.dart';
-import 'MapRoute.dart';
+import 'search_conference.dart';
+import 'world_map.dart';
 
 class Navigation extends StatefulWidget {
   final String filter;
