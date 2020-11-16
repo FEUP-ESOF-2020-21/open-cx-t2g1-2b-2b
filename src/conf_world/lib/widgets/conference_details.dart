@@ -17,63 +17,73 @@ class ConferenceDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          new Container(
-              color: Colors.green[600],
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              padding: EdgeInsets.all(4),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Name: ',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: Colors.amber, fontStyle: FontStyle.italic),
-                  ),
-                  Text(
-                    conference.name,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.green[1000]),
-                  ),
-                ],
-              )),
-          new Container(
-              color: Colors.green[600],
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              padding: EdgeInsets.all(4),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Date: ',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: Colors.amber, fontStyle: FontStyle.italic),
-                  ),
-                  Text(
-                    conference.date,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.green[1000]),
-                  ),
-                ],
-              )),
-          new Container(
-              color: Colors.green[600],
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              padding: EdgeInsets.all(4),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Description: ',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        color: Colors.amber, fontStyle: FontStyle.italic),
-                  ),
-                  Text(
-                    conference.description,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.green[1000]),
-                  ),
-                ],
-              )),
+          Expanded(
+            flex: 1,
+            child: new Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Name: ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.amber, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      conference.name,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.green[1000]),
+                    ),
+                  ],
+                )),
+          ),
+          Expanded(
+            flex: 1,
+            child: new Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Date: ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.amber, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      conference.date,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.green[1000]),
+                    ),
+                  ],
+                )),
+          ),
+          Expanded(
+            flex: 6,
+            child: new Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Description: ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.amber, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      conference.description,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.green[1000]),
+                    ),
+                  ],
+                )),
+          ),
         ],
       ),
     );
