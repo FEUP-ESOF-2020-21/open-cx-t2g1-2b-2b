@@ -29,7 +29,7 @@ class ConferenceDetails extends StatelessWidget {
                       'Name: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.amber, fontStyle: FontStyle.italic),
+                          color: Colors.white, fontStyle: FontStyle.italic),
                     ),
                     Text(
                       conference.name,
@@ -51,12 +51,27 @@ class ConferenceDetails extends StatelessWidget {
                       'Date: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.amber, fontStyle: FontStyle.italic),
+                          color: Colors.white, fontStyle: FontStyle.italic),
                     ),
                     Text(
                       conference.date,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.green[1000]),
+                    ),
+                    Expanded(
+                      child: Text(
+                        'Type:',
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                            color: Colors.white, fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        ' ' + conference.type,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(color: Colors.green[1000]),
+                      ),
                     ),
                   ],
                 )),
@@ -74,7 +89,7 @@ class ConferenceDetails extends StatelessWidget {
                       'Description: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.amber, fontStyle: FontStyle.italic),
+                          color: Colors.white, fontStyle: FontStyle.italic),
                     ),
                     Text(
                       conference.description,
