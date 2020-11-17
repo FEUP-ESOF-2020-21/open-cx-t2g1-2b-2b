@@ -2,11 +2,20 @@ import 'package:conf_world/model/conference_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ConferenceDetails extends StatelessWidget {
   final ConferenceInfo conference;
 
   ConferenceDetails({Key key, this.conference}) : super(key: key);
+
+  _launchURL() async {
+    if (await canLaunch(conference.url)) {
+      await launch(conference.url);
+    } else {
+      throw 'Could not launch $conference.url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,10 +99,15 @@ class ConferenceDetails extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white, fontStyle: FontStyle.italic),
                     ),
-                    Text(
-                      'https://FakeLinkIsBestLink.com',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.green[1000]),
+                    ElevatedButton(
+                      onPressed: _launchURL,
+                      child: new Text(
+                        conference.url,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            color: Colors.white, fontStyle: FontStyle.italic
+                        ),
+                      ),
                     ),
                   ],
                 )),
@@ -126,3 +140,6 @@ class ConferenceDetails extends StatelessWidget {
     );
   }
 }
+
+
+
