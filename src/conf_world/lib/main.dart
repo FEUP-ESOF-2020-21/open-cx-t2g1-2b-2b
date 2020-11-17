@@ -1,3 +1,4 @@
+import 'package:conf_world/database.dart';
 import 'package:conf_world/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -34,6 +35,8 @@ class MyHomePage extends StatefulWidget {
 */
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Database db = new Database();
   runApp(MaterialApp(
     home: HomePageState(),
   ));

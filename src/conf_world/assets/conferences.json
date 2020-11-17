@@ -1,0 +1,26 @@
+[
+  {
+    "name" : "Computer Science Conference",
+    "type"  : "CS",
+    "date" : "date",
+    "description" : "teste",
+    "latitude" : 51.5,
+    "longitude" : -0.09
+  },
+  {
+    "name" : "Applied Maths",
+    "type"  : "MATH",
+    "date" : "date",
+    "description" : "teste",
+    "latitude" : 51.53,
+    "longitude" : -0.11
+  },
+  {
+    "name" : "Robotics and AI",
+    "type"  : "CS",
+    "date" : "date",
+    "description" : "teste",
+    "latitude" : 51.48,
+    "longitude" : -0.08
+  }
+]

@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 import 'model/marker_model.dart';
 import 'model/conference_model.dart';
 
@@ -5,15 +9,33 @@ class Database {
   ConferenceMarker markerList;
   var conferences = <ConferenceInfo>[];
 
-  final String filter;
+  static final Database _singleton = Database._internal();
 
-  Database([this.filter = 'false']) {
-    this.conferences = <ConferenceInfo>[
-      new ConferenceInfo('Computer Science Conference', 'CS', 'date', 'description', 51.5, -0.09),
-      new ConferenceInfo('Applied Mathematics and Physics', 'MATH', 'date', 'description', 51.53, -0.11),
-      new ConferenceInfo('Robotics and AI', 'CS', 'date', 'description', 51.48, -0.08),
-    ];
+  factory Database() {
+    return _singleton;
+  }
 
-    this.markerList = new ConferenceMarker(this.conferences, this.filter);
+  Database._internal() {
+    _loadDb();
+  }
+
+  Future<String>_loadFromAsset() async {
+    return await rootBundle.loadString("assets/conferences.json");
+  }
+
+  void _loadDb() async {
+    String rd = await _loadFromAsset();
+
+    List<dynamic> userMap = jsonDecode(rd);
+
+    for(var i = 0; i < userMap.length; i++) {
+      this.conferences.add(ConferenceInfo.fromJson(userMap[i]));
+    }
+
+    updateMarkers('false');
+  }
+
+  updateMarkers(String filter) {
+    this.markerList = new ConferenceMarker(this.conferences, filter);
   }
 }
