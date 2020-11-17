@@ -7,5 +7,7 @@ class ConferenceInfo {
   final double latitude;
   final double longitude;
 
-  ConferenceInfo(this.name, this.type, this.date, this.description, this.latitude, this.longitude);
+  final String url;
+
+  ConferenceInfo(this.name, this.type, this.date, this.description, this.latitude, this.longitude , this.url);
 }
