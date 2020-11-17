@@ -57,19 +57,41 @@ class ConferenceDetails extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      'Date: ',
+                      'Type: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.white, fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      conference.date,
+                      conference.type,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.green[1000]),
+                    ),
+                  ],
+                )),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Submit Papers: ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      conference.submitPaper,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.green[1000]),
                     ),
                     Expanded(
                       child: Text(
-                        'Type:',
+                        'Date:',
                         textAlign: TextAlign.end,
                         style: TextStyle(
                             color: Colors.white, fontStyle: FontStyle.italic),
@@ -77,7 +99,7 @@ class ConferenceDetails extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        ' ' + conference.type,
+                        ' ' + conference.date,
                         textAlign: TextAlign.start,
                         style: TextStyle(color: Colors.green[1000]),
                       ),
@@ -105,8 +127,7 @@ class ConferenceDetails extends StatelessWidget {
                         conference.url,
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                            color: Colors.white, fontStyle: FontStyle.italic
-                        ),
+                            color: Colors.white, fontStyle: FontStyle.italic),
                       ),
                     ),
                   ],
@@ -127,12 +148,12 @@ class ConferenceDetails extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white, fontStyle: FontStyle.italic),
                     ),
-                    Flexible(child: new Text(
+                    Flexible(
+                        child: new Text(
                       conference.description,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.green[1000]),
-                    )
-                    ),
+                    )),
                   ],
                 )),
           ),
@@ -141,6 +162,3 @@ class ConferenceDetails extends StatelessWidget {
     );
   }
 }
-
-
-
