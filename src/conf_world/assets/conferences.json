@@ -5,7 +5,8 @@
     "date" : "date",
     "description" : "teste",
     "latitude" : 51.5,
-    "longitude" : -0.09
+    "longitude" : -0.09,
+    "url" : "http://example.com/"
   },
   {
     "name" : "Applied Maths",
@@ -13,7 +14,8 @@
     "date" : "date",
     "description" : "teste",
     "latitude" : 51.53,
-    "longitude" : -0.11
+    "longitude" : -0.11,
+    "url" : "http://example.com/"
   },
   {
     "name" : "Robotics and AI",
@@ -21,6 +23,7 @@
     "date" : "date",
     "description" : "teste",
     "latitude" : 51.48,
-    "longitude" : -0.08
+    "longitude" : -0.08,
+    "url" : "http://example.com/"
   }
 ]
