@@ -9,7 +9,9 @@ class MapRoute extends StatelessWidget {
   final String filter;
 
   MapRoute(this.filter) {
-    this.db = new Database(this.filter);
+    this.db = new Database();
+
+    this.db.updateMarkers(this.filter);
   }
 
   @override

@@ -1,0 +1,29 @@
+[
+  {
+    "name" : "Computer Science Conference",
+    "type"  : "CS",
+    "date" : "18/12/2020",
+    "description" : "If you are a post-graduate student with an interest in the IT industry, this is your chance to gain in-depth knowledge about related research and development, to network with top students from around the world and to build a business case together with experienced professionals.",
+    "latitude" : 51.5,
+    "longitude" : -0.09,
+    "url" : "http://example.com/"
+  },
+  {
+    "name" : "Applied Maths",
+    "type"  : "MATH",
+    "date" : "12/12/2020",
+    "description" : "We welcome professors, researchers, scholars and industrial pioneers all over the world. It is the premier forum for the presentation and exchange of past experiences and new advances and research results in the field of theoretical Applied Maths experiences.",
+    "latitude" : 51.53,
+    "longitude" : -0.11,
+    "url" : "http://example.com/"
+  },
+  {
+    "name" : "Robotics and AI",
+    "type"  : "CS",
+    "date" : "29/11/2020",
+    "description" : "With the experience of running successful Robotics events over the past 6 years, we welcome everyone, beginner or expert, to learn something new about the world of Artificial Intelligence.",
+    "latitude" : 51.48,
+    "longitude" : -0.08,
+    "url" : "http://example.com/"
+  }
+]
