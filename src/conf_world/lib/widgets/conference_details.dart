@@ -127,10 +127,11 @@ class ConferenceDetails extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white, fontStyle: FontStyle.italic),
                     ),
-                    Text(
+                    Flexible(child: new Text(
                       conference.description,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.green[1000]),
+                    )
                     ),
                   ],
                 )),
