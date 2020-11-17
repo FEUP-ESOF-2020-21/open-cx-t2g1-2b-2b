@@ -39,8 +39,7 @@ Finding a conference to attend and all its relevant information can be difficult
 
 ---
 ## Elevator Pitch
-
-Most conferences suffer from a common problem. They have not only a final *rendezvous* date, but also many paper submission deadlines, making it difficult to analyze if the conference can fit the user's tight schedule. ***Conf World*** is a mobile app capable of filtering conferences based upon a time interval and conferences types, allowing the user to completely bypass this issue. 
+Have you ever felt that most conference finding apps struggle at keeping up with your tight schedule? That is because they not only have a final *rendezvous* date, but also many paper submission deadlines. ***Conf World*** is a mobile app capable of filtering conferences based upon a time interval and conferences types, allowing the user to completely bypass this issue.
 
 ---
 ## Requirements
