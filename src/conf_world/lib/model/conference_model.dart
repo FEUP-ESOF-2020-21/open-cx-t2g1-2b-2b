@@ -7,7 +7,9 @@ class ConferenceInfo {
   final double latitude;
   final double longitude;
 
-  ConferenceInfo({this.name, this.type, this.date, this.description, this.latitude, this.longitude});
+  final String url;
+
+  ConferenceInfo({this.name, this.type, this.date, this.description, this.latitude, this.longitude, this.url});
 
   ConferenceInfo.fromJson(Map<String, dynamic> json) :
         name = json['name'],
@@ -15,7 +17,8 @@ class ConferenceInfo {
         date = json['date'],
         description = json['description'],
         latitude = json['latitude'],
-        longitude = json['longitude'];
+        longitude = json['longitude'],
+        url = json['url'];
 
   Map<String, dynamic> toJson() =>
       {
@@ -25,6 +28,7 @@ class ConferenceInfo {
         'description': description,
         'latitude': latitude,
         'longitude': longitude,
+        'url': url,
       };
 
 }
