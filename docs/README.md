@@ -384,6 +384,7 @@ To document the architecture requires describing the decomposition of the system
 
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
+
 ### Logical architecture
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
@@ -391,10 +392,25 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
+![MVC](img/MVC.png)
+
+In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three differente packages: 
+
+* Model: Widgets with conference icons and details
+* View: Responsible for app visualization
+* Controller: Processes received information and updates the model. 
+
+This model is currently in progress, thus there is no actual distinction between View and Controller, although we are planning to soon impement it. 
+
 ### Physical architecture
 The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
 It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+
+---
+
+We are currently reading conference information from a JSON file.
+We are also planning to store data using a local database.
 
 ### Prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
