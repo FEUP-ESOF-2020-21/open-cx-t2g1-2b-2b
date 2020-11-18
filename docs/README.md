@@ -167,11 +167,21 @@ Scenario:
 ```gherkin
 Scenario:
   Given I have selected a conference on the Map
+  And I am Logged In.
+  When I tap the save conference button.
+  And the conference is already saved
+  Then The the conference will be removed from my saved conference list
+```
+
+```gherkin
+Scenario:
+  Given I have selected a conference on the Map
   And I am not Logged In.
   When I tap the save conference button.
   Then The app will ask me to Log In
   And I will be able to save the conference if the login is successful.
 ```
+
 
 **Value and effort**.
 
@@ -195,9 +205,18 @@ Scenario:
 Scenario:
   Given I have the conference pinpoint on my screen
   When I tap a conference's pinpoint.
-  Then The app will redirect me to the conference's website.
-  And I will be able to see all the information about it.
+  Then I will be able to see all the information about it.
 ```
+
+```gherkin
+Scenario:
+  Given I have the conference pinpoint on my screen
+  When I tap a conference's pinpoint.
+  And I press the conference website URL.
+  Then I will be redirected to the conference's website.
+  
+```
+
 
 **Value and effort**.
 
@@ -263,11 +282,46 @@ Scenario:
 
 *Value:* Must Have
 
+*Effort:* L
+
+*Effort Estimation History (from oldest to newest):* M, L
+
+#### Story 6
+*As a user, I want to view my previously saved conferences.*
+
+**User interface mockups**.
+| Filter Conferences  |
+| ------------ |
+| ![Save](./img/mockups/filter-conference.png)|
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Saved Conferencees button.
+  And I am logged in
+  Then The world map will only show pinpoints with saved conferences
+  And I will be able to view my saved conferences.
+```
+
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Saved Conferencees button.
+  And I am not logged in
+  Then The app will ask me to Log In
+  And I will be able to view my saved conferences if the login is sucessfull
+```
+
+**Value and effort**.
+
+*Value:* Should Have
+
 *Effort:* M
 
 *Effort Estimation History (from oldest to newest):* M
 
-**Story #6**
+**Story #7**
 
 *As a user, I want to log in, so that I can access my saved conferences.*
 
@@ -283,9 +337,28 @@ Scenario:
   Given I am in the Main Menu
   And I am not Logged In yet.
   When I tap the Login button.
-  And Enter my credentials
+  And Enter my credentials correctly.
+  And i press the submit button
   Then The app will log me into my account
-  And I will be able to access my saved conferences.
+```
+
+```gherkin
+Scenario:
+  Given I am in the Main Menu
+  And I am not Logged In yet.
+  When I tap the Login button.
+  And Enter my credentials incorrectly
+  And I press the submit button
+  Then The app will ask for my credentials again
+```
+
+```gherkin
+Scenario:
+  Given I am in the Main Menu
+  And I have no account.
+  When I tap the Login button.
+  Then the app will ask for my new credentials.
+  And i will be logged in.
 ```
 
 **Value and effort**.
