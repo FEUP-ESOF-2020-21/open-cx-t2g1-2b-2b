@@ -39,8 +39,7 @@ Finding a conference to attend and all its relevant information can be difficult
 
 ---
 ## Elevator Pitch
-
-Most conferences suffer from a common problem. They have not only a final *rendezvous* date, but also many paper submission deadlines, making it difficult to analyze if the conference can fit the user's tight schedule. ***Conf World*** is a mobile app capable of filtering conferences based upon a time interval and conferences types, allowing the user to completely bypass this issue. 
+Have you ever felt that most conference finding apps struggle at keeping up with your tight schedule? That is because they not only have a final *rendezvous* date, but also many paper submission deadlines. ***Conf World*** is a mobile app capable of filtering conferences based upon a time interval and conferences types, allowing the user to completely bypass this issue.
 
 ---
 ## Requirements
@@ -117,27 +116,6 @@ Start by contextualizing your module, describing the main concepts, terms, roles
         3. If the user isn't logged in or doesn't have any saved conference, nothing will happen.
 
 ### User stories
-This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
-
-For each theme, or role, you may add a small description. User stories should be detailed in the tool you decided to use for project management (e.g. trello or github projects).
-
-A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is 
-
-*As a < user role >, I want < goal > so that < reason >.*
-
-
-**INVEST in good user stories**. 
-You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).
-
-**User interface mockups**.
-After the user story text, you should add a draft of the corresponding user interfaces, a simple mockup or draft, if applicable.
-
-**Acceptance tests**.
-For each user story you should write also the acceptance tests (textually in Gherkin), i.e., a description of scenarios (situations) that will help to confirm that the system satisfies the requirements addressed by the user story.
-
-**Value and effort**.
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method) and the team should add an estimation of the effort to implement it, for example, using t-shirt sizes (XS, S, M, L, XL).
-
 
 #### Story 1
 
@@ -189,11 +167,21 @@ Scenario:
 ```gherkin
 Scenario:
   Given I have selected a conference on the Map
+  And I am Logged In.
+  When I tap the save conference button.
+  And the conference is already saved
+  Then The the conference will be removed from my saved conference list
+```
+
+```gherkin
+Scenario:
+  Given I have selected a conference on the Map
   And I am not Logged In.
   When I tap the save conference button.
   Then The app will ask me to Log In
   And I will be able to save the conference if the login is successful.
 ```
+
 
 **Value and effort**.
 
@@ -217,9 +205,18 @@ Scenario:
 Scenario:
   Given I have the conference pinpoint on my screen
   When I tap a conference's pinpoint.
-  Then The app will redirect me to the conference's website.
-  And I will be able to see all the information about it.
+  Then I will be able to see all the information about it.
 ```
+
+```gherkin
+Scenario:
+  Given I have the conference pinpoint on my screen
+  When I tap a conference's pinpoint.
+  And I press the conference website URL.
+  Then I will be redirected to the conference's website.
+  
+```
+
 
 **Value and effort**.
 
@@ -285,11 +282,46 @@ Scenario:
 
 *Value:* Must Have
 
+*Effort:* L
+
+*Effort Estimation History (from oldest to newest):* M, L
+
+#### Story 6
+*As a user, I want to view my previously saved conferences.*
+
+**User interface mockups**.
+| Filter Conferences  |
+| ------------ |
+| ![Save](./img/mockups/filter-conference.png)|
+
+**Acceptance tests**.
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Saved Conferencees button.
+  And I am logged in
+  Then The world map will only show pinpoints with saved conferences
+  And I will be able to view my saved conferences.
+```
+
+```gherkin
+Scenario:
+  Given I am on the Filtering Menu.
+  When I tap the Saved Conferencees button.
+  And I am not logged in
+  Then The app will ask me to Log In
+  And I will be able to view my saved conferences if the login is sucessfull
+```
+
+**Value and effort**.
+
+*Value:* Should Have
+
 *Effort:* M
 
 *Effort Estimation History (from oldest to newest):* M
 
-**Story #6**
+**Story #7**
 
 *As a user, I want to log in, so that I can access my saved conferences.*
 
@@ -305,9 +337,28 @@ Scenario:
   Given I am in the Main Menu
   And I am not Logged In yet.
   When I tap the Login button.
-  And Enter my credentials
+  And Enter my credentials correctly.
+  And i press the submit button
   Then The app will log me into my account
-  And I will be able to access my saved conferences.
+```
+
+```gherkin
+Scenario:
+  Given I am in the Main Menu
+  And I am not Logged In yet.
+  When I tap the Login button.
+  And Enter my credentials incorrectly
+  And I press the submit button
+  Then The app will ask for my credentials again
+```
+
+```gherkin
+Scenario:
+  Given I am in the Main Menu
+  And I have no account.
+  When I tap the Login button.
+  Then the app will ask for my new credentials.
+  And i will be logged in.
 ```
 
 **Value and effort**.
@@ -333,6 +384,7 @@ To document the architecture requires describing the decomposition of the system
 
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
+
 ### Logical architecture
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
@@ -340,10 +392,25 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
+![MVC](img/MVC.png)
+
+In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three differente packages: 
+
+* Model: Widgets with conference icons and details
+* View: Responsible for app visualization
+* Controller: Processes received information and updates the model. 
+
+This model is currently in progress, thus there is no actual distinction between View and Controller, although we are planning to soon impement it. 
+
 ### Physical architecture
 The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
 It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+
+---
+
+We are currently reading conference information from a JSON file.
+We are also planning to store data using a local database.
 
 ### Prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
