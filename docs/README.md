@@ -160,7 +160,7 @@ Scenario:
   Given I have selected a conference on the Map
   And I am Logged In.
   When I tap the save conference button.
-  Then The app will save my conference
+  Then The app will save my conference in the cloud
   And I will be able to access it in the saved menu.
 ```
 
@@ -178,8 +178,8 @@ Scenario:
   Given I have selected a conference on the Map
   And I am not Logged In.
   When I tap the save conference button.
-  Then The app will ask me to Log In
-  And I will be able to save the conference if the login is successful.
+  Then The app will save my conference locally
+  And I will be able to access it in the saved menu.
 ```
 
 
@@ -269,14 +269,6 @@ Scenario:
   Then The world map will only show pinpoints with conferences regarding the selected type.
   And I will be able to select the conference.
 ```
-```gherkin
-Scenario:
-  Given I am on the Filtering Menu.
-  When I tap the Saved Conferencees button.
-  And I am logged in
-  Then The world map will only show pinpoints with saved conferences
-  And I will be able to select the conference.
-```
 
 **Value and effort**.
 
@@ -300,7 +292,7 @@ Scenario:
   Given I am on the Filtering Menu.
   When I tap the Saved Conferencees button.
   And I am logged in
-  Then The world map will only show pinpoints with saved conferences
+  Then The world map will only show pinpoints with saved conferences on the cloud
   And I will be able to view my saved conferences.
 ```
 
@@ -309,8 +301,8 @@ Scenario:
   Given I am on the Filtering Menu.
   When I tap the Saved Conferencees button.
   And I am not logged in
-  Then The app will ask me to Log In
-  And I will be able to view my saved conferences if the login is sucessfull
+  Then The world map will only show pinpoints with saved conferences locally
+  And I will be able to view my saved conferences.
 ```
 
 **Value and effort**.
