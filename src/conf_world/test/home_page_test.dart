@@ -34,10 +34,16 @@ void main() {
       home: SearchConference(),
     ));
 
-    //expect(find.text('Type'), findsOneWidget);
+    expect(find.text('Type'), findsOneWidget);
+    expect(find.text('Date'), findsOneWidget);
+    expect(find.text('Saved Conferences'), findsOneWidget);
 
-    //await tester.tap(find.byType(FlatButton));
+    await tester.tap(find.ancestor(of: find.text('Type'), matching: find.byType(FlatButton)));
+    await tester.pumpAndSettle();
 
+    expect(find.byType(Scaffold), findsOneWidget);
   });
+
+
 
 }
