@@ -4,6 +4,9 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:conf_world/view/filter_conference.dart';
+import 'package:conf_world/view/filter_type.dart';
+import 'package:conf_world/view/navigation.dart';
+import 'package:conf_world/view/world_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:conf_world/view/home_page.dart';
@@ -28,6 +31,22 @@ void main() {
     expect(find.byType(FlutterMap), findsOneWidget);
   });
 
+  testWidgets('Filter Conferences button test', (WidgetTester tester) async {
+
+    await tester.pumpWidget(MaterialApp(
+      home: Navigation(),
+    ));
+
+    expect(find.byIcon(Icons.home), findsOneWidget);
+    expect(find.byIcon(Icons.search), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.search));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(SearchConference), findsOneWidget);
+
+  });
+
   testWidgets('Filter Conferences by type test', (WidgetTester tester) async {
     
     await tester.pumpWidget(MaterialApp(
@@ -44,6 +63,21 @@ void main() {
     expect(find.byType(Scaffold), findsOneWidget);
   });
 
+  testWidgets('See world map without filters', (WidgetTester tester) async {
+
+    await tester.pumpWidget(MaterialApp(
+      home: FilterByType(),
+    ));
+
+    expect(find.text('Computer Science Conferences'), findsOneWidget);
+    expect(find.text('Math Conferences'), findsOneWidget);
+    expect(find.text('See world map without filters'), findsOneWidget);
+
+    await tester.tap(find.ancestor(of: find.text('See world map without filters'), matching: find.byType(FlatButton)));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(FlutterMap), findsOneWidget);
+  });
 
 
 }
