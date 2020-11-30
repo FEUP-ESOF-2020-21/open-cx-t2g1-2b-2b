@@ -5,17 +5,25 @@ import 'package:flutter/services.dart';
 import 'model/marker_model.dart';
 import 'model/conference_model.dart';
 
-class Database {
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+
+
+class DatabaseHelper {
   ConferenceMarker markerList;
   var conferences = <ConferenceInfo>[];
 
-  static final Database _singleton = Database._internal();
+  bool _onCreate = false;
 
-  factory Database() {
+  Database db; //sqlite db
+
+  static final DatabaseHelper _singleton = DatabaseHelper._internal();
+
+  factory DatabaseHelper() {
     return _singleton;
   }
 
-  Database._internal() {
+  DatabaseHelper._internal() {
     _loadDb();
   }
 
@@ -24,15 +32,60 @@ class Database {
   }
 
   void _loadDb() async {
-    String rd = await _loadFromAsset();
+    await initDatabase();
 
-    List<dynamic> userMap = jsonDecode(rd);
+    if(_onCreate) {
+      String rd = await _loadFromAsset();
 
-    for(var i = 0; i < userMap.length; i++) {
-      this.conferences.add(ConferenceInfo.fromJson(userMap[i]));
+      List<dynamic> userMap = jsonDecode(rd);
+
+      for (var i = 0; i < userMap.length; i++) {
+        insertDb(ConferenceInfo.fromJson(userMap[i]));
+      }
     }
 
+    this.conferences = await getAllTask();
+
     updateMarkers('false');
+  }
+
+  Future<void> initDatabase() async{
+    db = await openDatabase(
+        join(await getDatabasesPath(), "datateste.db"),
+        onCreate: (db, version) async {
+          await db.execute("CREATE TABLE Conference("
+              "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+              "name VARCHAR(255),"
+              "type VARCHAR(255),"
+              "submitPaper VARCHAR(255),"
+              "date VARCHAR(255),"
+              "description VARCHAR(255),"
+              "latitude INTEGER,"
+              "longitude INTEGER,"
+              "url VARCHAR(255),"
+              "saved INTEGER"
+              ")");
+
+          _onCreate = true;
+        },
+        version: 1
+    );
+  }
+
+  Future<void> insertDb(ConferenceInfo conf) async{
+    try{
+      db.insert("Conference", conf.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
+    }catch(_){
+      print(_);
+    }
+  }
+
+  Future<List<ConferenceInfo>> getAllTask () async{
+    final List<Map<String, dynamic>> tasks = await db.query("Conference");
+
+    return List.generate(tasks.length, (i) {
+      return ConferenceInfo(name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
+    });
   }
 
   updateMarkers(String filter) {

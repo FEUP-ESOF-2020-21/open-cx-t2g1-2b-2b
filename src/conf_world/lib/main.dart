@@ -36,7 +36,7 @@ class MyHomePage extends StatefulWidget {
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Database db = new Database();
+  DatabaseHelper db = new DatabaseHelper();
   runApp(MaterialApp(
     home: HomePageState(),
   ));

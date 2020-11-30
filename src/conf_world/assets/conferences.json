@@ -8,7 +8,7 @@
     "latitude" : 51.5,
     "longitude" : -0.09,
     "url" : "http://example.com/",
-    "saved" : true
+    "saved" : 1
   },
   {
     "name" : "Applied Maths",
@@ -19,7 +19,7 @@
     "latitude" : 51.53,
     "longitude" : -0.11,
     "url" : "http://example.com/",
-    "saved" : true
+    "saved" : 1
   },
   {
     "name" : "Robotics and AI",
@@ -30,6 +30,6 @@
     "latitude" : 51.48,
     "longitude" : -0.08,
     "url" : "http://example.com/",
-    "saved" : false
+    "saved" : 0
   }
 ]

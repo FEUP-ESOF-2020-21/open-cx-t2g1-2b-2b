@@ -10,7 +10,7 @@ class ConferenceDetails extends StatelessWidget {
   ConferenceDetails({Key key, this.conference}) : super(key: key);
 
   _updateSaved() {
-    conference.saved = !conference.saved;
+    conference.saved = 1;
   }
 
   _launchURL() async {
@@ -89,7 +89,7 @@ class ConferenceDetails extends StatelessWidget {
                           color: Colors.white, fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      conference.saved ? "true" : "no",
+                      (conference.saved == 1) ? "true" : "no",
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Colors.green[1000]),
                     ),

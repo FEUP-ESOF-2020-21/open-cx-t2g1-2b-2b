@@ -10,7 +10,7 @@ class ConferenceInfo {
 
   final String url;
 
-  bool saved;
+  int saved;
 
   ConferenceInfo({this.name, this.type, this.submitPaper, this.date, this.description, this.latitude, this.longitude, this.url, this.saved});
 
