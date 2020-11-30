@@ -30,7 +30,9 @@ void main() {
 
   testWidgets('Filter Conferences by type test', (WidgetTester tester) async {
     
-    await tester.pumpWidget(SearchConference());
+    await tester.pumpWidget(MaterialApp(
+      home: SearchConference(),
+    ));
 
     //expect(find.text('Type'), findsOneWidget);
 
