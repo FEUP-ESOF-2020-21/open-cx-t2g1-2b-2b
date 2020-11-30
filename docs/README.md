@@ -365,6 +365,8 @@ Scenario:
 
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
+![Domain Model Diagram](./img/domain_model.png)
+
 ---
 
 ## Architecture and Design
@@ -377,6 +379,8 @@ To document the architecture requires describing the decomposition of the system
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 
+
+
 ### Logical architecture
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
@@ -384,7 +388,7 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
-![MVC](img/MVC.png)
+![MVC Logical Architecture Diagram](./img/logical_architecture.png)
 
 In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three differente packages: 
 
@@ -398,6 +402,8 @@ This model is currently in progress, thus there is no actual distinction between
 The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
 It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+
+![Physical Architecture Diagram](./img/physical_architecture.png)
 
 ---
 
