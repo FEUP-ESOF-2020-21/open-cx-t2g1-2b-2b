@@ -378,7 +378,7 @@ To document the architecture requires describing the decomposition of the system
 
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
-![Physical Architecture Diagram](./img/physical_architecture.png)
+
 
 
 ### Logical architecture
@@ -402,6 +402,8 @@ This model is currently in progress, thus there is no actual distinction between
 The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
 It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+
+![Physical Architecture Diagram](./img/physical_architecture.png)
 
 ---
 
