@@ -51,7 +51,7 @@ class DatabaseHelper {
 
   Future<void> initDatabase() async{
     db = await openDatabase(
-        join(await getDatabasesPath(), "datateste.db"),
+        join(await getDatabasesPath(), "conferencesda.db"),
         onCreate: (db, version) async {
           await db.execute("CREATE TABLE Conference("
               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -80,11 +80,21 @@ class DatabaseHelper {
     }
   }
 
-  Future<List<ConferenceInfo>> getAllTask () async{
+  Future<void> updateSaved(ConferenceInfo conf) async {
+    await db.update(
+      'Conference',
+      conf.toJson(),
+      where: "id = ?",
+      // Pass the id as a whereArg to prevent SQL injection.
+      whereArgs: [conf.id],
+    );
+  }
+
+  Future<List<ConferenceInfo>> getAllTask() async{
     final List<Map<String, dynamic>> tasks = await db.query("Conference");
 
     return List.generate(tasks.length, (i) {
-      return ConferenceInfo(name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
+      return ConferenceInfo(id: tasks[i]["id"], name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
     });
   }
 

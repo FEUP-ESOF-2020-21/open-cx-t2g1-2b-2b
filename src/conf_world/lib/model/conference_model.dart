@@ -1,4 +1,5 @@
 class ConferenceInfo {
+  final int id;
   final String name;
   final String type;
   final String submitPaper;
@@ -12,9 +13,10 @@ class ConferenceInfo {
 
   int saved;
 
-  ConferenceInfo({this.name, this.type, this.submitPaper, this.date, this.description, this.latitude, this.longitude, this.url, this.saved});
+  ConferenceInfo({this.id, this.name, this.type, this.submitPaper, this.date, this.description, this.latitude, this.longitude, this.url, this.saved});
 
   ConferenceInfo.fromJson(Map<String, dynamic> json) :
+        id = json['id'],
         name = json['name'],
         type = json['type'],
         date = json['date'],
@@ -27,6 +29,7 @@ class ConferenceInfo {
 
   Map<String, dynamic> toJson() =>
       {
+        'id' : id,
         'name': name,
         'type': type,
         'submitPaper': submitPaper,

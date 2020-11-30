@@ -1,5 +1,6 @@
 [
   {
+    "id" : 1,
     "name" : "Computer Science Conference",
     "type"  : "CS",
     "submitPaper" : "10/12/2020",
@@ -8,9 +9,10 @@
     "latitude" : 51.5,
     "longitude" : -0.09,
     "url" : "http://example.com/",
-    "saved" : 1
+    "saved" : 0
   },
   {
+    "id" : 2,
     "name" : "Applied Maths",
     "type"  : "MATH",
     "submitPaper" : "14/12/2020",
@@ -19,9 +21,10 @@
     "latitude" : 51.53,
     "longitude" : -0.11,
     "url" : "http://example.com/",
-    "saved" : 1
+    "saved" : 0
   },
   {
+    "id" : 3,
     "name" : "Robotics and AI",
     "type"  : "CS",
     "submitPaper" : "10/12/2020",

@@ -4,13 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../database.dart';
+
 class ConferenceDetails extends StatelessWidget {
   final ConferenceInfo conference;
 
   ConferenceDetails({Key key, this.conference}) : super(key: key);
 
-  _updateSaved() {
+  _updateSaved() async {
     conference.saved = 1;
+    DatabaseHelper db = new DatabaseHelper();
+
+    await db.updateSaved(conference);
   }
 
   _launchURL() async {
