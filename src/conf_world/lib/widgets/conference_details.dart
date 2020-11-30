@@ -9,6 +9,10 @@ class ConferenceDetails extends StatelessWidget {
 
   ConferenceDetails({Key key, this.conference}) : super(key: key);
 
+  _updateSaved() {
+    conference.saved = !conference.saved;
+  }
+
   _launchURL() async {
     if (await canLaunch(conference.url)) {
       await launch(conference.url);
@@ -79,6 +83,28 @@ class ConferenceDetails extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Text(
+                      'Saved Conference: ',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white, fontStyle: FontStyle.italic),
+                    ),
+                    Text(
+                      conference.saved ? "true" : "no",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: Colors.green[1000]),
+                    ),
+                  ],
+                )),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  children: <Widget>[
+                    Text(
                       'Submit Papers: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
@@ -125,6 +151,26 @@ class ConferenceDetails extends StatelessWidget {
                       onPressed: _launchURL,
                       child: new Text(
                         conference.url,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            color: Colors.white, fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
+                )),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+                color: Colors.green[600],
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                padding: EdgeInsets.all(4),
+                child: Row(
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: _updateSaved,
+                      child: new Text(
+                        "Star",
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             color: Colors.white, fontStyle: FontStyle.italic),
