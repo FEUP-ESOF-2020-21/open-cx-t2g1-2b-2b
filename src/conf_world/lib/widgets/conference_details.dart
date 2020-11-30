@@ -6,16 +6,33 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../database.dart';
 
-class ConferenceDetails extends StatelessWidget {
+
+class ConferenceDetails extends StatefulWidget {
   final ConferenceInfo conference;
 
   ConferenceDetails({Key key, this.conference}) : super(key: key);
 
+  @override
+  ConfDetails createState() => ConfDetails(this.conference);
+}
+
+
+class ConfDetails extends State<ConferenceDetails> {
+  final ConferenceInfo conference;
+
+  ConfDetails(this.conference);
+
+  var _colorBackground = Color(0xff3C096C);
+  var _colocarForeground = Color(0xff5a189a);
+
   _updateSaved() async {
-    conference.saved = 1;
+    conference.saved = (conference.saved + 1) % 2;
+
     DatabaseHelper db = new DatabaseHelper();
 
     await db.updateSaved(conference);
+
+    setState(() {}); // Update menu
   }
 
   _launchURL() async {
@@ -30,7 +47,7 @@ class ConferenceDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      color: Colors.green[500],
+      color: _colorBackground,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +55,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -60,7 +77,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -82,7 +99,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -104,7 +121,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -141,7 +158,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -167,7 +184,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -187,7 +204,7 @@ class ConferenceDetails extends StatelessWidget {
           Expanded(
             flex: 6,
             child: Container(
-                color: Colors.green[600],
+                color: _colocarForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -201,10 +218,10 @@ class ConferenceDetails extends StatelessWidget {
                     ),
                     Flexible(
                         child: new Text(
-                      conference.description,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.green[1000]),
-                    )),
+                          conference.description,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(color: Colors.green[1000]),
+                        )),
                   ],
                 )),
           ),

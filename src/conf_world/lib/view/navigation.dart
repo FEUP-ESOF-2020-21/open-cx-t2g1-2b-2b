@@ -30,28 +30,28 @@ class _NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-          title: new Text('Conf World'), backgroundColor: Colors.green[500]),
+          title: new Text('World Map'), backgroundColor: Color(0xff5a189a)),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
                 Icons.home,
-                color: Colors.lightGreenAccent,
+                color: Color(0xffe0aaff),
             ),
             label: 'Map',
           ),
           BottomNavigationBarItem(
             icon: Icon(
                 Icons.search,
-                color: Colors.lightGreenAccent,
+                color: Color(0xffe0aaff),
             ),
             label: 'Filter Conferences',
           ),
         ],
-        backgroundColor: Colors.grey,
+        backgroundColor: Color(0xff5a189a),
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.lightGreenAccent,
+        selectedItemColor: Color(0xffe0aaff),
         onTap: _onItemTapped,
       ),
     );
