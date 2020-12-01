@@ -23,7 +23,8 @@ class ConfDetails extends State<ConferenceDetails> {
   ConfDetails(this.conference);
 
   var _colorBackground = Color(0xff3C096C);
-  var _colocarForeground = Color(0xff5a189a);
+  var _colorForeground = Color(0xff5a189a);
+  var _informationColor = Color(0xffe0aaff);
 
   _updateSaved() async {
     conference.saved = (conference.saved + 1) % 2;
@@ -55,7 +56,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -69,7 +70,7 @@ class ConfDetails extends State<ConferenceDetails> {
                     Text(
                       conference.name,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.green[1000]),
+                      style: TextStyle(color: _informationColor),
                     ),
                   ],
                 )),
@@ -77,7 +78,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -91,7 +92,7 @@ class ConfDetails extends State<ConferenceDetails> {
                     Text(
                       conference.type,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.green[1000]),
+                      style: TextStyle(color: _informationColor),
                     ),
                   ],
                 )),
@@ -99,7 +100,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -113,7 +114,7 @@ class ConfDetails extends State<ConferenceDetails> {
                     Text(
                       (conference.saved == 1) ? "true" : "no",
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.green[1000]),
+                      style: TextStyle(color: _informationColor),
                     ),
                   ],
                 )),
@@ -121,7 +122,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -135,7 +136,7 @@ class ConfDetails extends State<ConferenceDetails> {
                     Text(
                       conference.submitPaper,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.green[1000]),
+                      style: TextStyle(color: _informationColor),
                     ),
                     Expanded(
                       child: Text(
@@ -149,7 +150,7 @@ class ConfDetails extends State<ConferenceDetails> {
                       child: Text(
                         ' ' + conference.date,
                         textAlign: TextAlign.start,
-                        style: TextStyle(color: Colors.green[1000]),
+                        style: TextStyle(color: _informationColor),
                       ),
                     ),
                   ],
@@ -158,7 +159,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -171,6 +172,9 @@ class ConfDetails extends State<ConferenceDetails> {
                     ),
                     ElevatedButton(
                       onPressed: _launchURL,
+                      style: new ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return Colors.deepPurple; }),
+                      ),
                       child: new Text(
                         conference.url,
                         textAlign: TextAlign.start,
@@ -184,13 +188,16 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: _updateSaved,
+                      style: new ButtonStyle(
+                        backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return Colors.deepPurple; }),
+                      ),
                       child: new Text(
                         "Star",
                         textAlign: TextAlign.start,
@@ -204,7 +211,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 6,
             child: Container(
-                color: _colocarForeground,
+                color: _colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -220,7 +227,7 @@ class ConfDetails extends State<ConferenceDetails> {
                         child: new Text(
                           conference.description,
                           textAlign: TextAlign.start,
-                          style: TextStyle(color: Colors.green[1000]),
+                          style: TextStyle(color: _informationColor),
                         )),
                   ],
                 )),
