@@ -48,18 +48,6 @@ class FilterByTypeState extends State<FilterByType> {
                 name: 'Math Conferences',
               ),
             ),
-            FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Navigation(filter: 'false')),
-                );
-              },
-              child: MyButton(
-                name: 'See world map without filters',
-              ),
-            ),
           ]
       ),
     );

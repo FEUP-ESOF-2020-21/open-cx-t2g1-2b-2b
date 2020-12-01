@@ -18,7 +18,7 @@ class ConferenceMarker {
 
   void _initMarkers() {
     for(var conferenceD in conferences) {
-      if((this.filter == conferenceD.type) || (this.filter == 'false')) {
+      if((this.filter == conferenceD.type) || (this.filter == 'false') || ((this.filter == 'SAVED') && (conferenceD.saved == 1))) {
         this.markers.add(new Marker(
           anchorPos: AnchorPos.align(AnchorAlign.top),
           width: this.width,

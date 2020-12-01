@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../widgets/my_button.dart';
 import 'filter_type.dart';
+import 'navigation.dart';
 
 class SearchConference extends StatelessWidget {
   @override
@@ -28,14 +29,31 @@ class SearchConference extends StatelessWidget {
             padding: EdgeInsets.zero,
             onPressed: () {},
             child: MyButton(
-              name: 'Date',
+              name: 'Date - To Do',
             ),
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Navigation(filter: 'SAVED')),
+              );
+            },
             child: MyButton(
               name: 'Saved Conferences',
+            ),
+          ),
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Navigation(filter: 'false')),
+              );
+            },
+            child: MyButton(
+              name: 'See world map without filters',
             ),
           ),
         ],
