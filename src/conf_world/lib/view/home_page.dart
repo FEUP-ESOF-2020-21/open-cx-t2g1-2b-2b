@@ -1,3 +1,4 @@
+import 'package:conf_world/model/conference_model.dart';
 import 'package:conf_world/view/saved_conferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

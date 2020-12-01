@@ -101,4 +101,16 @@ class DatabaseHelper {
   updateMarkers(String filter) {
     this.markerList = new ConferenceMarker(this.conferences, filter);
   }
+
+  getAllSavedConferences() {
+    var nConf = <ConferenceInfo>[];
+
+    for (var i = 0; i < this.conferences.length; i++) {
+      if((this.conferences[i].saved == 1)) {
+        nConf.add(this.conferences[i]);
+      }
+    }
+
+    return nConf;
+  }
 }
