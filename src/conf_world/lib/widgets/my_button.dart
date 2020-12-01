@@ -9,12 +9,15 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(this.name),
+      child: Text(this.name,
+        style: TextStyle(
+          color: Color(0xffe0aaff), fontStyle: FontStyle.italic),
+      ),
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Colors.lightGreenAccent,
+        color: Color(0xff5a189a),
       ),
       alignment: Alignment.center,
     );

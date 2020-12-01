@@ -5,11 +5,11 @@ import 'package:flutter/widgets.dart';
 import '../database.dart';
 
 class MapRoute extends StatelessWidget {
-  Database db;
+  DatabaseHelper db;
   final String filter;
 
   MapRoute(this.filter) {
-    this.db = new Database();
+    this.db = new DatabaseHelper();
 
     this.db.updateMarkers(this.filter);
   }

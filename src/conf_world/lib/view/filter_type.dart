@@ -14,10 +14,11 @@ class FilterByTypeState extends State<FilterByType> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF3c096c),
       appBar: AppBar(
         title: Text("Conference Types"),
         centerTitle: true,
-        backgroundColor: Colors.green[500],
+        backgroundColor: Color(0xff5a189a),
       ),
       body: Column (
           mainAxisAlignment: MainAxisAlignment.start,

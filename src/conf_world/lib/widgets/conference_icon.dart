@@ -17,7 +17,7 @@ class ConferenceIcon extends StatelessWidget {
             alignment: Alignment.center,
             child: IconButton(
               icon: Icon(Icons.location_pin),
-              color: Colors.lightGreen,
+              color: Color(0xff7b2cbf),
               iconSize: 40.0,
               onPressed: () {
                 showModalBottomSheet(
@@ -35,14 +35,14 @@ class ConferenceIcon extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               conference.name,
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(fontSize: 14, color: Color(0xffe0aaff)),
               textAlign: TextAlign.center,
             ),
             padding: EdgeInsets.all(5),
             constraints: BoxConstraints.expand(width: 200, height: 45),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: Colors.lightGreen,
+              color: Color(0xff7b2cbf),
             ),
 
             transform: Matrix4.translationValues(0.0, -45.0, 0),

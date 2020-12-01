@@ -7,12 +7,15 @@ class HomePageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xFF3c096c),
         appBar: AppBar(
           title: Text("Conf World"),
           centerTitle: true,
-          backgroundColor: Colors.green[500],
+          backgroundColor: Color(0xff5a189a),
         ),
-        body: Center(
+        body:
+        Center(
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,9 +33,10 @@ class HomePageState extends StatelessWidget {
                 ),
               ),
               FlatButton(
+                padding: EdgeInsets.zero,
                 onPressed: null,
                 child: MyButton(
-                  name: 'Exit',
+                  name: 'My Saved Conferences',
                 ),
               ),
             ],
