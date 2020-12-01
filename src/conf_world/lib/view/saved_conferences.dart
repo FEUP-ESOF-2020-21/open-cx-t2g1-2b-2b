@@ -1,16 +1,16 @@
-import 'package:conf_world/view/saved_conferences.dart';
+import 'package:conf_world/widgets/my_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import './navigation.dart';
-import '../widgets/my_button.dart';
 
-class HomePageState extends StatelessWidget {
+import 'home_page.dart';
+
+class SavedConferencesState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFF3c096c),
         appBar: AppBar(
-          title: Text("Conf World"),
+          title: Text("My Saved Conferences"),
           centerTitle: true,
           backgroundColor: Color(0xff5a189a),
         ),
@@ -23,26 +23,21 @@ class HomePageState extends StatelessWidget {
             children: [
               FlatButton(
                 padding: EdgeInsets.zero,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Navigation(filter: 'false')),
-                  );
-                },
+                onPressed: null,
                 child: MyButton(
-                  name: 'See World Map',
+                  name: '[List here all conferences]',
                 ),
               ),
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SavedConferencesState()),
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePageState()),
                   );
                 },
                 child: MyButton(
-                  name: 'My Saved Conferences',
+                  name: 'Back to Confi World',
                 ),
               ),
             ],

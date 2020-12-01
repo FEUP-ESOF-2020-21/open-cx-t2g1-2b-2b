@@ -17,7 +17,7 @@ class ConferenceIcon extends StatelessWidget {
             alignment: Alignment.center,
             child: IconButton(
               icon: Icon(Icons.location_pin),
-              color: Color(0xff7b2cbf),
+              color: (conference.saved == 1) ? Color(0xfffada5e) : Color(0xff7b2cbf),
               iconSize: 40.0,
               onPressed: () {
                 showModalBottomSheet(
@@ -42,7 +42,7 @@ class ConferenceIcon extends StatelessWidget {
             constraints: BoxConstraints.expand(width: 200, height: 45),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: Color(0xff7b2cbf),
+              color: (conference.saved == 1) ? Color(0xfffada5e) : Color(0xff7b2cbf),
             ),
 
             transform: Matrix4.translationValues(0.0, -45.0, 0),
