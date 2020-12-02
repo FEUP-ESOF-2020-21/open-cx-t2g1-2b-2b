@@ -6,20 +6,21 @@ import 'database.dart';
 
 class ConferenceController {
   var conferences;
-  var markers = <Marker>[];
 
   ConferenceController(String filter) {
     conferences = getFilterConf(filter);
-
-    _initMarkers();
   }
 
-  void _initMarkers() {
+  getMarkers() {
+    var markers = <Marker>[];
+
     for(var conferenceD in conferences) {
       MarkerModel n = new MarkerModel(conferenceD);
 
-      this.markers.add(n.getMarker());
+      markers.add(n.getMarker());
     }
+
+    return markers;
   }
 
   getFilterConf(String filter) {
@@ -50,5 +51,15 @@ class ConferenceController {
     }
 
     return nSavedConf;
+  }
+
+  updateSaved(conference, widget) async {
+    conference.saved = (conference.saved + 1) % 2;
+
+    DatabaseHelper db = new DatabaseHelper();
+
+    await db.updateSaved(conference);
+
+    widget.setState(() {}); // Update menu
   }
 }

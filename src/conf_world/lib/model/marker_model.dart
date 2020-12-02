@@ -1,4 +1,5 @@
 import 'package:conf_world/model/conference_model.dart';
+import 'package:conf_world/view/screens/world_map.dart';
 import 'package:conf_world/view/widgets/conference_icon.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';

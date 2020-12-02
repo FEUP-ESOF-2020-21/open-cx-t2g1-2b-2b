@@ -1,3 +1,4 @@
+
 import 'package:conf_world/view/screens/world_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -9,25 +10,32 @@ class Navigation extends StatefulWidget {
   const Navigation({Key key, this.filter = 'false'}) : super(key: key);
 
   @override
-  _NavigationState createState() => _NavigationState(this.filter);
+  NavigationState createState() => NavigationState(this.filter);
 }
 
-class _NavigationState extends State<Navigation> {
-  int _selectedIndex = 0;
-  static List<Widget> _widgetOptions;
+class NavigationState extends State<Navigation> {
+  final Color background = Color(0xff5a189a);
+  final Color iconNavigation = Color(0xffe0aaff);
+  final Color iconActiveNavigation = Color(0xfff3dfff);
 
-  _NavigationState(String filter) {
-    _widgetOptions = <Widget>[MapRoute(filter), FilterPage()];
-  }
+  // ^ View
+  // -----------
+  // ↓ Controller
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-  final Color background = Color(0xff5a189a);
-  final Color iconNavigation = Color(0xffe0aaff);
-  final Color iconActiveNavigation = Color(0xfff3dfff);
+  // --------
+
+  static List<Widget> _widgetOptions;
+  int _selectedIndex = 0;
+
+  NavigationState(String filter) {
+    _widgetOptions = <Widget>[MapRoute(filter: filter), FilterPage()];
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:conf_world/controller/database.dart';
-import 'package:conf_world/view/widgets/conference_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,8 +61,8 @@ class ConferenceModel {
     else return normalIconColor;
   }
 
-  updateSaved(widget) async {
-    saved = (saved + 1) % 2;
+  updateSaved(conference, widget) async {
+    conference.saved = (conference.saved + 1) % 2;
 
     DatabaseHelper db = new DatabaseHelper();
 

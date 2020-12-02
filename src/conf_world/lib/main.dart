@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 import 'controller/database.dart';
+import 'model/screens/home_page_model.dart';
 
 
 void main() {
@@ -19,6 +20,7 @@ void main() {
     statusBarIconBrightness: Brightness.light,
   ));
 
+  HomePageModel model = HomePageModel();
   runApp(MaterialApp(
     home: HomePageState(),
   ));

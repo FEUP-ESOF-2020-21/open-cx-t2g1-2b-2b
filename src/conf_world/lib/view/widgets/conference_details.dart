@@ -1,4 +1,6 @@
+import 'package:conf_world/controller/conference_controller.dart';
 import 'package:conf_world/model/conference_model.dart';
+import 'package:conf_world/view/screens/world_map.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,9 +15,77 @@ class ConferenceDetails extends StatefulWidget {
 }
 
 class ConfDetails extends State<ConferenceDetails> {
+  final ConferenceController controller = new ConferenceController('false');
   final ConferenceModel model;
 
   ConfDetails(this.model);
+
+  Widget testW(int sizeT, String nameT, dynamic field) {
+    return Expanded(
+      flex: sizeT,
+      child: Container(
+          color: model.colorForeground,
+          margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+          padding: EdgeInsets.all(4),
+          child: Row(
+            children: <Widget>[
+              Text(
+                nameT,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    color: model.detailsTextColor, fontStyle: FontStyle.italic),
+              ),
+              Flexible(
+                child: new Text(
+                  field,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: model.informationColor),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+
+  Widget testD(int sizeT, String nameT1, dynamic field1, String nameT2, dynamic field2) {
+    return Expanded(
+      flex: sizeT,
+      child: Container(
+          color: model.colorForeground,
+          margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+          padding: EdgeInsets.all(4),
+          child: Row(
+            children: <Widget>[
+              Text(
+                nameT1,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    color: model.detailsTextColor, fontStyle: FontStyle.italic),
+              ),
+              Text(
+                field1,
+                textAlign: TextAlign.start,
+                style: TextStyle(color: model.informationColor),
+              ),
+              Expanded(
+                child: Text(
+                  nameT2,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                      color: model.detailsTextColor, fontStyle: FontStyle.italic),
+                ),
+              ),
+              Expanded(
+                child: Text(
+                  field2,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: model.informationColor),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,109 +96,10 @@ class ConfDetails extends State<ConferenceDetails> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-                color: model.colorForeground,
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                padding: EdgeInsets.all(4),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Name: ',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                    ),
-                    Text(
-                      model.name,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: model.informationColor),
-                    ),
-                  ],
-                )),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-                color: model.colorForeground,
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                padding: EdgeInsets.all(4),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Type: ',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                    ),
-                    Text(
-                      model.type,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: model.informationColor),
-                    ),
-                  ],
-                )),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-                color: model.colorForeground,
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                padding: EdgeInsets.all(4),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Saved Conference: ',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                    ),
-                    Text(
-                      model.isSaved(),
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: model.informationColor),
-                    ),
-                  ],
-                )),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-                color: model.colorForeground,
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                padding: EdgeInsets.all(4),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Submit Papers: ',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                    ),
-                    Text(
-                      model.submitPaper,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: model.informationColor),
-                    ),
-                    Expanded(
-                      child: Text(
-                        'Date:',
-                        textAlign: TextAlign.end,
-                        style: TextStyle(
-                            color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        ' ' + model.date,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(color: model.informationColor),
-                      ),
-                    ),
-                  ],
-                )),
-          ),
+          testW(1, 'Name: ', model.name),
+          testW(1, 'Type: ', model.type),
+          testW(1, 'Saved Conference: ', model.isSaved()),
+          testD(1, 'Submit Papers: ', model.submitPaper, 'Date: ', model.date),
           Expanded(
             flex: 1,
             child: Container(
@@ -167,7 +138,7 @@ class ConfDetails extends State<ConferenceDetails> {
                 child: Row(
                   children: <Widget>[
                     ElevatedButton(
-                      onPressed: () => model.updateSaved(this),
+                      onPressed: () => controller.updateSaved(model, this),
                       style: new ButtonStyle(
                         backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return model.colorBackground; }),
                       ),
@@ -181,29 +152,7 @@ class ConfDetails extends State<ConferenceDetails> {
                   ],
                 )),
           ),
-          Expanded(
-            flex: 6,
-            child: Container(
-                color: model.colorForeground,
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                padding: EdgeInsets.all(4),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      'Description: ',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                    ),
-                    Flexible(
-                        child: new Text(
-                          model.description,
-                          textAlign: TextAlign.start,
-                          style: TextStyle(color: model.informationColor),
-                        )),
-                  ],
-                )),
-          ),
+          testW(6, 'Description: ', model.description),
         ],
       ),
     );
