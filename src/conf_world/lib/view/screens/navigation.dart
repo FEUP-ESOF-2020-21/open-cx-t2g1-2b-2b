@@ -11,10 +11,11 @@ class Navigation extends StatefulWidget {
   final int buttonToClick;
 
   const Navigation.startLocation({Key key, this.filter = 'false', this.startLatitude, this.startLongitude, this.buttonToClick}) : super(key: key);
+
   const Navigation({Key key, this.filter = 'false', this.startLatitude = 51.5, this.startLongitude = -0.09, this.buttonToClick = -1}) : super(key: key);
 
   @override
-  _NavigationState createState() => _NavigationState(this.filter, this.startLatitude, this.startLongitude, this.buttonToClick);
+  NavigationState createState() => NavigationState(this.filter, this.startLatitude, this.startLongitude, this.buttonToClick);
 }
 
 class NavigationState extends State<Navigation> {
@@ -26,9 +27,6 @@ class NavigationState extends State<Navigation> {
   // -----------
   // ↓ Controller
 
-  NavigationState(String filter, startLatitude, startLongitude, buttonToClick) {
-    _widgetOptions = <Widget>[MapRoute(filter, startLatitude, startLongitude, buttonToClick), SearchConference()];
-  }
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -39,8 +37,8 @@ class NavigationState extends State<Navigation> {
   static List<Widget> _widgetOptions;
   int _selectedIndex = 0;
 
-  NavigationState(String filter) {
-    _widgetOptions = <Widget>[MapRoute(filter: filter), FilterPage()];
+  NavigationState(String filter, startLatitude, startLongitude, buttonToClick) {
+    _widgetOptions = <Widget>[MapRoute(filter: filter, latitude: startLatitude, longitude: startLongitude, buttonToClick: buttonToClick), FilterPage()];
   }
 
 

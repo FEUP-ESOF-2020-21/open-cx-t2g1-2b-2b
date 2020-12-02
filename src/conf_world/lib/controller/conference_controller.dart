@@ -6,8 +6,9 @@ import 'database.dart';
 
 class ConferenceController {
   var conferences;
+  final int buttonToClick;
 
-  ConferenceController(String filter) {
+  ConferenceController(String filter, this.buttonToClick) {
     conferences = getFilterConf(filter);
   }
 
@@ -15,7 +16,7 @@ class ConferenceController {
     var markers = <Marker>[];
 
     for(var conferenceD in conferences) {
-      MarkerModel n = new MarkerModel(conferenceD);
+      MarkerModel n = new MarkerModel(conferenceD, buttonToClick);
 
       markers.add(n.getMarker());
     }

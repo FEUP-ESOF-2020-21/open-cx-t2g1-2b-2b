@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
+import 'navigation.dart';
 
 class SavedConferencesState extends StatelessWidget {
   SavedConferencesModel model = SavedConferencesModel();
@@ -37,7 +38,16 @@ class SavedConferencesState extends StatelessWidget {
             return ListTile(
               title: Text(
                 item.name,
+                style: TextStyle(
+                  color: Color(0xffe0aaff),
+                ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude, buttonToClick: item.id)),
+                );
+              },
             );
           },
         ),

@@ -20,7 +20,6 @@ void main() {
     statusBarIconBrightness: Brightness.light,
   ));
 
-  HomePageModel model = HomePageModel();
   runApp(MaterialApp(
     home: HomePageState(),
   ));

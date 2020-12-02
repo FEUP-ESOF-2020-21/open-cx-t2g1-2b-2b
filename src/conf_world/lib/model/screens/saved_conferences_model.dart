@@ -5,7 +5,7 @@ import 'package:conf_world/controller/conference_controller.dart';
 import '../conference_model.dart';
 
 class SavedConferencesModel {
-  ConferenceController controller = ConferenceController('false');
+  ConferenceController controller = ConferenceController('false', -1);
   List<ConferenceModel> savedConfs;
 
   final Color backgroundColor = Color(0xFF3c096c);

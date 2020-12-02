@@ -10,7 +10,9 @@ class MarkerModel {
 
   final ConferenceModel conference;
 
-  MarkerModel(this.conference);
+  final int buttonToClick;
+
+  MarkerModel(this.conference, this.buttonToClick);
 
   getMarker() {
     return new Marker(
@@ -21,7 +23,7 @@ class MarkerModel {
       builder: (ctx) =>
         new ConferenceIcon(
           model: conference,
-          buttonToClick: this.buttonToClick,
+          buttonToClick: buttonToClick,
         ),
     );
   }

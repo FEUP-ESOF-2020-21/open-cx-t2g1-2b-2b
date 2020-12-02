@@ -25,9 +25,7 @@ class MapRouteState extends State<MapRoute> {
   final int buttonToClick;
 
   MapRouteState(String filter, this.latitude, this.longitude, this.buttonToClick) {
-    this.model = WorldMapModel(filter);
-
-    this.db.updateMarkers(this.filter, this.buttonToClick);
+    this.model = WorldMapModel(filter, this.buttonToClick);
   }
 
   updateMap() {

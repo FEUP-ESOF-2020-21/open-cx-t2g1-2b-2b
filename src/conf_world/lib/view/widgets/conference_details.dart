@@ -15,7 +15,7 @@ class ConferenceDetails extends StatefulWidget {
 }
 
 class ConfDetails extends State<ConferenceDetails> {
-  final ConferenceController controller = new ConferenceController('false');
+  final ConferenceController controller = new ConferenceController('false', -1);
   final ConferenceModel model;
 
   ConfDetails(this.model);

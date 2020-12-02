@@ -7,9 +7,9 @@ import 'conference_details.dart';
 
 class ConferenceIcon extends StatelessWidget {
   final ConferenceModel model;
-  final int buttonToClick;
+  int buttonToClick;
 
-  ConferenceIcon({Key key, this.conference, this.buttonToClick}) : super(key: key);
+  ConferenceIcon({Key key, this.model, this.buttonToClick}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +54,17 @@ class ConferenceIcon extends StatelessWidget {
     );
   }
   void openSavedConference(BuildContext context) {
-    if (conference.id == buttonToClick)
+    if (model.id == buttonToClick) {
+      buttonToClick = -1;
       showModalBottomSheet(
         context: context,
         builder: (builder) {
           return ConferenceDetails(
-            conference: conference,
+            conference: model,
           );
         },
       );
+    }
   }
 
 }
