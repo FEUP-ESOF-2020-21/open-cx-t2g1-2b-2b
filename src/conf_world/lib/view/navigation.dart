@@ -9,20 +9,20 @@ class Navigation extends StatefulWidget {
   const Navigation({Key key, this.filter = 'false'}) : super(key: key);
 
   @override
-  _NavigationState createState() => _NavigationState(this.filter);
+  NavigationState createState() => NavigationState(this.filter);
 }
 
-class _NavigationState extends State<Navigation> {
-  int _selectedIndex = 0;
+class NavigationState extends State<Navigation> {
+  int selectedIndex = 0;
   //static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions;
 
-  _NavigationState(String filter) {
+  NavigationState(String filter) {
     _widgetOptions = <Widget>[MapRoute(filter), SearchConference()];
   }
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -31,26 +31,27 @@ class _NavigationState extends State<Navigation> {
     return new Scaffold(
       appBar: new AppBar(
           title: new Text('Conf World'), backgroundColor: Colors.green[500]),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: _widgetOptions.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        key: Key('Bottom Navigation Bar'),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-                Icons.home,
-                color: Colors.lightGreenAccent,
+              Icons.home,
+              color: Colors.lightGreenAccent,
             ),
             label: 'Map',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-                Icons.search,
-                color: Colors.lightGreenAccent,
+              Icons.search,
+              color: Colors.lightGreenAccent,
             ),
             label: 'Filter Conferences',
           ),
         ],
         backgroundColor: Colors.grey,
-        currentIndex: _selectedIndex,
+        currentIndex: selectedIndex,
         selectedItemColor: Colors.lightGreenAccent,
         onTap: _onItemTapped,
       ),

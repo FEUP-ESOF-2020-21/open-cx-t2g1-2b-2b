@@ -13,7 +13,6 @@ import 'package:conf_world/view/home_page.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 void main() {
-
   testWidgets('World map opens properly', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
@@ -24,7 +23,8 @@ void main() {
     expect(find.text('See World Map'), findsOneWidget);
 
     // Tap the See World Map option to open the world map.
-    await tester.tap(find.ancestor(of: find.text('See World Map'), matching: find.byType(FlatButton)));
+    await tester.tap(find.ancestor(
+        of: find.text('See World Map'), matching: find.byType(FlatButton)));
     await tester.pumpAndSettle();
 
     // Verify that we are on the world map page.
@@ -32,7 +32,6 @@ void main() {
   });
 
   testWidgets('Filter Conferences button test', (WidgetTester tester) async {
-
     await tester.pumpWidget(MaterialApp(
       home: Navigation(),
     ));
@@ -44,11 +43,9 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(SearchConference), findsOneWidget);
-
   });
 
   testWidgets('Filter Conferences by type test', (WidgetTester tester) async {
-    
     await tester.pumpWidget(MaterialApp(
       home: SearchConference(),
     ));
@@ -57,14 +54,14 @@ void main() {
     expect(find.text('Date'), findsOneWidget);
     expect(find.text('Saved Conferences'), findsOneWidget);
 
-    await tester.tap(find.ancestor(of: find.text('Type'), matching: find.byType(FlatButton)));
+    await tester.tap(find.ancestor(
+        of: find.text('Type'), matching: find.byType(FlatButton)));
     await tester.pumpAndSettle();
 
     expect(find.byType(Scaffold), findsOneWidget);
   });
 
   testWidgets('See world map without filters', (WidgetTester tester) async {
-
     await tester.pumpWidget(MaterialApp(
       home: FilterByType(),
     ));
@@ -73,11 +70,74 @@ void main() {
     expect(find.text('Math Conferences'), findsOneWidget);
     expect(find.text('See world map without filters'), findsOneWidget);
 
-    await tester.tap(find.ancestor(of: find.text('See world map without filters'), matching: find.byType(FlatButton)));
+    await tester.tap(find.ancestor(
+        of: find.text('See world map without filters'),
+        matching: find.byType(FlatButton)));
     await tester.pumpAndSettle();
 
     expect(find.byType(FlutterMap), findsOneWidget);
   });
 
+  testWidgets('Testing Navigation between States', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
 
+    await tester.pumpWidget(MaterialApp(
+      home: Navigation(),
+    ));
+
+    final NavigationState navigationState =
+        tester.state(find.byType(Navigation));
+
+    final index = navigationState.selectedIndex;
+
+    /*
+    await tester.tap(find.ancestor(
+        of: find.text('Map'), matching: find.byType(BottomNavigationBarItem)));
+    await tester.pumpAndSettle();
+    */
+    // Verify that we are on the world map page.
+    expect(index, 0);
+  });
+
+  testWidgets('Testing Default Navigation State', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+
+    await tester.pumpWidget(MaterialApp(
+      home: Navigation(),
+    ));
+
+    final NavigationState navigationState =
+        tester.state(find.byType(Navigation));
+
+    final index = navigationState.selectedIndex;
+
+    /*
+    await tester.tap(find.ancestor(
+        of: find.text('Map'), matching: find.byType(BottomNavigationBarItem)));
+    await tester.pumpAndSettle();
+    */
+    // Verify that we are on the world map page.
+    expect(index, 0);
+  });
+
+  testWidgets('Testing switching Navigation State',
+      (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+
+    //Build Navigation class
+    await tester.pumpWidget(MaterialApp(
+      home: Navigation(),
+    ));
+
+    var navBar = find.byKey(Key('Bottom Navigation Bar'));
+    await tester.tap(navBar);
+    var icon = find.byIcon(Icons.home);
+
+    final NavigationState navigationState =
+        tester.state(find.byType(Navigation));
+
+    final index = navigationState.selectedIndex;
+    // Verify that we are on the world map page.
+    expect(index, 1);
+  });
 }
