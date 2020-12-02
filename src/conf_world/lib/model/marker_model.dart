@@ -19,7 +19,7 @@ class MarkerModel {
       point: new LatLng(conference.latitude, conference.longitude),
       builder: (ctx) =>
         new ConferenceIcon(
-          conference: conference,
+          model: conference,
         ),
     );
   }

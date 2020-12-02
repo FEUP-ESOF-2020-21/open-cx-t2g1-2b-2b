@@ -19,49 +19,53 @@ class _NavigationState extends State<Navigation> {
   _NavigationState(String filter) {
     _widgetOptions = <Widget>[MapRoute(filter), FilterPage()];
   }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+  final Color background = Color(0xff5a189a);
+  final Color iconNavigation = Color(0xffe0aaff);
+  final Color iconActiveNavigation = Color(0xfff3dfff);
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
           title: new Text('World Map'),
-          backgroundColor: Color(0xff5a189a)
+          backgroundColor: background
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: Color(0xffe0aaff),
+              color: iconNavigation
             ),
             activeIcon: Icon(
               Icons.home,
-              color: Color(0xfff3dfff),
+              color: iconActiveNavigation
             ),
             label: 'Map',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              color: Color(0xffe0aaff),
+              color: iconNavigation
             ),
             activeIcon: Icon(
               Icons.search,
-              color: Color(0xfff3dfff),
+              color: iconActiveNavigation
             ),
             label: 'Filter Conferences',
           ),
         ],
-        backgroundColor: Color(0xff5a189a),
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xfff3dfff),
-        unselectedItemColor: Color(0xffe0aaff),
+        backgroundColor: background,
+        selectedItemColor: iconActiveNavigation,
+        unselectedItemColor: iconNavigation,
         onTap: _onItemTapped,
       ),
     );

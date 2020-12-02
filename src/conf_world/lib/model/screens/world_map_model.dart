@@ -4,7 +4,6 @@ class WorldMapModel {
   ConferenceController markers;
 
   WorldMapModel(String filter) {
-
     markers = ConferenceController(filter);
   }
 

@@ -28,17 +28,17 @@ class RouteController {
     );
   }
 
-  static navigateSavedConference(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SavedConferencesState()),
-    );
-  }
-
   static navigateWorldMapSaved(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Navigation(filter: 'SAVED')),
+    );
+  }
+
+  static navigateSavedConference(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SavedConferencesState()),
     );
   }
 

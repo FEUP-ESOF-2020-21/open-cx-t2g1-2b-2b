@@ -1,9 +1,7 @@
-import 'package:conf_world/controller/database.dart';
 import 'package:conf_world/model/conference_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ConferenceDetails extends StatefulWidget {
   final ConferenceModel conference;
@@ -14,39 +12,16 @@ class ConferenceDetails extends StatefulWidget {
   ConfDetails createState() => ConfDetails(this.conference);
 }
 
-
 class ConfDetails extends State<ConferenceDetails> {
-  final ConferenceModel conference;
+  final ConferenceModel model;
 
-  ConfDetails(this.conference);
-
-  var _colorBackground = Color(0xff3C096C);
-  var _colorForeground = Color(0xff5a189a);
-  var _informationColor = Color(0xffe0aaff);
-
-  _updateSaved() async {
-    conference.saved = (conference.saved + 1) % 2;
-
-    DatabaseHelper db = new DatabaseHelper();
-
-    await db.updateSaved(conference);
-
-    setState(() {}); // Update menu
-  }
-
-  _launchURL() async {
-    if (await canLaunch(conference.url)) {
-      await launch(conference.url);
-    } else {
-      throw 'Could not launch $conference.url';
-    }
-  }
+  ConfDetails(this.model);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      color: _colorBackground,
+      color: model.colorBackground,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +29,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -63,12 +38,12 @@ class ConfDetails extends State<ConferenceDetails> {
                       'Name: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic),
+                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      conference.name,
+                      model.name,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: _informationColor),
+                      style: TextStyle(color: model.informationColor),
                     ),
                   ],
                 )),
@@ -76,7 +51,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -85,12 +60,12 @@ class ConfDetails extends State<ConferenceDetails> {
                       'Type: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic),
+                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      conference.type,
+                      model.type,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: _informationColor),
+                      style: TextStyle(color: model.informationColor),
                     ),
                   ],
                 )),
@@ -98,7 +73,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -107,12 +82,12 @@ class ConfDetails extends State<ConferenceDetails> {
                       'Saved Conference: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic),
+                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      (conference.saved == 1) ? "true" : "no",
+                      model.isSaved(),
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: _informationColor),
+                      style: TextStyle(color: model.informationColor),
                     ),
                   ],
                 )),
@@ -120,7 +95,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -129,26 +104,26 @@ class ConfDetails extends State<ConferenceDetails> {
                       'Submit Papers: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic),
+                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      conference.submitPaper,
+                      model.submitPaper,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: _informationColor),
+                      style: TextStyle(color: model.informationColor),
                     ),
                     Expanded(
                       child: Text(
                         'Date:',
                         textAlign: TextAlign.end,
                         style: TextStyle(
-                            color: Colors.white, fontStyle: FontStyle.italic),
+                            color: model.detailsTextColor, fontStyle: FontStyle.italic),
                       ),
                     ),
                     Expanded(
                       child: Text(
-                        ' ' + conference.date,
+                        ' ' + model.date,
                         textAlign: TextAlign.start,
-                        style: TextStyle(color: _informationColor),
+                        style: TextStyle(color: model.informationColor),
                       ),
                     ),
                   ],
@@ -157,7 +132,7 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
@@ -166,18 +141,18 @@ class ConfDetails extends State<ConferenceDetails> {
                       'URL: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic),
+                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     ElevatedButton(
-                      onPressed: _launchURL,
+                      onPressed: model.launchURL,
                       style: new ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return Colors.deepPurple; }),
+                        backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return model.colorBackground; }),
                       ),
                       child: new Text(
-                        conference.url,
+                        model.url,
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                            color: Colors.white, fontStyle: FontStyle.italic),
+                            color: model.detailsTextColor, fontStyle: FontStyle.italic),
                       ),
                     ),
                   ],
@@ -186,21 +161,21 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 1,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
                   children: <Widget>[
                     ElevatedButton(
-                      onPressed: _updateSaved,
+                      onPressed: () => model.updateSaved(this),
                       style: new ButtonStyle(
-                        backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return Colors.deepPurple; }),
+                        backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return model.colorBackground; }),
                       ),
                       child: new Text(
                         "Star",
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                            color: Colors.white, fontStyle: FontStyle.italic),
+                            color: model.detailsTextColor, fontStyle: FontStyle.italic),
                       ),
                     ),
                   ],
@@ -209,23 +184,22 @@ class ConfDetails extends State<ConferenceDetails> {
           Expanded(
             flex: 6,
             child: Container(
-                color: _colorForeground,
+                color: model.colorForeground,
                 margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
                 padding: EdgeInsets.all(4),
                 child: Row(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       'Description: ',
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic),
+                          color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     Flexible(
                         child: new Text(
-                          conference.description,
+                          model.description,
                           textAlign: TextAlign.start,
-                          style: TextStyle(color: _informationColor),
+                          style: TextStyle(color: model.informationColor),
                         )),
                   ],
                 )),
