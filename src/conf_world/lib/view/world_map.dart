@@ -7,8 +7,10 @@ import '../database.dart';
 class MapRoute extends StatelessWidget {
   DatabaseHelper db;
   final String filter;
+  final double latitude;
+  final double longitude;
 
-  MapRoute(this.filter) {
+  MapRoute(this.filter, this.latitude, this.longitude) {
     this.db = new DatabaseHelper();
 
     this.db.updateMarkers(this.filter);
@@ -18,7 +20,8 @@ class MapRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return new FlutterMap(
       options: new MapOptions(
-        center: new LatLng(51.5, -0.09),
+        center: new LatLng(latitude, longitude),
+       // center: new LatLng(51.5, -0.09),
         zoom: 13.0,
       ),
       layers: [

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../database.dart';
 import 'home_page.dart';
+import './navigation.dart';
 
 class SavedConferencesState extends StatelessWidget {
   List<ConferenceInfo> savedConfs;
@@ -53,8 +54,14 @@ class SavedConferencesState extends StatelessWidget {
                 item.name,
                 style: TextStyle(
                   color: Color(0xffe0aaff),
-                )
+                ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude)),
+                );
+              },
             );
           },
         ),

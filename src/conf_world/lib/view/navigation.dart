@@ -5,11 +5,14 @@ import 'world_map.dart';
 
 class Navigation extends StatefulWidget {
   final String filter;
+  final double startLatitude;
+  final double startLongitude;
 
-  const Navigation({Key key, this.filter = 'false'}) : super(key: key);
+  const Navigation.startLocation({Key key, this.filter = 'false', this.startLatitude, this.startLongitude}) : super(key: key);
+  const Navigation({Key key, this.filter = 'false', this.startLatitude = 51.5, this.startLongitude = -0.09}) : super(key: key);
 
   @override
-  _NavigationState createState() => _NavigationState(this.filter);
+  _NavigationState createState() => _NavigationState(this.filter, this.startLatitude, this.startLongitude);
 }
 
 class _NavigationState extends State<Navigation> {
@@ -17,8 +20,8 @@ class _NavigationState extends State<Navigation> {
   //static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions;
 
-  _NavigationState(String filter) {
-    _widgetOptions = <Widget>[MapRoute(filter), SearchConference()];
+  _NavigationState(String filter, startLatitude, startLongitude) {
+    _widgetOptions = <Widget>[MapRoute(filter, startLatitude, startLongitude), SearchConference()];
   }
   void _onItemTapped(int index) {
     setState(() {
