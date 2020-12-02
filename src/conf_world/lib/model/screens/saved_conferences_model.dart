@@ -1,12 +1,11 @@
 import 'dart:ui';
 
-import 'package:conf_world/controller/saved_conferences_controller.dart';
+import 'package:conf_world/controller/conference_controller.dart';
 
 import '../conference_model.dart';
 
 class SavedConferencesModel {
-  SavedConferencesController controller = SavedConferencesController();
-
+  ConferenceController controller = ConferenceController('false');
   List<ConferenceModel> savedConfs;
 
   final Color backgroundColor = Color(0xFF3c096c);
@@ -16,7 +15,7 @@ class SavedConferencesModel {
   final String backButton = 'Back to Confi World';
 
   SavedConferencesModel() {
-    savedConfs = controller.savedConfs;
+    savedConfs = controller.getSavedConf();
   }
 }
 

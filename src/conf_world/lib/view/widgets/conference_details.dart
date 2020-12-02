@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class ConferenceDetails extends StatefulWidget {
   final ConferenceModel conference;
 

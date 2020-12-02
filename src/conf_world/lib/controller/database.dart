@@ -91,29 +91,6 @@ class DatabaseHelper {
     });
   }
 
-  getAllSavedConferences() {
-    var nConf = <ConferenceModel>[];
-
-    for (var i = 0; i < this.conferences.length; i++) {
-      if((this.conferences[i].saved == 1)) {
-        nConf.add(this.conferences[i]);
-      }
-    }
-
-    return nConf;
-  }
-
-  getFilterConf(String filter) {
-    var nFilterConf = <ConferenceModel>[];
-
-    for(var conferenceD in conferences) {
-      if((filter == conferenceD.type) || (filter == 'false') || ((filter == 'SAVED') && (conferenceD.saved == 1))) {
-        nFilterConf.add(conferenceD);
-      }
-    }
-    return nFilterConf;
-  }
-
   getAllConfs() {
     return conferences;
   }

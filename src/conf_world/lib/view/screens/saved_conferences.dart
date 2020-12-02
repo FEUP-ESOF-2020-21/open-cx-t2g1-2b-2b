@@ -11,8 +11,6 @@ import 'home_page.dart';
 class SavedConferencesState extends StatelessWidget {
   SavedConferencesModel model = SavedConferencesModel();
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

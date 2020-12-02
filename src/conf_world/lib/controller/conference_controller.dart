@@ -4,15 +4,12 @@ import 'package:flutter_map/flutter_map.dart';
 
 import 'database.dart';
 
-class MarkerController {
+class ConferenceController {
+  var conferences;
   var markers = <Marker>[];
 
-  var conferences;
-
-  final String filter;
-
-  MarkerController(this.filter) {
-    this.conferences = getFilterConf(this.filter);
+  ConferenceController(String filter) {
+    conferences = getFilterConf(filter);
 
     _initMarkers();
   }
@@ -26,16 +23,32 @@ class MarkerController {
   }
 
   getFilterConf(String filter) {
-    DatabaseHelper dh = new DatabaseHelper();
-    var cf = dh.getAllConfs();
-
     var nFilterConf = <ConferenceModel>[];
 
-    for(var conferenceD in cf) {
+    DatabaseHelper database = new DatabaseHelper();
+    var allConferences = database.getAllConfs();
+
+    for(var conferenceD in allConferences) {
       if((filter == conferenceD.type) || (filter == 'false') || ((filter == 'SAVED') && (conferenceD.saved == 1))) {
         nFilterConf.add(conferenceD);
       }
     }
+
     return nFilterConf;
+  }
+
+  getSavedConf() {
+    var nSavedConf = <ConferenceModel>[];
+
+    DatabaseHelper database = new DatabaseHelper();
+    var allConferences = database.getAllConfs();
+
+    for (var i = 0; i < allConferences.length; i++) {
+      if((allConferences[i].saved == 1)) {
+        nSavedConf.add(allConferences[i]);
+      }
+    }
+
+    return nSavedConf;
   }
 }

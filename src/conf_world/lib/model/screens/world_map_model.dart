@@ -1,11 +1,11 @@
-import 'package:conf_world/controller/marker_controller.dart';
+import 'package:conf_world/controller/conference_controller.dart';
 
 class WorldMapModel {
-  MarkerController markers;
+  ConferenceController markers;
 
   WorldMapModel(String filter) {
 
-    markers = MarkerController(filter);
+    markers = ConferenceController(filter);
   }
 
   getMarkers() {

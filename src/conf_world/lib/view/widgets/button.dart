@@ -9,7 +9,6 @@ class MyButton extends StatelessWidget {
     model = ButtonModel(name : name);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
