@@ -7,7 +7,7 @@ import 'conference_details.dart';
 class ConferenceIcon extends StatelessWidget {
   ConferenceIcon({Key key, this.conference}) : super(key: key);
 
-  final ConferenceInfo conference;
+  final ConferenceModel conference;
 
   @override
   Widget build(BuildContext context) {

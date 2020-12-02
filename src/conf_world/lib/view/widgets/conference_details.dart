@@ -1,14 +1,14 @@
+import 'package:conf_world/controller/database.dart';
 import 'package:conf_world/model/conference_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../database.dart';
 
 
 class ConferenceDetails extends StatefulWidget {
-  final ConferenceInfo conference;
+  final ConferenceModel conference;
 
   ConferenceDetails({Key key, this.conference}) : super(key: key);
 
@@ -18,7 +18,7 @@ class ConferenceDetails extends StatefulWidget {
 
 
 class ConfDetails extends State<ConferenceDetails> {
-  final ConferenceInfo conference;
+  final ConferenceModel conference;
 
   ConfDetails(this.conference);
 

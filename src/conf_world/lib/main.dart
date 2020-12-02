@@ -1,9 +1,11 @@
-import 'package:conf_world/database.dart';
-import 'package:conf_world/view/home_page.dart';
+
+
+import 'package:conf_world/view/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
+import 'controller/database.dart';
 
 
 void main() {

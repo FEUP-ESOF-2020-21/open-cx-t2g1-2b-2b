@@ -1,36 +1,27 @@
-import 'package:conf_world/widgets/conference_icon.dart';
+import 'package:conf_world/model/conference_model.dart';
+import 'package:conf_world/view/widgets/conference_icon.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 
-import 'conference_model.dart';
 
-class ConferenceMarker {
-  var markers = <Marker>[];
-
-  final conferences;
+class MarkerModel {
   final double width = 200.0;
   final double height = 50.0;
-  final String filter;
 
-  ConferenceMarker(this.conferences, this.filter) {
-    _initMarkers();
-  }
+  final ConferenceModel conference;
 
-  void _initMarkers() {
-    for(var conferenceD in conferences) {
-      if((this.filter == conferenceD.type) || (this.filter == 'false') || ((this.filter == 'SAVED') && (conferenceD.saved == 1))) {
-        this.markers.add(new Marker(
-          anchorPos: AnchorPos.align(AnchorAlign.top),
-          width: this.width,
-          height: this.height,
-          point: new LatLng(conferenceD.latitude, conferenceD.longitude),
-          builder: (ctx) =>
-          new ConferenceIcon(
-            conference: conferenceD,
-          ),
+  MarkerModel(this.conference);
+
+  getMarker() {
+    return new Marker(
+      anchorPos: AnchorPos.align(AnchorAlign.top),
+      width: this.width,
+      height: this.height,
+      point: new LatLng(conference.latitude, conference.longitude),
+      builder: (ctx) =>
+        new ConferenceIcon(
+          conference: conference,
         ),
-        );
-      }
-    }
+    );
   }
 }

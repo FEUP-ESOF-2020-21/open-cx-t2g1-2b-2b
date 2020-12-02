@@ -1,7 +1,7 @@
+import 'package:conf_world/view/screens/world_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'filter_conference.dart';
-import 'world_map.dart';
+import 'filter_page.dart';
 
 class Navigation extends StatefulWidget {
   final String filter;
@@ -18,7 +18,7 @@ class _NavigationState extends State<Navigation> {
   static List<Widget> _widgetOptions;
 
   _NavigationState(String filter) {
-    _widgetOptions = <Widget>[MapRoute(filter), SearchConference()];
+    _widgetOptions = <Widget>[MapRoute(filter), FilterPage()];
   }
   void _onItemTapped(int index) {
     setState(() {

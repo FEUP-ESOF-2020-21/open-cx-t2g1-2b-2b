@@ -1,7 +1,8 @@
+import 'file:///C:/Users/diogo/Documents/GitHub/open-cx-t2g1-2b-2b/src/conf_world/lib/model/my_button.dart';
+import 'package:conf_world/controller/route_controller.dart';
+import 'package:conf_world/model/screens/filter_type_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import './navigation.dart';
-import '../widgets/my_button.dart';
 
 class FilterByType extends StatefulWidget {
   @override
@@ -11,14 +12,16 @@ class FilterByType extends StatefulWidget {
 }
 
 class FilterByTypeState extends State<FilterByType> {
+  final FilterTypeModel model = FilterTypeModel();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF3c096c),
+      backgroundColor: model.backgroundColor,
       appBar: AppBar(
-        title: Text("Conference Types"),
+        title: Text(model.appBarName),
         centerTitle: true,
-        backgroundColor: Color(0xff5a189a),
+        backgroundColor: model.appBarBackgroundColor,
       ),
       body: Column (
           mainAxisAlignment: MainAxisAlignment.start,
@@ -26,26 +29,16 @@ class FilterByTypeState extends State<FilterByType> {
           children: <Widget> [
             FlatButton(
               padding: EdgeInsets.zero,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Navigation(filter: 'CS')),
-                );
-              },
+              onPressed: () => RouteController.navigateWorldMapFilter(context, model.type1),
               child: MyButton(
-                name: 'Computer Science Conferences',
+                name: model.type1Name,
               ),
             ),
             FlatButton(
               padding: EdgeInsets.zero,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Navigation(filter: 'MATH')),
-                );
-              },
+              onPressed: () => RouteController.navigateWorldMapFilter(context, model.type2),
               child: MyButton(
-                name: 'Math Conferences',
+                name: model.type2Name,
               ),
             ),
           ]

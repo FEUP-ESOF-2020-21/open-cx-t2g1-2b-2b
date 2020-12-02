@@ -2,16 +2,20 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-import 'model/marker_model.dart';
-import 'model/conference_model.dart';
+
+import 'marker_controller.dart';
+
+import '../model/conference_model.dart';
 
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 
+
+
 class DatabaseHelper {
-  ConferenceMarker markerList;
-  var conferences = <ConferenceInfo>[];
+  MarkerList markerList;
+  var conferences = <ConferenceModel>[];
 
   bool _onCreate = false;
 
@@ -40,7 +44,7 @@ class DatabaseHelper {
       List<dynamic> userMap = jsonDecode(rd);
 
       for (var i = 0; i < userMap.length; i++) {
-        insertDb(ConferenceInfo.fromJson(userMap[i]));
+        insertDb(ConferenceModel.fromJson(userMap[i]));
       }
     }
 
@@ -72,7 +76,7 @@ class DatabaseHelper {
     );
   }
 
-  Future<void> insertDb(ConferenceInfo conf) async{
+  Future<void> insertDb(ConferenceModel conf) async{
     try{
       db.insert("Conference", conf.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
     }catch(_){
@@ -80,7 +84,7 @@ class DatabaseHelper {
     }
   }
 
-  Future<void> updateSaved(ConferenceInfo conf) async {
+  Future<void> updateSaved(ConferenceModel conf) async {
     await db.update(
       'Conference',
       conf.toJson(),
@@ -90,20 +94,20 @@ class DatabaseHelper {
     );
   }
 
-  Future<List<ConferenceInfo>> getAllTask() async{
+  Future<List<ConferenceModel>> getAllTask() async{
     final List<Map<String, dynamic>> tasks = await db.query("Conference");
 
     return List.generate(tasks.length, (i) {
-      return ConferenceInfo(id: tasks[i]["id"], name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
+      return ConferenceModel(id: tasks[i]["id"], name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
     });
   }
 
   updateMarkers(String filter) {
-    this.markerList = new ConferenceMarker(this.conferences, filter);
+    this.markerList = new MarkerList(this.conferences, filter);
   }
 
   getAllSavedConferences() {
-    var nConf = <ConferenceInfo>[];
+    var nConf = <ConferenceModel>[];
 
     for (var i = 0; i < this.conferences.length; i++) {
       if((this.conferences[i].saved == 1)) {
@@ -112,5 +116,16 @@ class DatabaseHelper {
     }
 
     return nConf;
+  }
+
+  getFilterConf(String filter) {
+    var nFilterConf = <ConferenceModel>[];
+
+    for(var conferenceD in conferences) {
+      if((filter == conferenceD.type) || (filter == 'false') || ((filter == 'SAVED') && (conferenceD.saved == 1))) {
+        nFilterConf.add(conferenceD);
+      }
+    }
+    return nFilterConf;
   }
 }

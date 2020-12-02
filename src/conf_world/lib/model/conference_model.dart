@@ -1,4 +1,4 @@
-class ConferenceInfo {
+class ConferenceModel {
   final int id;
   final String name;
   final String type;
@@ -13,9 +13,9 @@ class ConferenceInfo {
 
   int saved;
 
-  ConferenceInfo({this.id, this.name, this.type, this.submitPaper, this.date, this.description, this.latitude, this.longitude, this.url, this.saved});
+  ConferenceModel({this.id, this.name, this.type, this.submitPaper, this.date, this.description, this.latitude, this.longitude, this.url, this.saved});
 
-  ConferenceInfo.fromJson(Map<String, dynamic> json) :
+  ConferenceModel.fromJson(Map<String, dynamic> json) :
         id = json['id'],
         name = json['name'],
         type = json['type'],
