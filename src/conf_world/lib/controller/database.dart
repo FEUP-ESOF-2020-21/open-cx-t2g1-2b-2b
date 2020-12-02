@@ -41,6 +41,8 @@ class DatabaseHelper {
     }
 
     this.conferences = await getAllTask();
+
+    updateMarkers('false', -1);
   }
 
   Future<void> initDatabase() async{
@@ -93,5 +95,21 @@ class DatabaseHelper {
 
   getAllConfs() {
     return conferences;
+  }
+  
+  updateMarkers(String filter, int buttonToClick) {
+    this.markerList = new ConferenceMarker(this.conferences, filter, buttonToClick);
+  }
+
+  getAllSavedConferences() {
+    var nConf = <ConferenceInfo>[];
+
+    for (var i = 0; i < this.conferences.length; i++) {
+      if((this.conferences[i].saved == 1)) {
+        nConf.add(this.conferences[i]);
+      }
+    }
+
+    return nConf;
   }
 }

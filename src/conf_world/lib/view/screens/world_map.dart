@@ -7,18 +7,27 @@ import 'package:flutter/widgets.dart';
 
 class MapRoute extends StatefulWidget {
   final String filter;
+  final double latitude;
+  final double longitude;
+  final int buttonToClick;
 
-  const MapRoute({Key key, this.filter = 'false'}) : super(key: key);
+  const MapRoute({Key key, this.filter = 'false', this.latitude, this.longitude, this.buttonToClick}) : super(key: key);
 
   @override
-  MapRouteState createState() => MapRouteState(this.filter);
+  MapRouteState createState() => MapRouteState(this.filter, this.latitude, this.longitude, this.buttonToClick);
 }
 
 class MapRouteState extends State<MapRoute> {
   WorldMapModel model;
 
-  MapRouteState(String filter) {
+  final double latitude;
+  final double longitude;
+  final int buttonToClick;
+
+  MapRouteState(String filter, this.latitude, this.longitude, this.buttonToClick) {
     this.model = WorldMapModel(filter);
+
+    this.db.updateMarkers(this.filter, this.buttonToClick);
   }
 
   updateMap() {
@@ -29,7 +38,7 @@ class MapRouteState extends State<MapRoute> {
   Widget build(BuildContext context) {
     return new FlutterMap(
       options: new MapOptions(
-        center: new LatLng(51.5, -0.09),
+        center: new LatLng(latitude, longitude),
         zoom: 13.0,
       ),
       layers: [

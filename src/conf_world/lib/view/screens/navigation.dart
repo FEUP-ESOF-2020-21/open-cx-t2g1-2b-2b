@@ -6,11 +6,15 @@ import 'filter_page.dart';
 
 class Navigation extends StatefulWidget {
   final String filter;
+  final double startLatitude;
+  final double startLongitude;
+  final int buttonToClick;
 
-  const Navigation({Key key, this.filter = 'false'}) : super(key: key);
+  const Navigation.startLocation({Key key, this.filter = 'false', this.startLatitude, this.startLongitude, this.buttonToClick}) : super(key: key);
+  const Navigation({Key key, this.filter = 'false', this.startLatitude = 51.5, this.startLongitude = -0.09, this.buttonToClick = -1}) : super(key: key);
 
   @override
-  NavigationState createState() => NavigationState(this.filter);
+  _NavigationState createState() => _NavigationState(this.filter, this.startLatitude, this.startLongitude, this.buttonToClick);
 }
 
 class NavigationState extends State<Navigation> {
@@ -22,6 +26,9 @@ class NavigationState extends State<Navigation> {
   // -----------
   // ↓ Controller
 
+  NavigationState(String filter, startLatitude, startLongitude, buttonToClick) {
+    _widgetOptions = <Widget>[MapRoute(filter, startLatitude, startLongitude, buttonToClick), SearchConference()];
+  }
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

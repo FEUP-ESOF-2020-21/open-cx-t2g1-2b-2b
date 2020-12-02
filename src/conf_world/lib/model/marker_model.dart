@@ -21,6 +21,7 @@ class MarkerModel {
       builder: (ctx) =>
         new ConferenceIcon(
           model: conference,
+          buttonToClick: this.buttonToClick,
         ),
     );
   }
