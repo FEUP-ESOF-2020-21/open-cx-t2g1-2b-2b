@@ -136,13 +136,13 @@ void main() {
     // Getting the final value
     final NavigationState navigationState =
         tester.state(find.byType(Navigation));
+    await tester.pumpAndSettle();
 
     final index = navigationState.selectedIndex;
-    // Verify that we are int eh filter conferences Menu
-    expect(index, 1);
 
-    // The index is correct but the widget is not working properly
-    //expect(find.byType(SearchConference, findsOneWidget);
+    // Verify that we are in the filter conferences Menu
+    expect(index, 1);
+    expect(find.byType(SearchConference), findsOneWidget);
   });
 
   testWidgets('Testing switching to Filter Conferences State',
@@ -165,12 +165,12 @@ void main() {
     // Getting the final value
     final NavigationState navigationState =
         tester.state(find.byType(Navigation));
+    await tester.pumpAndSettle();
 
     final index = navigationState.selectedIndex;
     // Verify that we are int eh filter conferences Menu
     expect(index, 0);
-
     // The index is correct but the widget is not working properly
-    //expect(find.byType(MapRoute(filter), findsOneWidget);
+    expect(find.byType(MapRoute), findsOneWidget);
   });
 }
