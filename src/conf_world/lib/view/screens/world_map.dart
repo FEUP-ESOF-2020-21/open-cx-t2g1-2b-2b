@@ -1,5 +1,5 @@
 
-import 'package:conf_world/model/screens/world_map_model.dart';
+import 'package:conf_world/controller/world_map_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
@@ -18,14 +18,14 @@ class MapRoute extends StatefulWidget {
 }
 
 class MapRouteState extends State<MapRoute> {
-  WorldMapModel model;
+  WorldMapControllerTest controller;
 
   final double latitude;
   final double longitude;
   final int buttonToClick;
 
   MapRouteState(String filter, this.latitude, this.longitude, this.buttonToClick) {
-    this.model = WorldMapModel(filter, this.buttonToClick);
+    this.controller = WorldMapControllerTest(this, filter, this.buttonToClick);
   }
 
   updateMap() {
@@ -44,7 +44,7 @@ class MapRouteState extends State<MapRoute> {
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             subdomains: ['a', 'b', 'c']),
         new MarkerLayerOptions(
-          markers: model.getMarkers()
+          markers: controller.getMarkers()
         ),
       ],
     );

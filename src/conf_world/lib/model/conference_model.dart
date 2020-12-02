@@ -61,24 +61,6 @@ class ConferenceModel {
     else return normalIconColor;
   }
 
-  updateSaved(conference, widget) async {
-    conference.saved = (conference.saved + 1) % 2;
-
-    DatabaseHelper db = new DatabaseHelper();
-
-    await db.updateSaved(this);
-
-    widget.setState(() {}); // Update menu
-  }
-
-  launchURL() async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-
   isSaved() {
     if(saved == 1) return "This conference is saved";
     else return "Not saved";

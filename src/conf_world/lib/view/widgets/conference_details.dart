@@ -1,4 +1,4 @@
-import 'package:conf_world/controller/conference_controller.dart';
+import 'package:conf_world/controller/world_map_controller.dart';
 import 'package:conf_world/model/conference_model.dart';
 import 'package:conf_world/view/screens/world_map.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,19 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ConferenceDetails extends StatefulWidget {
-  final ConferenceModel conference;
+  final WorldMapControllerTest controller;
+  final ConferenceModel model;
 
-  ConferenceDetails({Key key, this.conference}) : super(key: key);
+  ConferenceDetails({Key key, this.controller, this.model}) : super(key: key);
 
   @override
-  ConfDetails createState() => ConfDetails(this.conference);
+  ConfDetails createState() => ConfDetails(this.model, this.controller);
 }
 
 class ConfDetails extends State<ConferenceDetails> {
-  final ConferenceController controller = new ConferenceController('false', -1);
   final ConferenceModel model;
+  WorldMapControllerTest controller;
 
-  ConfDetails(this.model);
+  ConfDetails(this.model, this.controller);
 
   Widget testW(int sizeT, String nameT, dynamic field) {
     return Expanded(
@@ -115,7 +116,7 @@ class ConfDetails extends State<ConferenceDetails> {
                           color: model.detailsTextColor, fontStyle: FontStyle.italic),
                     ),
                     ElevatedButton(
-                      onPressed: model.launchURL,
+                      onPressed: () => controller.launchURL(model),
                       style: new ButtonStyle(
                         backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) { return model.colorBackground; }),
                       ),

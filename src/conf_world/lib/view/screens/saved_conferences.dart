@@ -1,5 +1,6 @@
 import 'package:conf_world/controller/database.dart';
 import 'package:conf_world/controller/route_controller.dart';
+import 'package:conf_world/controller/saved_conferences_controller.dart';
 import 'package:conf_world/model/conference_model.dart';
 import 'package:conf_world/model/screens/saved_conferences_model.dart';
 import 'package:conf_world/view/widgets/button.dart';
@@ -10,7 +11,8 @@ import 'home_page.dart';
 import 'navigation.dart';
 
 class SavedConferencesState extends StatelessWidget {
-  SavedConferencesModel model = SavedConferencesModel();
+  final SavedConferencesController controller = SavedConferencesController();
+  final SavedConferencesModel model = SavedConferencesModel();
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,10 @@ class SavedConferencesState extends StatelessWidget {
         ),
         body:
         ListView.builder(
-          itemCount: model.savedConfs.length + 1,
+          itemCount: controller.savedConfs.length + 1,
 
           itemBuilder: (context, index) {
-            if (index == model.savedConfs.length) {
+            if (index == controller.savedConfs.length) {
               return FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () => RouteController.navigateHomePage(context),
@@ -34,7 +36,7 @@ class SavedConferencesState extends StatelessWidget {
               );
             }
 
-            final item = model.savedConfs[index];
+            final item = controller.savedConfs[index];
             return ListTile(
               title: Text(
                 item.name,
