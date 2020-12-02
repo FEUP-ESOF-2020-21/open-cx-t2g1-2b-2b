@@ -32,7 +32,6 @@ class SavedConferencesState extends StatelessWidget {
           // Convert each item into a widget based on the type of item it is.
           itemBuilder: (context, index) {
             if (index == savedConfs.length){
-              print("hello");
               return FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
@@ -56,14 +55,29 @@ class SavedConferencesState extends StatelessWidget {
                   color: Color(0xffe0aaff),
                 ),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude, buttonToClick: item.id)),
-                );
-              },
+              trailing: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude, buttonToClick: item.id)),
+                  );
+                  },
+                child: new Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Go to World Map',
+                    style: TextStyle(fontSize: 14, color: Color(0xffe0aaff)),
+                    textAlign: TextAlign.center,
+                  ),
+                  constraints: BoxConstraints.expand(width: 140, height: 45),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Color(0xff5a189a),
+                  ),
+                ),
+              ),
             );
-          },
+            },
         ),
     );
   }
