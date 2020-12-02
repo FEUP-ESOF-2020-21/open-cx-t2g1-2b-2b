@@ -46,7 +46,7 @@ class DatabaseHelper {
 
     this.conferences = await getAllTask();
 
-    updateMarkers('false');
+    updateMarkers('false', -1);
   }
 
   Future<void> initDatabase() async{
@@ -98,8 +98,8 @@ class DatabaseHelper {
     });
   }
 
-  updateMarkers(String filter) {
-    this.markerList = new ConferenceMarker(this.conferences, filter);
+  updateMarkers(String filter, int buttonToClick) {
+    this.markerList = new ConferenceMarker(this.conferences, filter, buttonToClick);
   }
 
   getAllSavedConferences() {

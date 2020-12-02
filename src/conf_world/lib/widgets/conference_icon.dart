@@ -5,12 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'conference_details.dart';
 
 class ConferenceIcon extends StatelessWidget {
-  ConferenceIcon({Key key, this.conference}) : super(key: key);
+  ConferenceIcon({Key key, this.conference, this.buttonToClick}) : super(key: key);
 
   final ConferenceInfo conference;
+  final int buttonToClick;
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => openSavedConference(context));
     return new Stack(
         children: [
           new Container(
@@ -50,4 +52,16 @@ class ConferenceIcon extends StatelessWidget {
         ]
     );
   }
+  void openSavedConference(BuildContext context) {
+    if (conference.id == buttonToClick)
+      showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return ConferenceDetails(
+            conference: conference,
+          );
+        },
+      );
+  }
+
 }

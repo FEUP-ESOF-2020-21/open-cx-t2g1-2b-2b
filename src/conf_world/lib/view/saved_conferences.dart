@@ -59,7 +59,7 @@ class SavedConferencesState extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude)),
+                  MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude, buttonToClick: item.id)),
                 );
               },
             );

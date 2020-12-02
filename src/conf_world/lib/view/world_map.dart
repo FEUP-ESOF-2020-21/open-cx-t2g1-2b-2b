@@ -9,11 +9,12 @@ class MapRoute extends StatelessWidget {
   final String filter;
   final double latitude;
   final double longitude;
+  final int buttonToClick;
 
-  MapRoute(this.filter, this.latitude, this.longitude) {
+  MapRoute(this.filter, this.latitude, this.longitude, this.buttonToClick) {
     this.db = new DatabaseHelper();
 
-    this.db.updateMarkers(this.filter);
+    this.db.updateMarkers(this.filter, this.buttonToClick);
   }
 
   @override
@@ -21,7 +22,6 @@ class MapRoute extends StatelessWidget {
     return new FlutterMap(
       options: new MapOptions(
         center: new LatLng(latitude, longitude),
-       // center: new LatLng(51.5, -0.09),
         zoom: 13.0,
       ),
       layers: [

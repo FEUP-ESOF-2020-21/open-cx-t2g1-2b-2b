@@ -11,8 +11,9 @@ class ConferenceMarker {
   final double width = 200.0;
   final double height = 50.0;
   final String filter;
+  final int buttonToClick;
 
-  ConferenceMarker(this.conferences, this.filter) {
+  ConferenceMarker(this.conferences, this.filter, this.buttonToClick) {
     _initMarkers();
   }
 
@@ -27,6 +28,7 @@ class ConferenceMarker {
           builder: (ctx) =>
           new ConferenceIcon(
             conference: conferenceD,
+            buttonToClick: this.buttonToClick,
           ),
         ),
         );
