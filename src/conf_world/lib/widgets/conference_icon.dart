@@ -35,7 +35,7 @@ class ConferenceIcon extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               conference.name,
-              style: TextStyle(fontSize: 14, color: Color(0xffe0aaff)),
+              style: TextStyle(fontSize: 14, color: (conference.saved == 1) ? Color(0xff7b2cbf) : Color(0xffe0aaff)),
               textAlign: TextAlign.center,
             ),
             padding: EdgeInsets.all(5),

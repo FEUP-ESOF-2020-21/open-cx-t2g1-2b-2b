@@ -41,7 +41,7 @@ class SavedConferencesState extends StatelessWidget {
                   );
                 },
                 child: MyButton(
-                  name: 'Back to Confi World',
+                  name: 'Back to Main Menu',
                 ),
               );
             }
@@ -51,6 +51,9 @@ class SavedConferencesState extends StatelessWidget {
             return ListTile(
               title: Text(
                 item.name,
+                style: TextStyle(
+                  color: Color(0xffe0aaff),
+                )
               ),
             );
           },
