@@ -33,7 +33,6 @@ class NavigationState extends State<Navigation> {
           title: new Text('Conf World'), backgroundColor: Colors.green[500]),
       body: _widgetOptions.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        key: Key('Bottom Navigation Bar'),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
