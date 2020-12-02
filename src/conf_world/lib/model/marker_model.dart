@@ -3,7 +3,6 @@ import 'package:conf_world/view/widgets/conference_icon.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 
-
 class MarkerModel {
   final double width = 200.0;
   final double height = 50.0;

@@ -1,18 +1,18 @@
+import 'package:conf_world/model/conference_model.dart';
 import 'package:conf_world/model/marker_model.dart';
 import 'package:flutter_map/flutter_map.dart';
 
 import 'database.dart';
 
-class MarkerList {
+class MarkerController {
   var markers = <Marker>[];
 
   var conferences;
 
   final String filter;
 
-  MarkerList(this.conferences, this.filter) {
-    DatabaseHelper dh = new DatabaseHelper();
-    this.conferences = dh.getFilterConf(this.filter);
+  MarkerController(this.filter) {
+    this.conferences = getFilterConf(this.filter);
 
     _initMarkers();
   }
@@ -23,5 +23,19 @@ class MarkerList {
 
       this.markers.add(n.getMarker());
     }
+  }
+
+  getFilterConf(String filter) {
+    DatabaseHelper dh = new DatabaseHelper();
+    var cf = dh.getAllConfs();
+
+    var nFilterConf = <ConferenceModel>[];
+
+    for(var conferenceD in cf) {
+      if((filter == conferenceD.type) || (filter == 'false') || ((filter == 'SAVED') && (conferenceD.saved == 1))) {
+        nFilterConf.add(conferenceD);
+      }
+    }
+    return nFilterConf;
   }
 }

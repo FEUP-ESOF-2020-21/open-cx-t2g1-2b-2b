@@ -1,31 +1,28 @@
+import 'package:conf_world/model/widgets/button_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MyButton extends StatelessWidget {
-  final Color _textColor = Color(0xffe0aaff);
-  final Color _boxColor = Color(0xff5a189a);
+  ButtonModel model;
 
-  MyButton({Key key, this.name}) : super(key: key);
+  MyButton({Key key, String name}) : super(key: key) {
+    model = ButtonModel(name : name);
+  }
 
-  final String name;
-
-  // ^ Model
-  // ----------------- Divide in 2
-  // ↓ View
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(this.name,
+      child: Text(model.name,
         style: TextStyle(
-          color: _textColor,
+          color: model.textColor,
             fontStyle: FontStyle.italic),
       ),
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: _boxColor,
+        color: model.boxColor,
       ),
       alignment: Alignment.center,
     );

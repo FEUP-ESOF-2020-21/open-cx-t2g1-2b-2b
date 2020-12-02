@@ -1,6 +1,7 @@
-import 'file:///C:/Users/diogo/Documents/GitHub/open-cx-t2g1-2b-2b/src/conf_world/lib/model/my_button.dart';
+
 import 'package:conf_world/controller/route_controller.dart';
 import 'package:conf_world/model/screens/filter_type_model.dart';
+import 'package:conf_world/view/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -30,16 +31,12 @@ class FilterByTypeState extends State<FilterByType> {
             FlatButton(
               padding: EdgeInsets.zero,
               onPressed: () => RouteController.navigateWorldMapFilter(context, model.type1),
-              child: MyButton(
-                name: model.type1Name,
-              ),
+              child: MyButton(name: model.type1Name),
             ),
             FlatButton(
               padding: EdgeInsets.zero,
               onPressed: () => RouteController.navigateWorldMapFilter(context, model.type2),
-              child: MyButton(
-                name: model.type2Name,
-              ),
+              child: MyButton(name: model.type2Name),
             ),
           ]
       ),

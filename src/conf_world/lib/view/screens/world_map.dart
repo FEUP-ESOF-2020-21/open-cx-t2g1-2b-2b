@@ -1,5 +1,3 @@
-import 'package:conf_world/controller/database.dart';
-import 'package:conf_world/controller/world_map_controller.dart';
 import 'package:conf_world/model/screens/world_map_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';

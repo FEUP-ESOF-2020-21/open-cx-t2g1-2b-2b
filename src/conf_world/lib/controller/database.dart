@@ -2,23 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-
-import 'marker_controller.dart';
-
 import '../model/conference_model.dart';
 
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-
-
-
 class DatabaseHelper {
-  MarkerList markerList;
   var conferences = <ConferenceModel>[];
 
   bool _onCreate = false;
-
   Database db; //sqlite db
 
   static final DatabaseHelper _singleton = DatabaseHelper._internal();
@@ -49,8 +41,6 @@ class DatabaseHelper {
     }
 
     this.conferences = await getAllTask();
-
-    updateMarkers('false');
   }
 
   Future<void> initDatabase() async{
@@ -89,8 +79,7 @@ class DatabaseHelper {
       'Conference',
       conf.toJson(),
       where: "id = ?",
-      // Pass the id as a whereArg to prevent SQL injection.
-      whereArgs: [conf.id],
+      whereArgs: [conf.id], // Pass the id as a whereArg to prevent SQL injection.
     );
   }
 
@@ -100,10 +89,6 @@ class DatabaseHelper {
     return List.generate(tasks.length, (i) {
       return ConferenceModel(id: tasks[i]["id"], name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
     });
-  }
-
-  updateMarkers(String filter) {
-    this.markerList = new MarkerList(this.conferences, filter);
   }
 
   getAllSavedConferences() {
@@ -127,5 +112,9 @@ class DatabaseHelper {
       }
     }
     return nFilterConf;
+  }
+
+  getAllConfs() {
+    return conferences;
   }
 }

@@ -1,13 +1,14 @@
-import 'package:conf_world/controller/world_map_controller.dart';
+import 'package:conf_world/controller/marker_controller.dart';
 
 class WorldMapModel {
-  WorldMapController controller;
+  MarkerController markers;
 
   WorldMapModel(String filter) {
-    this.controller = WorldMapController(filter);
+
+    markers = MarkerController(filter);
   }
 
   getMarkers() {
-    return controller.getMarkers();
+    return markers.markers;
   }
 }

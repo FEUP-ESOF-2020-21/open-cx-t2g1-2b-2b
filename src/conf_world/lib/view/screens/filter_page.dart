@@ -2,7 +2,7 @@ import 'package:conf_world/controller/route_controller.dart';
 import 'file:///C:/Users/diogo/Documents/GitHub/open-cx-t2g1-2b-2b/src/conf_world/lib/model/screens/filter_page_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../model/my_button.dart';
+import '../widgets/button.dart';
 
 class FilterPage extends StatelessWidget {
   final FilterConferenceModel model = FilterConferenceModel();
