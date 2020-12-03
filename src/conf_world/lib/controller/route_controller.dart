@@ -7,6 +7,8 @@ import 'package:conf_world/view/screens/home_page.dart';
 import 'package:conf_world/view/screens/navigation.dart';
 import 'package:conf_world/view/screens/saved_conferences.dart';
 
+String lastFilter = 'false';
+
 class RouteController { // Ask teacher about this class
   static navigateHomePage(BuildContext context) {
       Navigator.pushAndRemoveUntil(
@@ -18,7 +20,7 @@ class RouteController { // Ask teacher about this class
   static navigateWorldMap(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: 'false')),
+      MaterialPageRoute(builder: (context) => Navigation(filter: lastFilter)),
     );
   }
 
@@ -30,16 +32,11 @@ class RouteController { // Ask teacher about this class
   }
 
   static navigateWorldMapFilter(BuildContext context, String filterBy) {
+    lastFilter = filterBy;
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Navigation(filter: filterBy)),
-    );
-  }
-
-  static navigateWorldMapSaved(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: 'SAVED')),
     );
   }
 
