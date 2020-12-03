@@ -8,10 +8,10 @@ Please contact us!
 
 Thank you!
 
-*Bernardo António Magalhães Ferreira*
-*Diogo Ferreira de Sousa*
-*Diogo Samuel Gonçalves Fernandes*
-*Hugo Miguel Monteiro Guimarães*
+- *Bernardo António Magalhães Ferreira*
+- *Diogo Ferreira de Sousa*
+- *Diogo Samuel Gonçalves Fernandes*
+- *Hugo Miguel Monteiro Guimarães*
 
 ---
 
