@@ -38,7 +38,22 @@ class SavedConferencesState extends StatelessWidget {
                 item.name,
                 style: TextStyle(color: model.textColor),
               ),
+              trailing: GestureDetector(
               onTap: () =>  RouteController.navigateSavedConferenceDetails(context, item),
+                child: new Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    model.boxConferenceText,
+                    style: TextStyle(fontSize: 14, color: model.textColor),
+                    textAlign: TextAlign.center,
+                  ),
+                  constraints: BoxConstraints.expand(width: 140, height: 45),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: model.boxColor,
+                  ),
+                ),
+              ),
             );
           },
         ),

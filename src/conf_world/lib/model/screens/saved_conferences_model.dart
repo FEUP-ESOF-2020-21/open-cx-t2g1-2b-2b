@@ -6,6 +6,8 @@ class SavedConferencesModel {
   final Color appBarColor = Color(0xff5a189a);
   final Color textColor = Color(0xffe0aaff);
 
+  final String boxConferenceText = 'Go to World Map';
+  final Color boxColor = Color(0xff5a189a);
   final String backButton = 'Back to Confi World';
 }
 
