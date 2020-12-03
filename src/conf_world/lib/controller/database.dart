@@ -1,20 +1,13 @@
 import 'dart:convert';
-
+import 'package:conf_world/model/conference_model.dart';
 import 'package:flutter/services.dart';
-
-import 'model/marker_model.dart';
-import 'model/conference_model.dart';
-
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-
 class DatabaseHelper {
-  ConferenceMarker markerList;
-  var conferences = <ConferenceInfo>[];
+  var conferences = <ConferenceModel>[];
 
   bool _onCreate = false;
-
   Database db; //sqlite db
 
   static final DatabaseHelper _singleton = DatabaseHelper._internal();
@@ -40,13 +33,11 @@ class DatabaseHelper {
       List<dynamic> userMap = jsonDecode(rd);
 
       for (var i = 0; i < userMap.length; i++) {
-        insertDb(ConferenceInfo.fromJson(userMap[i]));
+        insertDb(ConferenceModel.fromJson(userMap[i]));
       }
     }
 
     this.conferences = await getAllTask();
-
-    updateMarkers('false', -1);
   }
 
   Future<void> initDatabase() async{
@@ -72,7 +63,7 @@ class DatabaseHelper {
     );
   }
 
-  Future<void> insertDb(ConferenceInfo conf) async{
+  Future<void> insertDb(ConferenceModel conf) async{
     try{
       db.insert("Conference", conf.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
     }catch(_){
@@ -80,37 +71,24 @@ class DatabaseHelper {
     }
   }
 
-  Future<void> updateSaved(ConferenceInfo conf) async {
+  Future<void> updateSaved(ConferenceModel conf) async {
     await db.update(
       'Conference',
       conf.toJson(),
       where: "id = ?",
-      // Pass the id as a whereArg to prevent SQL injection.
-      whereArgs: [conf.id],
+      whereArgs: [conf.id], // Pass the id as a whereArg to prevent SQL injection.
     );
   }
 
-  Future<List<ConferenceInfo>> getAllTask() async{
+  Future<List<ConferenceModel>> getAllTask() async{
     final List<Map<String, dynamic>> tasks = await db.query("Conference");
 
     return List.generate(tasks.length, (i) {
-      return ConferenceInfo(id: tasks[i]["id"], name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
+      return ConferenceModel(id: tasks[i]["id"], name: tasks[i]["name"], type:tasks[i]["type"], date:tasks[i]["date"], submitPaper: tasks[i]["submitPaper"], description: tasks[i]["description"], latitude: tasks[i]["latitude"], longitude: tasks[i]["longitude"], url:tasks[i]["url"], saved: tasks[i]["saved"]);
     });
   }
 
-  updateMarkers(String filter, int buttonToClick) {
-    this.markerList = new ConferenceMarker(this.conferences, filter, buttonToClick);
-  }
-
-  getAllSavedConferences() {
-    var nConf = <ConferenceInfo>[];
-
-    for (var i = 0; i < this.conferences.length; i++) {
-      if((this.conferences[i].saved == 1)) {
-        nConf.add(this.conferences[i]);
-      }
-    }
-
-    return nConf;
+  getAllConfs() {
+    return conferences;
   }
 }
