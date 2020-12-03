@@ -9,9 +9,9 @@ import 'package:conf_world/view/screens/saved_conferences.dart';
 
 class RouteController { // Ask teacher about this class
   static navigateHomePage(BuildContext context) {
-      Navigator.push(
+      Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomePageState()),
+        MaterialPageRoute(builder: (context) => HomePageState()), (_) => false
       );
   }
 
@@ -22,13 +22,6 @@ class RouteController { // Ask teacher about this class
     );
   }
 
-  static navigateWorldMapFilter(BuildContext context, String filterBy) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: filterBy)),
-    );
-  }
-
   static navigateSavedConference(BuildContext context) {
     Navigator.push(
       context,
@@ -36,15 +29,22 @@ class RouteController { // Ask teacher about this class
     );
   }
 
+  static navigateWorldMapFilter(BuildContext context, String filterBy) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Navigation(filter: filterBy)),
+    );
+  }
+
   static navigateWorldMapSaved(BuildContext context) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Navigation(filter: 'SAVED')),
     );
   }
 
   static navigateSavedConferenceDetails(BuildContext context, ConferenceModel conference) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) =>
           Navigation(latitude: conference.latitude, longitude: conference.longitude)),
@@ -52,7 +52,7 @@ class RouteController { // Ask teacher about this class
   }
 
   static navigateWorldMapType(BuildContext context) {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => FilterByType()),
     );
