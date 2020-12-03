@@ -427,13 +427,17 @@ Use cross-links to the code repository and only embed real fragments of code whe
 ---
 ## Test
 
-There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
+To ensure the application is working properly, we have decided to add Unit Tests and automated acceptance tests using gherkin.
 
-In this section it is only expected to include the following:
-* test plan describing the list of features to be tested and the testing methods and tools;
-* test case specifications to verify the functionalities, using unit tests and acceptance tests.
- 
-A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
+Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
+
+We have currently not implemented any automated acceptance tests using gherkin.
+
+The planned features to be tested are the following:
+
+- Saved Conferences Local Database persistent data storage.
+- Conference filtering works accordingly.
+- Pressing a Conference in Saved Conferences Menu redirects to the world map with the chosen conference centered.
 
 ---
 ## Configuration and change management
@@ -455,12 +459,29 @@ For this project, we are using Github Projects. You can see our board using the 
 
 
 ### Sprint Reviews
-##### First Sprint
+#### First Sprint
 
-- First user story, which contains:
-    - Added Main Menu
-    - Added World Map
-    - Added pinpoints in World Map with conferences. This functionality is currently hard coded.
+##### User Story 1
+*As a user, I want to open up the map, so that I can see all the available conferences next to me.*
+* Added Main Menu
+* Added World Map
+* Added pinpoints in World Map with conferences. This functionality is currently hard coded.
+
+Sprint Effort: L
+
+#### Second Sprint
+
+##### User Story 3
+*As a user, I want to access a conference’s details, so that I can see the available information about it.*
+* When user presses one conference, the user can see the information about it.
+* There is a link that redirects the user to the webpage.
+##### User Story 5
+
+*As a user, I want to search for conferences that match my interests, so that I can better find what I'm looking for.*
+* When a user goes to the filtering menu, he can filter by type.
+* After choosing the filtered conference type, only conferences of that ype will appear on map.
+##### Miscellaneous
+* Conferences are now read from a JSON file.
 
 Sprint Effort: L
 
