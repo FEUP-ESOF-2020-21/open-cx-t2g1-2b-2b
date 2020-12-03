@@ -406,7 +406,7 @@ Scenario:
 
 The concepts regarding our domain model are quite simple. We have a map which will render on a certain latitude and longitude. On the map we can have many markers. Each of this markers represent one conference.
 
-Markers that appear on map can be filtered (just one at a time) making some of the markers not being displayed.
+Markers that appear on map can be filtered (just one at a time). After the filter, some markers are not displayed.
 
 ---
 
@@ -427,10 +427,10 @@ In order to develop this project, we decided to organize and structure our code 
 
 ![Physical Architecture Diagram](./img/physical-architecture.png)
 
-Our project's physical structure is very simple and relies in only one block. 
+Our project's physical structure is very simple and relies in only two blocks. 
 Since all of the app information is stored in a local database, our app will only execute queries to select, update and insert conferences on the SQLite database.
 
-We choose using SQLite database because of simplicity and the good integration with flutter.
+We choose use SQLite database because of simplicity and the good integration with flutter.
 
 The displays of the world map is done by a *HTTPS Request* to [Open Street Map](https://www.openstreetmap.org) database.
 
