@@ -1,12 +1,12 @@
-import 'package:conf_world/controller/world_map_controller.dart';
-import 'package:conf_world/model/conference_model.dart';
-import 'package:conf_world/view/screens/world_map.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:conf_world/controller/map_conference_controller.dart';
+import 'package:conf_world/model/conference_model.dart';
+
 class ConferenceDetails extends StatefulWidget {
-  final WorldMapControllerTest controller;
+  final MapConferenceController controller;
   final ConferenceModel model;
 
   ConferenceDetails({Key key, this.controller, this.model}) : super(key: key);
@@ -17,74 +17,40 @@ class ConferenceDetails extends StatefulWidget {
 
 class ConfDetails extends State<ConferenceDetails> {
   final ConferenceModel model;
-  WorldMapControllerTest controller;
+  MapConferenceController controller;
 
   ConfDetails(this.model, this.controller);
 
-  Widget testW(int sizeT, String nameT, dynamic field) {
-    return Expanded(
-      flex: sizeT,
-      child: Container(
-          color: model.colorForeground,
-          margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-          padding: EdgeInsets.all(4),
-          child: Row(
-            children: <Widget>[
-              Text(
-                nameT,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    color: model.detailsTextColor, fontStyle: FontStyle.italic),
-              ),
-              Flexible(
-                child: new Text(
-                  field,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(color: model.informationColor),
-                ),
-              ),
-            ],
-          )),
-    );
-  }
+  Widget function(int flexSize, List<List<dynamic>> dynamicList) {
+    List<Widget> list = new List<Widget>();
 
-  Widget testD(int sizeT, String nameT1, dynamic field1, String nameT2, dynamic field2) {
+    for(var i in dynamicList) {
+      list.add(Text(
+        i[0].toString(),
+        textAlign: TextAlign.start,
+        style: TextStyle(
+            color: model.detailsTextColor,
+            fontStyle: FontStyle.italic),
+      ));
+
+      list.add(Flexible(
+        child: new Text(
+        i[1].toString(),
+        textAlign: TextAlign.start,
+        style: TextStyle(color: model.informationColor),
+        ),
+      ));
+    }
+
     return Expanded(
-      flex: sizeT,
-      child: Container(
-          color: model.colorForeground,
-          margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-          padding: EdgeInsets.all(4),
-          child: Row(
-            children: <Widget>[
-              Text(
-                nameT1,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    color: model.detailsTextColor, fontStyle: FontStyle.italic),
-              ),
-              Text(
-                field1,
-                textAlign: TextAlign.start,
-                style: TextStyle(color: model.informationColor),
-              ),
-              Expanded(
-                child: Text(
-                  nameT2,
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                      color: model.detailsTextColor, fontStyle: FontStyle.italic),
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  field2,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(color: model.informationColor),
-                ),
-              ),
-            ],
-          )),
+            flex: flexSize,
+            child: Container(
+            color: model.colorForeground,
+            margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+            padding: EdgeInsets.all(4),
+            child: Row(
+              children: list
+        )),
     );
   }
 
@@ -97,10 +63,10 @@ class ConfDetails extends State<ConferenceDetails> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          testW(1, 'Name: ', model.name),
-          testW(1, 'Type: ', model.type),
-          testW(1, 'Saved Conference: ', model.isSaved()),
-          testD(1, 'Submit Papers: ', model.submitPaper, 'Date: ', model.date),
+          function(1, [['Name: ', model.name]]),
+          function(1, [['Type: ', model.type]]),
+          function(1, [['Saved Conference: ', model.isSaved()]]),
+          function(1, [['Submit Papers: ', model.submitPaper], ['   Date: ', model.date]]),
           Expanded(
             flex: 1,
             child: Container(
@@ -153,7 +119,7 @@ class ConfDetails extends State<ConferenceDetails> {
                   ],
                 )),
           ),
-          testW(6, 'Description: ', model.description),
+          function(6, [['Description: ', model.description]]),
         ],
       ),
     );

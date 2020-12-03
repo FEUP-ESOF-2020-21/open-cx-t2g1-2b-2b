@@ -1,12 +1,11 @@
+import 'package:conf_world/controller/database.dart';
 import 'package:conf_world/model/conference_model.dart';
 
-import 'database.dart';
-
 class SavedConferencesController {
-  List<ConferenceModel> savedConfs;
+  List<ConferenceModel> savedConferences;
 
   SavedConferencesController() {
-    savedConfs = _getSavedConf();
+    savedConferences = _getSavedConf();
   }
 
   _getSavedConf() {

@@ -1,23 +1,20 @@
-import 'package:conf_world/model/conference_model.dart';
-import 'package:conf_world/model/marker_model.dart';
-import 'package:conf_world/view/screens/world_map.dart';
-import 'package:conf_world/view/widgets/conference_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_map/flutter_map.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'database.dart';
+import 'package:conf_world/controller/database.dart';
+import 'package:conf_world/model/conference_model.dart';
+import 'package:conf_world/view/screens/world_map.dart';
+import 'package:conf_world/view/widgets/conference_details.dart';
+import 'package:conf_world/view/widgets/marker_model.dart';
 
-class WorldMapControllerTest {
+class MapConferenceController {
   MapRouteState view;
   List<ConferenceModel> conferences;
 
-  // Refactor this too
-  int buttonToClick;
-  //
-
-  WorldMapControllerTest(this.view, String filter, this.buttonToClick) {
+  MapConferenceController(this.view, String filter) {
     conferences = _initConf(filter);
   }
 
@@ -40,9 +37,7 @@ class WorldMapControllerTest {
     var markers = <Marker>[];
 
     for(var conferenceD in conferences) {
-      MarkerModel n = new MarkerModel(this, conferenceD, buttonToClick);
-
-      markers.add(n.getMarker());
+      markers.add(MarkerModel.createMarker(this, conferenceD));
     }
 
     return markers;

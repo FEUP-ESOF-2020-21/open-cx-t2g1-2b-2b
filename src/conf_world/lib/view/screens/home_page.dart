@@ -1,10 +1,9 @@
-
-import 'package:conf_world/controller/route_controller.dart';
-import 'file:///C:/Users/diogo/Documents/GitHub/open-cx-t2g1-2b-2b/src/conf_world/lib/model/screens/home_page_model.dart';
-import 'file:///C:/Users/diogo/Documents/GitHub/open-cx-t2g1-2b-2b/src/conf_world/lib/view/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:conf_world/controller/route_controller.dart';
+import 'package:conf_world/model/screens/home_page_model.dart';
+import 'package:conf_world/view/widgets/button.dart';
 
 class HomePageState extends StatelessWidget {
   final HomePageModel model = HomePageModel();

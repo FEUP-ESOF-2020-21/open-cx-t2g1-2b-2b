@@ -1,14 +1,10 @@
-import 'package:conf_world/controller/database.dart';
-import 'package:conf_world/controller/route_controller.dart';
-import 'package:conf_world/controller/saved_conferences_controller.dart';
-import 'package:conf_world/model/conference_model.dart';
-import 'package:conf_world/model/screens/saved_conferences_model.dart';
-import 'package:conf_world/view/widgets/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
-import 'navigation.dart';
+import 'package:conf_world/controller/route_controller.dart';
+import 'package:conf_world/controller/saved_conferences_controller.dart';
+import 'package:conf_world/model/screens/saved_conferences_model.dart';
+import 'package:conf_world/view/widgets/button.dart';
 
 class SavedConferencesState extends StatelessWidget {
   final SavedConferencesController controller = SavedConferencesController();
@@ -25,10 +21,10 @@ class SavedConferencesState extends StatelessWidget {
         ),
         body:
         ListView.builder(
-          itemCount: controller.savedConfs.length + 1,
+          itemCount: controller.savedConferences.length + 1,
 
           itemBuilder: (context, index) {
-            if (index == controller.savedConfs.length) {
+            if (index == controller.savedConferences.length) {
               return FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () => RouteController.navigateHomePage(context),
@@ -36,20 +32,13 @@ class SavedConferencesState extends StatelessWidget {
               );
             }
 
-            final item = controller.savedConfs[index];
+            final item = controller.savedConferences[index];
             return ListTile(
               title: Text(
                 item.name,
-                style: TextStyle(
-                  color: Color(0xffe0aaff),
-                ),
+                style: TextStyle(color: model.textColor),
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Navigation.startLocation(filter: 'false', startLatitude: item.latitude, startLongitude: item.longitude, buttonToClick: item.id)),
-                );
-              },
+              onTap: () =>  RouteController.navigateSavedConferenceDetails(context, item),
             );
           },
         ),

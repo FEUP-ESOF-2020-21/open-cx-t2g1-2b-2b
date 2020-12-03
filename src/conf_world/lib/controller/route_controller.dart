@@ -1,13 +1,13 @@
-import 'package:conf_world/model/screens/saved_conferences_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:conf_world/model/conference_model.dart';
 import 'package:conf_world/view/screens/filter_type.dart';
 import 'package:conf_world/view/screens/home_page.dart';
 import 'package:conf_world/view/screens/navigation.dart';
 import 'package:conf_world/view/screens/saved_conferences.dart';
-import 'package:conf_world/view/widgets/conference_details.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-class RouteController {
+class RouteController { // Ask teacher about this class
   static navigateHomePage(BuildContext context) {
       Navigator.push(
         context,
@@ -29,6 +29,13 @@ class RouteController {
     );
   }
 
+  static navigateSavedConference(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SavedConferencesState()),
+    );
+  }
+
   static navigateWorldMapSaved(BuildContext context) {
     Navigator.push(
       context,
@@ -36,10 +43,11 @@ class RouteController {
     );
   }
 
-  static navigateSavedConference(BuildContext context) {
+  static navigateSavedConferenceDetails(BuildContext context, ConferenceModel conference) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SavedConferencesState()),
+      MaterialPageRoute(builder: (context) =>
+          Navigation(latitude: conference.latitude, longitude: conference.longitude)),
     );
   }
 
@@ -49,6 +57,4 @@ class RouteController {
       MaterialPageRoute(builder: (context) => FilterByType()),
     );
   }
-
-
 }

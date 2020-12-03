@@ -1,9 +1,5 @@
 import 'dart:ui';
 
-import 'package:conf_world/controller/database.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 class ConferenceModel {
   // Conference Details Colors
   final Color colorBackground = Color(0xff3C096C);
@@ -13,8 +9,10 @@ class ConferenceModel {
 
   // Conference Marker Colors
   final Color savedIconColor = Color(0xfffada5e);
+  final Color markerSavedTextColor = Color(0xff3C096C);
+
   final Color normalIconColor = Color(0xff7b2cbf);
-  final Color markerTextColor = Color(0xffe0aaff);
+  final Color markerNormalTextColor = Color(0xffe0aaff);
 
   // Conference Information Fields
   final int id;
@@ -59,6 +57,11 @@ class ConferenceModel {
   getIconColor() {
     if(saved == 1) return savedIconColor;
     else return normalIconColor;
+  }
+
+  getTextColor() {
+    if(saved == 1) return markerSavedTextColor;
+    else return markerNormalTextColor;
   }
 
   isSaved() {

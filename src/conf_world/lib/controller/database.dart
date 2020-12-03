@@ -1,9 +1,6 @@
 import 'dart:convert';
-
+import 'package:conf_world/model/conference_model.dart';
 import 'package:flutter/services.dart';
-
-import '../model/conference_model.dart';
-
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -93,17 +90,5 @@ class DatabaseHelper {
 
   getAllConfs() {
     return conferences;
-  }
-
-  getAllSavedConferences() {
-    var nConf = <ConferenceModel>[];
-
-    for (var i = 0; i < this.conferences.length; i++) {
-      if((this.conferences[i].saved == 1)) {
-        nConf.add(this.conferences[i]);
-      }
-    }
-
-    return nConf;
   }
 }

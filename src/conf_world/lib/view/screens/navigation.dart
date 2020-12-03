@@ -1,84 +1,63 @@
-
-import 'package:conf_world/view/screens/world_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'filter_page.dart';
+
+import 'package:conf_world/model/screens/navigation_model.dart';
+import 'package:conf_world/view/screens/world_map.dart';
+import 'package:conf_world/view/screens/filter_page.dart';
 
 class Navigation extends StatefulWidget {
   final String filter;
-  final double startLatitude;
-  final double startLongitude;
-  final int buttonToClick;
+  final double latitude;
+  final double longitude;
 
-  const Navigation.startLocation({Key key, this.filter = 'false', this.startLatitude, this.startLongitude, this.buttonToClick}) : super(key: key);
-
-  const Navigation({Key key, this.filter = 'false', this.startLatitude = 51.5, this.startLongitude = -0.09, this.buttonToClick = -1}) : super(key: key);
+  const Navigation({Key key, this.filter = 'false', this.latitude = 51.5, this.longitude = -0.09}) : super(key: key);
 
   @override
-  NavigationState createState() => NavigationState(this.filter, this.startLatitude, this.startLongitude, this.buttonToClick);
+  NavigationState createState() => NavigationState(this.filter, this.latitude, this.longitude);
 }
 
 class NavigationState extends State<Navigation> {
-  final Color background = Color(0xff5a189a);
-  final Color iconNavigation = Color(0xffe0aaff);
-  final Color iconActiveNavigation = Color(0xfff3dfff);
+  final NavigationModel model = new NavigationModel();
+  static List<Widget> _widgetOptions;
+  int _selectedIndex = 0;
 
-  // ^ View
-  // -----------
-  // ↓ Controller
+  NavigationState(String filter, double latitude, double longitude) {
+    _widgetOptions = <Widget>[MapRoute(filter: filter, latitude: latitude, longitude: longitude), FilterPage()];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-  // --------
-
-  static List<Widget> _widgetOptions;
-  int _selectedIndex = 0;
-
-  NavigationState(String filter, startLatitude, startLongitude, buttonToClick) {
-    _widgetOptions = <Widget>[MapRoute(filter: filter, latitude: startLatitude, longitude: startLongitude, buttonToClick: buttonToClick), FilterPage()];
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-          title: new Text('World Map'),
-          backgroundColor: background
+          title: new Text(model.appBarText),
+          backgroundColor: model.background
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: iconNavigation
+          for(var info in model.bottomBar)
+            BottomNavigationBarItem(
+              icon: Icon(
+                info[0],
+                color: info[1]
+              ),
+              activeIcon: Icon(
+                  info[2],
+                color: info[3]
+              ),
+              label: info[4],
             ),
-            activeIcon: Icon(
-              Icons.home,
-              color: iconActiveNavigation
-            ),
-            label: 'Map',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: iconNavigation
-            ),
-            activeIcon: Icon(
-              Icons.search,
-              color: iconActiveNavigation
-            ),
-            label: 'Filter Conferences',
-          ),
         ],
         currentIndex: _selectedIndex,
-        backgroundColor: background,
-        selectedItemColor: iconActiveNavigation,
-        unselectedItemColor: iconNavigation,
+        backgroundColor: model.background,
+        selectedItemColor: model.iconActiveNavigation,
+        unselectedItemColor: model.iconNavigation,
         onTap: _onItemTapped,
       ),
     );

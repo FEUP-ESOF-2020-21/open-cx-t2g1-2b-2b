@@ -1,18 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:conf_world/controller/route_controller.dart';
 import 'package:conf_world/model/screens/filter_type_model.dart';
 import 'package:conf_world/view/widgets/button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class FilterByType extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return new FilterByTypeState();
-  }
-}
-
-class FilterByTypeState extends State<FilterByType> {
+class FilterByType extends StatelessWidget {
   final FilterTypeModel model = FilterTypeModel();
 
   @override

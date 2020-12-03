@@ -1,31 +1,30 @@
-
-import 'package:conf_world/controller/world_map_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:flutter/widgets.dart';
+
+import 'package:conf_world/controller/map_conference_controller.dart';
 
 class MapRoute extends StatefulWidget {
   final String filter;
   final double latitude;
   final double longitude;
-  final int buttonToClick;
 
-  const MapRoute({Key key, this.filter = 'false', this.latitude, this.longitude, this.buttonToClick}) : super(key: key);
+  const MapRoute({Key key, this.filter = 'false', this.latitude, this.longitude}) : super(key: key);
 
   @override
-  MapRouteState createState() => MapRouteState(this.filter, this.latitude, this.longitude, this.buttonToClick);
+  MapRouteState createState() => MapRouteState(this.filter, this.latitude, this.longitude);
 }
 
 class MapRouteState extends State<MapRoute> {
-  WorldMapControllerTest controller;
+  MapConferenceController controller;
 
   final double latitude;
   final double longitude;
-  final int buttonToClick;
 
-  MapRouteState(String filter, this.latitude, this.longitude, this.buttonToClick) {
-    this.controller = WorldMapControllerTest(this, filter, this.buttonToClick);
+  MapRouteState(String filter, this.latitude, this.longitude) {
+    this.controller = MapConferenceController(this, filter);
   }
 
   updateMap() {
