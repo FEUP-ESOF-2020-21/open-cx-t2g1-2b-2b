@@ -8,7 +8,7 @@ import 'package:conf_world/controller/database.dart';
 import 'package:conf_world/model/conference_model.dart';
 import 'package:conf_world/view/screens/world_map.dart';
 import 'package:conf_world/view/widgets/conference_details.dart';
-import 'package:conf_world/view/widgets/marker_model.dart';
+import 'package:conf_world/view/widgets/marker_view.dart';
 
 class MapConferenceController {
   MapRouteState view;
@@ -37,7 +37,7 @@ class MapConferenceController {
     var markers = <Marker>[];
 
     for(var conferenceD in conferences) {
-      markers.add(MarkerModel.createMarker(this, conferenceD));
+      markers.add(MarkerView.createMarker(this, conferenceD));
     }
 
     return markers;
