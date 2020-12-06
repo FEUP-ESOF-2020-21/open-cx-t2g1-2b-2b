@@ -1,3 +1,4 @@
+import 'package:conf_world/view/screens/filter_date.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -52,6 +53,13 @@ class RouteController { // Ask teacher about this class
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => FilterByType()),
+    );
+  }
+
+  static navigateWorldMapDate(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => FilterByDate()),
     );
   }
 }
