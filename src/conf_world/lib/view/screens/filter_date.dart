@@ -1,3 +1,4 @@
+import 'package:conf_world/controller/route_controller.dart';
 import 'package:conf_world/model/screens/filter_date_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,12 @@ class FilterByDate extends StatefulWidget {
 }
 
 class FilterByDateState extends State<FilterByDate> {
+
+  DateTime start = DateTime.parse("2020-11-17");
+  DateTime end = DateTime(2020, 11, 24);
+
   DateTimeRange _date = DateTimeRange(
-    start: DateTime(2020, 11, 17),
+    start: DateTime.parse("2020-11-17"),
     end: DateTime(2020, 11, 24),
   );
 
@@ -20,12 +25,14 @@ class FilterByDateState extends State<FilterByDate> {
     final DateTimeRange newDate = await showDateRangePicker(
       context: context,
       initialDateRange: _date,
-      firstDate: DateTime(2017, 1),
-      lastDate: DateTime(2022, 7),
+      firstDate: DateTime(2020, 1),
+      lastDate: DateTime(2022, 1),
       helpText: 'Select a date range',
     );
     if (newDate != null) {
       setState(() {
+        start = newDate.start;
+        end = newDate.end;
         _date = newDate;
       });
     }
@@ -42,13 +49,14 @@ class FilterByDateState extends State<FilterByDate> {
               onPressed: _selectDate,
               child: Text('SELECT DATE RANGE'),
             ),
-            SizedBox(height: 8),
-            Center(
-              child: Text(
-                'Selected date range: \n$_date',
-                textAlign: TextAlign.center,
-              ),
+            ElevatedButton(
+              onPressed: () => RouteController.navigateWorldMapFilter(context, 'date', _date),
+              child: Text('See world map'),
             ),
+            Text(
+              _date.toString(),
+            ),
+            SizedBox(height: 8),
           ],
         ),
       ),

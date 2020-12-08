@@ -7,14 +7,15 @@ import 'package:latlong/latlong.dart';
 import 'package:conf_world/controller/map_conference_controller.dart';
 
 class MapRoute extends StatefulWidget {
-  final String filter;
+  final String type;
+  final dynamic filter;
   final double latitude;
   final double longitude;
 
-  const MapRoute({Key key, this.filter = 'false', this.latitude, this.longitude}) : super(key: key);
+  const MapRoute({Key key, this.type, this.filter, this.latitude, this.longitude}) : super(key: key);
 
   @override
-  MapRouteState createState() => MapRouteState(this.filter, this.latitude, this.longitude);
+  MapRouteState createState() => MapRouteState(this.type, this.filter, this.latitude, this.longitude);
 }
 
 class MapRouteState extends State<MapRoute> {
@@ -23,8 +24,8 @@ class MapRouteState extends State<MapRoute> {
   final double latitude;
   final double longitude;
 
-  MapRouteState(String filter, this.latitude, this.longitude) {
-    this.controller = MapConferenceController(this, filter);
+  MapRouteState(String type, dynamic filter, this.latitude, this.longitude) {
+    this.controller = MapConferenceController(this, type, filter);
   }
 
   updateMap() {

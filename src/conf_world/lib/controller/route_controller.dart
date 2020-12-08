@@ -8,7 +8,7 @@ import 'package:conf_world/view/screens/home_page.dart';
 import 'package:conf_world/view/screens/navigation.dart';
 import 'package:conf_world/view/screens/saved_conferences.dart';
 
-String lastFilter = 'false';
+dynamic lastFilter = 'false';
 
 class RouteController { // Ask teacher about this class
   static navigateHomePage(BuildContext context) {
@@ -21,23 +21,24 @@ class RouteController { // Ask teacher about this class
   static navigateWorldMap(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: lastFilter)),
+      MaterialPageRoute(builder: (context) => Navigation(type: 'false', filter: lastFilter)),
     );
   }
+
+  static navigateWorldMapFilter(BuildContext context, String type, dynamic filterBy) {
+    lastFilter = filterBy;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Navigation(type: type, filter: filterBy)),
+    );
+  }
+
 
   static navigateSavedConference(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => SavedConferencesState()),
-    );
-  }
-
-  static navigateWorldMapFilter(BuildContext context, String filterBy) {
-    lastFilter = filterBy;
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: filterBy)),
     );
   }
 
