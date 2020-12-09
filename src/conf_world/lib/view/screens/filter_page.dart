@@ -28,7 +28,7 @@ class FilterPage extends StatelessWidget {
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: () => RouteController.navigateWorldMapFilter(context, "saved", "null"),
+            onPressed: () => RouteController.navigateWorldMapFilter(context, model.typeC, "null"),
             child: MyButton(name: model.optionC),
           ),
           FlatButton(

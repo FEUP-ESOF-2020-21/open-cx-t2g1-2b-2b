@@ -7,9 +7,9 @@ class FilterConferenceModel {
   final String optionA = 'Type';
 
   final String typeB = '';
-  final String optionB = 'Date - To Do';
+  final String optionB = 'Date';
 
-  final String typeC = 'SAVED';
+  final String typeC = 'saved';
   final String optionC = 'Saved Conferences';
 
   final String typeD = 'false';
