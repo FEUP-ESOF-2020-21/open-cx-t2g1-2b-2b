@@ -427,7 +427,7 @@ In order to develop this project, we decided to organize and structure our code 
 
 ![Physical Architecture Diagram](./img/physical-architecture.png)
 
-Our project's physical structure is very simple and relies in only one blocks. 
+Our project's physical structure is very simple and relies in only one block. 
 Since all of the app information is stored in a local database, our app will only execute queries to select, update and insert conferences on the SQLite database.
 
 We choose use SQLite database due to its simplicity and the good integration with flutter. 
