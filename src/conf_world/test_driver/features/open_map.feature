@@ -6,6 +6,6 @@ Feature: Open World Map
 
     Scenario: User Taps Open World Map button
         Given There is a "See World Map" button
-        When I tap the View Map button
+        When I tap the "See World Map" button
         Then The world map will open
         And I will see all conferences represented by pinpoints

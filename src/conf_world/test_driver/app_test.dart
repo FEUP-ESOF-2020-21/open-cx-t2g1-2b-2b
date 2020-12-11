@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
-import 'step/open_map_button.dart';
+import 'step/open_map.dart';
 
 Future<void> main() {
   final config = FlutterTestConfiguration()
@@ -13,7 +13,7 @@ Future<void> main() {
       JsonReporter(path: './report.json')
     ]
     ..hooks = []
-    ..stepDefinitions = [ThereIsAViewMapButton()]
+    ..stepDefinitions = [ThereIsAViewMapButton(), UserTapsMapButton(), OpenWorldMap(), AllConferences()]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = "test_driver/app.dart"

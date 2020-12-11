@@ -40,7 +40,8 @@ class ConferencePinpoint extends StatelessWidget {
 
             transform: Matrix4.translationValues(0.0, -45.0, 0),
           ),
-        ]
+        ],
+      key: Key("pinpoint"),
     );
   }
 }
