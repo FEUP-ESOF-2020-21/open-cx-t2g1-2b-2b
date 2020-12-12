@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MyButton extends StatelessWidget {
-  final Color textColor = Color(0xffe0aaff);
-  final Color boxColor = Color(0xff5a189a);
+  final Color textColor = Color(0xffF4845F);
+  final Color boxColor = Color(0xFF212121);
   final String name;
 
   MyButton({Key key, this.name}) : super(key: key);

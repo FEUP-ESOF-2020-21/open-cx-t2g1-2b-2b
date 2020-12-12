@@ -14,6 +14,7 @@ class HomePageState extends StatelessWidget {
         backgroundColor: model.backgroundColor,
         appBar: AppBar(
           title: Text(model.appBarText),
+          shadowColor: Color(0xffF4845F),
           centerTitle: true,
           backgroundColor: model.appBarBackgroundColor,
         ),

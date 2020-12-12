@@ -34,16 +34,15 @@ class FilterByDateState extends State<FilterByDate> {
         return Theme(
           data: ThemeData(
             brightness: Brightness.dark,
-            primaryColor: Color(0xff5a189a),
-            accentColor: Color(0xff5a189a),
+            primaryColor: Color(0xFF212121),
             colorScheme: ColorScheme.dark(
-              primary: Color(0xffe0aaff),
-              onPrimary: Colors.black,
-              surface: Color(0xffe0aaff),
-              onSurface: Color(0xffe0aaff),
+              primary: Color(0xffF4845F),
+              onPrimary: Color(0xFF212121),
+              surface: Color(0xFF212121),
+              onSurface: Color(0xffF4845F),
             ),
-            dialogBackgroundColor: Color(0xffe0aaff),
           ),
+
           child: child,
         );
       },
@@ -61,11 +60,11 @@ class FilterByDateState extends State<FilterByDate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple,
+      backgroundColor: Color(0xFF212121),
       appBar: AppBar(
         title: Text("Choose Date"),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color(0xffF4845F),
       ),
       body: Column(
             mainAxisAlignment: MainAxisAlignment.center,

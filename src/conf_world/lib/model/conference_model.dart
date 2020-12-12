@@ -8,11 +8,11 @@ class ConferenceModel {
   final Color detailsTextColor = Color(0xffffffff);
 
   // Conference Marker Colors
-  final Color savedIconColor = Color(0xfffada5e);
-  final Color markerSavedTextColor = Color(0xff3C096C);
+  final Color savedIconColor = Color(0xffF4845F);
+  final Color markerSavedTextColor = Color(0xffffffff);
 
-  final Color normalIconColor = Color(0xff7b2cbf);
-  final Color markerNormalTextColor = Color(0xffe0aaff);
+  final Color normalIconColor = Color(0xff303030);
+  final Color markerNormalTextColor = Color(0xffffffff);
 
   // Conference Information Fields
   final int id;

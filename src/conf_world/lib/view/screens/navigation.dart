@@ -37,7 +37,7 @@ class NavigationState extends State<Navigation> {
     return new Scaffold(
       appBar: new AppBar(
           title: new Text(model.appBarText),
-          backgroundColor: model.background
+          backgroundColor: model.appBarColor,
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
