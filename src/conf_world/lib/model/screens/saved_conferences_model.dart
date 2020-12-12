@@ -8,6 +8,6 @@ class SavedConferencesModel {
 
   final String boxConferenceText = 'Go to World Map';
   final Color boxColor = Color(0xff212121);
-  final String backButton = 'Back to Confi World';
+  final String backButton = 'Back to Conf World';
 }
 
