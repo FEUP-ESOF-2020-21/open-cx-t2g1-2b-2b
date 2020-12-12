@@ -21,17 +21,9 @@ class SavedConferencesState extends StatelessWidget {
         ),
         body:
         ListView.builder(
-          itemCount: controller.savedConferences.length + 1,
+          itemCount: controller.savedConferences.length,
 
           itemBuilder: (context, index) {
-            if (index == controller.savedConferences.length) {
-              return FlatButton(
-                padding: EdgeInsets.zero,
-                onPressed: () => RouteController.navigateHomePage(context),
-                child: MyButton(name: model.backButton),
-              );
-            }
-
             final item = controller.savedConferences[index];
             return ListTile(
               title: Text(

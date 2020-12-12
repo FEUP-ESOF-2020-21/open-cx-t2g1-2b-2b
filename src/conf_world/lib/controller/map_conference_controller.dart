@@ -70,8 +70,8 @@ class MapConferenceController {
     var allConferences = database.getAllConfs();
 
     for(var conferenceD in allConferences) {
-      if (date.start.isBefore(DateTime.parse(conferenceD.submitPaper))) {
-        if (date.end.isAfter(DateTime.parse(conferenceD.date))) {
+      if (date.start.isBefore(DateTime.parse(conferenceD.submitPaper)) || date.start.isAtSameMomentAs(DateTime.parse(conferenceD.submitPaper))) {
+        if (date.end.isAfter(DateTime.parse(conferenceD.date)) || date.end.isAtSameMomentAs(DateTime.parse(conferenceD.date))) {
           nFilterConf.add(conferenceD);
         }
       }

@@ -2,9 +2,9 @@ import 'dart:ui';
 
 class ConferenceModel {
   // Conference Details Colors
-  final Color colorBackground = Color(0xff3C096C);
-  final Color colorForeground = Color(0xff5a189a);
-  final Color informationColor = Color(0xffe0aaff);
+  final Color colorBackground = Color(0xff212121);
+  final Color colorForeground = Color(0xff303030);
+  final Color informationColor = Color(0xffffffff);
   final Color detailsTextColor = Color(0xffffffff);
 
   // Conference Marker Colors

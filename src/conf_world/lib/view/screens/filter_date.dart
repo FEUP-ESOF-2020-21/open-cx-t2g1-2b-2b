@@ -6,13 +6,12 @@ import 'package:flutter/material.dart';
 
 
 class FilterByDate extends StatefulWidget {
-  final FilterDateModel model = FilterDateModel();
-
   @override
   FilterByDateState createState() => FilterByDateState();
 }
 
 class FilterByDateState extends State<FilterByDate> {
+  final FilterDateModel model = FilterDateModel();
 
   DateTime start = DateTime.now();
   DateTime end = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 30);
@@ -57,28 +56,55 @@ class FilterByDateState extends State<FilterByDate> {
     }
   }
 
+  Widget buildImage(BuildContext context) {
+    return Image(image: AssetImage('assets/img/calendar.png'));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF212121),
+      backgroundColor: model.backgroundColor,
       appBar: AppBar(
-        title: Text("Choose Date"),
+        title: Text(model.appBarName),
         centerTitle: true,
-        backgroundColor: Color(0xffF4845F),
+        backgroundColor: model.appBarBackgroundColor,
       ),
-      body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body:
+      Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              buildImage(context),
+            Align(
+              alignment: Alignment.topCenter,
+              child: OutlineButton(
+                child: Text('Selected First Date: '+ _date.start.year.toString() + '/'+ _date.start.month.toString() + '/'+ _date.start.day.toString(),
+                  style: TextStyle(
+                      color: Color(0xffF4845F),
+                      fontSize: 20),
+                ),
+              ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: OutlineButton(
+                child: Text('Selected End Date: ' + _date.end.year.toString() + '/'+ _date.end.month.toString() + '/'+ _date.end.day.toString(),
+                  style: TextStyle(
+                  color: Color(0xffF4845F),
+                      fontSize: 20),
+                  ),
+                ),
+              ),
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: _selectDate,
-                child: MyButton(name: 'Select Date'),
+                child: MyButton(name: model.optionA),
               ),
             FlatButton(
               padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, 'date', _date),
-              child: MyButton(name: 'See world map'),
+              onPressed: () => RouteController.navigateWorldMapFilter(context, model.typeA, _date),
+              child: MyButton(name: model.optionB),
             ),
           ],
         ),
