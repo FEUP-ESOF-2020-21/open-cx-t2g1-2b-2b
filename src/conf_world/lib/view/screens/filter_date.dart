@@ -4,7 +4,6 @@ import 'package:conf_world/view/widgets/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class FilterByDate extends StatefulWidget {
   @override
   FilterByDateState createState() => FilterByDateState();
@@ -81,7 +80,7 @@ class FilterByDateState extends State<FilterByDate> {
               child: OutlineButton(
                 child: Text('Selected First Date: '+ _date.start.year.toString() + '/'+ _date.start.month.toString() + '/'+ _date.start.day.toString(),
                   style: TextStyle(
-                      color: Color(0xffF4845F),
+                      color: model.textDateColor,
                       fontSize: 20),
                 ),
               ),
@@ -91,7 +90,7 @@ class FilterByDateState extends State<FilterByDate> {
                 child: OutlineButton(
                 child: Text('Selected End Date: ' + _date.end.year.toString() + '/'+ _date.end.month.toString() + '/'+ _date.end.day.toString(),
                   style: TextStyle(
-                  color: Color(0xffF4845F),
+                  color: model.textDateColor,
                       fontSize: 20),
                   ),
                 ),
