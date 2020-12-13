@@ -14,20 +14,80 @@ class MapConferenceController {
   MapRouteState view;
   List<ConferenceModel> conferences;
 
-  MapConferenceController(this.view, String filter) {
-    conferences = _initConf(filter);
+  MapConferenceController(this.view, String type, dynamic filter) {
+    conferences = _initConf(type, filter);
   }
 
-  _initConf(String filter) {
+  _initConf(String type, dynamic filter) {
+    if(type == 'type') {
+      return getAllConfType(filter);
+    }
+    else if (type == 'saved') {
+      return getAllConfSaved();
+    }
+    else if(type == 'date') {
+      return getAllConfDate(filter);
+    }
+    else if (type == 'false') {
+      return getAllConf();
+    }
+  }
+
+  getAllConfType(String filter) {
     var nFilterConf = <ConferenceModel>[];
 
     DatabaseHelper database = new DatabaseHelper();
     var allConferences = database.getAllConfs();
 
     for(var conferenceD in allConferences) {
-      if((filter == conferenceD.type) || (filter == 'false') || ((filter == 'SAVED') && (conferenceD.saved == 1))) {
+      if(filter == conferenceD.type) {
         nFilterConf.add(conferenceD);
       }
+    }
+
+    return nFilterConf;
+  }
+
+  getAllConfSaved() {
+    var nFilterConf = <ConferenceModel>[];
+
+    DatabaseHelper database = new DatabaseHelper();
+    var allConferences = database.getAllConfs();
+
+    for(var conferenceD in allConferences) {
+      if(conferenceD.saved == 1) {
+        nFilterConf.add(conferenceD);
+      }
+    }
+
+    return nFilterConf;
+  }
+
+  getAllConfDate(DateTimeRange date) {
+    var nFilterConf = <ConferenceModel>[];
+
+    DatabaseHelper database = new DatabaseHelper();
+    var allConferences = database.getAllConfs();
+
+    for(var conferenceD in allConferences) {
+      if (date.start.isBefore(DateTime.parse(conferenceD.submitPaper)) || date.start.isAtSameMomentAs(DateTime.parse(conferenceD.submitPaper))) {
+        if (date.end.isAfter(DateTime.parse(conferenceD.date)) || date.end.isAtSameMomentAs(DateTime.parse(conferenceD.date))) {
+          nFilterConf.add(conferenceD);
+        }
+      }
+    }
+
+    return nFilterConf;
+  }
+
+  getAllConf() {
+    var nFilterConf = <ConferenceModel>[];
+
+    DatabaseHelper database = new DatabaseHelper();
+    var allConferences = database.getAllConfs();
+
+    for(var conferenceD in allConferences) {
+      nFilterConf.add(conferenceD);
     }
 
     return nFilterConf;

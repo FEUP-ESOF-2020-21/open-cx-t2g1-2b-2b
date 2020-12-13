@@ -23,12 +23,12 @@ class FilterByType extends StatelessWidget {
           children: <Widget> [
             FlatButton(
               padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, model.type1),
+              onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type1),
               child: MyButton(name: model.type1Name),
             ),
             FlatButton(
               padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, model.type2),
+              onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type2),
               child: MyButton(name: model.type2Name),
             ),
           ]
