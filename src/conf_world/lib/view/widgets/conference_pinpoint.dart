@@ -14,11 +14,12 @@ class ConferencePinpoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Stack(
+        key: Key("pinpoint"),
         children: [
           new Container(
             alignment: Alignment.center,
             child: IconButton(
-              key: Key("pinpoint"),
+              key: Key(model.type),
               tooltip: 'conference-id=' + model.id.toString(),
               icon: Icon(Icons.location_pin),
               color: model.getIconColor(),

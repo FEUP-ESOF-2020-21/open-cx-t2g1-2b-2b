@@ -22,6 +22,7 @@ class FilterByType extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget> [
             FlatButton(
+              key: Key(model.type1),
               padding: EdgeInsets.zero,
               onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type1),
               child: MyButton(name: model.type1Name),

@@ -15,8 +15,8 @@ void main() {
   DatabaseHelper db = new DatabaseHelper();
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Color(0xff5a189a),
-    systemNavigationBarDividerColor: Color(0xff5a189a),
+    systemNavigationBarColor: Color(0xFF212121),
+    systemNavigationBarDividerColor: Color(0xffF4845F),
 
     statusBarIconBrightness: Brightness.light,
   ));

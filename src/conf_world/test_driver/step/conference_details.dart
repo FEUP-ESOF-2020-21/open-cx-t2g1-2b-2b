@@ -10,7 +10,6 @@ class PinpointScreen extends GivenWithWorld<FlutterWorld> {
 
     final pinpointLocator = find.byValueKey("pinpoint");
     var locatorExists = await FlutterDriverUtils.isPresent(world.driver, pinpointLocator);
-
     expectMatch(true, locatorExists);
   }
 
@@ -37,8 +36,8 @@ class ConferenceDetails extends ThenWithWorld<FlutterWorld> {
   @override
   Future<void> executeStep() async {
     final locator = find.byValueKey('conference-details');
-    var locatorExists = await FlutterDriverUtils.isPresent(world.driver, locator);
 
+    var locatorExists = await FlutterDriverUtils.isPresent(world.driver, locator);
     expectMatch(true, locatorExists);
   }
 
