@@ -22,26 +22,28 @@ class HomePageState extends StatelessWidget {
           centerTitle: true,
           backgroundColor: model.appBarBackgroundColor,
         ),
-        body:
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildImage(context),
-                FlatButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () => RouteController.navigateWorldMap(context),
-                  child: MyButton(name: model.optionA),
-                ),
-                FlatButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () => RouteController.navigateSavedConference(context),
-                  child: MyButton(name: model.optionB),
-                ),
-              ],
-            ),
-        )
-    );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  width: MediaQuery.of(context).size.width * 0.93,
+                  height: MediaQuery.of(context).size.height * 0.65,
+                  child: buildImage(context)),
+              FlatButton(
+                padding: EdgeInsets.zero,
+                onPressed: () => RouteController.navigateWorldMap(context),
+                child: MyButton(name: model.optionA),
+              ),
+              FlatButton(
+                padding: EdgeInsets.zero,
+                onPressed: () =>
+                    RouteController.navigateSavedConference(context),
+                child: MyButton(name: model.optionB),
+              ),
+            ],
+          ),
+        ));
   }
 }
