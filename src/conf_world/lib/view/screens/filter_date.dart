@@ -13,12 +13,13 @@ class FilterByDateState extends State<FilterByDate> {
   final FilterDateModel model = FilterDateModel();
 
   DateTime start = DateTime.now();
-  DateTime end = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 30);
+  DateTime end = DateTime(
+      DateTime.now().year, DateTime.now().month, DateTime.now().day + 30);
 
   DateTimeRange _date = DateTimeRange(
       start: DateTime.now(),
-      end: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 30)
-  );
+      end: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day + 30));
 
   void _selectDate() async {
     final DateTimeRange newDate = await showDateRangePicker(
@@ -40,11 +41,9 @@ class FilterByDateState extends State<FilterByDate> {
               onSurface: Color(0xffF4845F),
             ),
           ),
-
           child: child,
         );
       },
-
     );
     if (newDate != null) {
       setState(() {
@@ -59,7 +58,6 @@ class FilterByDateState extends State<FilterByDate> {
     return Image(image: AssetImage('assets/img/calendar.png'));
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,44 +67,62 @@ class FilterByDateState extends State<FilterByDate> {
         centerTitle: true,
         backgroundColor: model.appBarBackgroundColor,
       ),
-      body:
-      Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              buildImage(context),
-            Align(
-              alignment: Alignment.topCenter,
-              child: OutlineButton(
-                child: Text('Selected First Date: '+ _date.start.year.toString() + '/'+ _date.start.month.toString() + '/'+ _date.start.day.toString(),
-                  style: TextStyle(
-                      color: model.textDateColor,
-                      fontSize: 20),
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+              alignment: Alignment.center,
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: buildImage(context)),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              child: Text(
+                'Selected First Date: ' +
+                    _date.start.year.toString() +
+                    '/' +
+                    _date.start.month.toString() +
+                    '/' +
+                    _date.start.day.toString(),
+                style: TextStyle(color: model.textDateColor, fontSize: 20),
               ),
-              ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: OutlineButton(
-                child: Text('Selected End Date: ' + _date.end.year.toString() + '/'+ _date.end.month.toString() + '/'+ _date.end.day.toString(),
-                  style: TextStyle(
-                  color: model.textDateColor,
-                      fontSize: 20),
-                  ),
-                ),
-              ),
-              FlatButton(
-                padding: EdgeInsets.zero,
-                onPressed: _selectDate,
-                child: MyButton(name: model.optionA),
-              ),
-            FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, model.typeA, _date),
-              child: MyButton(name: model.optionB),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              child: Text(
+                'Selected End Date: ' +
+                    _date.end.year.toString() +
+                    '/' +
+                    _date.end.month.toString() +
+                    '/' +
+                    _date.end.day.toString(),
+                style: TextStyle(color: model.textDateColor, fontSize: 20),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: _selectDate,
+            child: MyButton(name: model.optionA),
+          ),
+          FlatButton(
+            padding: EdgeInsets.zero,
+            onPressed: () => RouteController.navigateWorldMapFilter(
+                context, model.typeA, _date),
+            child: MyButton(name: model.optionB),
+          ),
+        ],
+      ),
     );
   }
 }
