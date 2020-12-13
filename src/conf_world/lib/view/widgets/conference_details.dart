@@ -57,6 +57,7 @@ class ConfDetails extends State<ConferenceDetails> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: Key("conference-details"),
       padding: const EdgeInsets.all(8.0),
       color: model.colorBackground,
       child: Column(

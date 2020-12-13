@@ -47,6 +47,7 @@ class MapRouteState extends State<MapRoute> {
           markers: controller.getMarkers()
         ),
       ],
+      key: Key("world-map"),
     );
   }
 }
