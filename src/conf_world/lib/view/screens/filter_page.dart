@@ -23,17 +23,17 @@ class FilterPage extends StatelessWidget {
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: null,
+            onPressed: () => RouteController.navigateWorldMapDate(context),
             child: MyButton(name: model.optionB),
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: () => RouteController.navigateWorldMapFilter(context, model.typeC),
+            onPressed: () => RouteController.navigateWorldMapFilter(context, model.typeC, "null"),
             child: MyButton(name: model.optionC),
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: () => RouteController.navigateWorldMapFilter(context, model.typeD),
+            onPressed: () => RouteController.navigateWorldMapFilter(context, "false", model.typeD),
             child: MyButton(name: model.optionD),
           ),
         ],

@@ -42,7 +42,7 @@ class DatabaseHelper {
 
   Future<void> initDatabase() async{
     db = await openDatabase(
-        join(await getDatabasesPath(), "conferencesda.db"),
+        join(await getDatabasesPath(), "conferencesdab.db"),
         onCreate: (db, version) async {
           await db.execute("CREATE TABLE Conference("
               "id INTEGER PRIMARY KEY AUTOINCREMENT, "

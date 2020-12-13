@@ -1,3 +1,4 @@
+import 'package:conf_world/view/screens/filter_date.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,20 +8,31 @@ import 'package:conf_world/view/screens/home_page.dart';
 import 'package:conf_world/view/screens/navigation.dart';
 import 'package:conf_world/view/screens/saved_conferences.dart';
 
-String lastFilter = 'false';
+dynamic lastFilter = 'false';
 
-class RouteController { // Ask teacher about this class
+class RouteController {
+  // Ask teacher about this class
   static navigateHomePage(BuildContext context) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => HomePageState()), (_) => false
-      );
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => HomePageState()), (_) => false);
   }
 
   static navigateWorldMap(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: lastFilter)),
+      MaterialPageRoute(
+          builder: (context) => Navigation(type: 'false', filter: lastFilter)),
+    );
+  }
+
+  static navigateWorldMapFilter(
+      BuildContext context, String type, dynamic filterBy) {
+    lastFilter = filterBy;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+          builder: (context) => Navigation(type: type, filter: filterBy)),
     );
   }
 
@@ -31,20 +43,16 @@ class RouteController { // Ask teacher about this class
     );
   }
 
-  static navigateWorldMapFilter(BuildContext context, String filterBy) {
-    lastFilter = filterBy;
-
+  static navigateSavedConferenceDetails(
+      BuildContext context, ConferenceModel conference) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Navigation(filter: filterBy)),
-    );
-  }
-
-  static navigateSavedConferenceDetails(BuildContext context, ConferenceModel conference) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) =>
-          Navigation(latitude: conference.latitude, longitude: conference.longitude)),
+      MaterialPageRoute(
+          builder: (context) => Navigation(
+              type: 'false',
+              filter: 'false',
+              latitude: conference.latitude,
+              longitude: conference.longitude)),
     );
   }
 
@@ -52,6 +60,13 @@ class RouteController { // Ask teacher about this class
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => FilterByType()),
+    );
+  }
+
+  static navigateWorldMapDate(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => FilterByDate()),
     );
   }
 }
