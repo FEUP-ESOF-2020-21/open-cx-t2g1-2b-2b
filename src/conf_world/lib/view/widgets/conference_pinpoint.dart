@@ -18,6 +18,8 @@ class ConferencePinpoint extends StatelessWidget {
           new Container(
             alignment: Alignment.center,
             child: IconButton(
+              key: Key("pinpoint"),
+              tooltip: 'conference-id=' + model.id.toString(),
               icon: Icon(Icons.location_pin),
               color: model.getIconColor(),
               iconSize: 40.0,
@@ -41,7 +43,6 @@ class ConferencePinpoint extends StatelessWidget {
             transform: Matrix4.translationValues(0.0, -45.0, 0),
           ),
         ],
-      key: Key("pinpoint"),
     );
   }
 }

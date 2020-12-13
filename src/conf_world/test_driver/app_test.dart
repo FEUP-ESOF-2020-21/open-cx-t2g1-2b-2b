@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
+import 'step/conference_details.dart';
 import 'step/open_map.dart';
 
 Future<void> main() {
@@ -13,7 +14,10 @@ Future<void> main() {
       JsonReporter(path: './report.json')
     ]
     ..hooks = []
-    ..stepDefinitions = [ThereIsAViewMapButton(), UserTapsMapButton(), OpenWorldMap(), AllConferences()]
+    ..stepDefinitions = [
+      ThereIsAViewMapButton(), UserTapsMapButton(), OpenWorldMap(), AllConferences(), // Open Map
+      PinpointScreen(), TapPinpoint(), ConferenceDetails(), // Conference Details
+    ]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = "test_driver/app.dart"
