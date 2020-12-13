@@ -28,9 +28,17 @@ class HomePageState extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  width: MediaQuery.of(context).size.width * 0.93,
-                  height: MediaQuery.of(context).size.height * 0.65,
+                  alignment: Alignment.topCenter,
+                  width: MediaQuery.of(context).size.width *
+                      MediaQuery.of(context).devicePixelRatio *
+                      0.31,
+                  height: MediaQuery.of(context).size.height *
+                      MediaQuery.of(context).devicePixelRatio *
+                      0.15,
                   child: buildImage(context)),
+              SizedBox(
+                height: 50,
+              ),
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () => RouteController.navigateWorldMap(context),
