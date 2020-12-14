@@ -11,7 +11,6 @@ import 'package:conf_world/view/screens/saved_conferences.dart';
 dynamic lastFilter = 'false';
 
 class RouteController {
-  // Ask teacher about this class
   static navigateHomePage(BuildContext context) {
     Navigator.pushAndRemoveUntil(context,
         MaterialPageRoute(builder: (context) => HomePageState()), (_) => false);

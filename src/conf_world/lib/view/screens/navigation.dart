@@ -11,7 +11,7 @@ class Navigation extends StatefulWidget {
   final double latitude;
   final double longitude;
 
-  const Navigation({Key key, this.type, this.filter, this.latitude = 51.5, this.longitude = -0.09}) : super(key: key);
+  const Navigation({Key key, this.type, this.filter, this.latitude = 51.52, this.longitude = -0.12}) : super(key: key);
 
   @override
   NavigationState createState() => NavigationState(this.type, this.filter, this.latitude, this.longitude);

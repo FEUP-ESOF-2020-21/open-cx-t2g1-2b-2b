@@ -1,14 +1,20 @@
 import 'package:conf_world/model/screens/filter_type_model.dart';
 
+import 'database.dart';
+
 class FilterTypeController {
   FilterTypeModel model;
+  DatabaseHelper database;
 
   FilterTypeController(FilterTypeModel model) {
     this.model = model;
+
+    this.database = new DatabaseHelper();
   }
 
   updateConferences() {
-    model.addType('CS', 'Computer Science Conferences');
-    model.addType('MATH', 'Math Conferences');
+    List<String> types = database.getConferenceType();
+
+    model.setType(types);
   }
 }

@@ -6,6 +6,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   var conferences = <ConferenceModel>[];
+  List<String> conferenceTypes = [];
 
   bool _onCreate = false;
   Database db; //sqlite db
@@ -37,12 +38,13 @@ class DatabaseHelper {
       }
     }
 
-    this.conferences = await getAllTask();
+    this.conferences = await _getAllTask();
+    this.conferenceTypes = _getAllTypes();
   }
 
   Future<void> initDatabase() async{
     db = await openDatabase(
-        join(await getDatabasesPath(), "conferencesdab.db"),
+        join(await getDatabasesPath(), "conferences-details.db"),
         onCreate: (db, version) async {
           await db.execute("CREATE TABLE Conference("
               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -80,7 +82,7 @@ class DatabaseHelper {
     );
   }
 
-  Future<List<ConferenceModel>> getAllTask() async{
+  Future<List<ConferenceModel>> _getAllTask() async{
     final List<Map<String, dynamic>> tasks = await db.query("Conference");
 
     return List.generate(tasks.length, (i) {
@@ -88,7 +90,23 @@ class DatabaseHelper {
     });
   }
 
-  getAllConfs() {
+  _getAllTypes() {
+    List<String> ret = [];
+
+    for(var conf in conferences) {
+      if(!ret.contains(conf.type)) {
+        ret.add(conf.type);
+      }
+    }
+
+    return ret;
+  }
+
+  getAllConferences() {
     return conferences;
+  }
+
+  getConferenceType() {
+    return conferenceTypes;
   }
 }

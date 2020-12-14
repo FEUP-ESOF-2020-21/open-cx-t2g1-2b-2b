@@ -38,6 +38,8 @@ class MapRouteState extends State<MapRoute> {
       options: new MapOptions(
         center: new LatLng(latitude, longitude),
         zoom: 13.0,
+        minZoom: 5.0,
+        maxZoom: 18.0,
       ),
       layers: [
         new TileLayerOptions(
