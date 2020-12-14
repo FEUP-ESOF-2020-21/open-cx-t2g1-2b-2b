@@ -506,12 +506,28 @@ To ensure the application is working properly, we have decided to add Unit Tests
 
 Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
 
-We have currently not implemented any automated acceptance tests using gherkin.
+Acceptance Tests are used to verify the expected output through statements that describe all of the actions the user must take to permform a task, and the result of those actions. These tests were implemented using *Gherkin* language, through the `flutter_gherkin` dependency.
 
-The planned features to be tested are the following:
+Both these tests involve a large ammount of work, however, they provide a long-term benefit to the project, making it easier to detect bugs in the future.
+
+Implemented acceptance tests:
+  - Conference Details
+  - Filter Conferences By Type
+  - Open World Map
+
+Implemented Unit Tests:
+  - See World Map
+  - Filter Conferences Button
+  - Filter Conferences by Type
+  - See World Map Without Filters
+  - Default Navigation State
+  - Navigation between States 
+  - Switching to Filter Conferences State
+  - Switching to Filter Conferences State and back to Home
+
+There are still many tests that can be tested in the future. The planned features to be tested are the following:
 
 - Saved Conferences local database persistent data storage.
-- Conference filtering works accordingly.
 - Pressing a Conference in Saved Conferences Menu redirects to the world map with the chosen conference centered.
 
 ---
