@@ -426,9 +426,9 @@ In order to develop this project, we decided to organize and structure our code 
 
 Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like homepage on the smartphone screen.
 
-The Model contains all of the application data. It have the color schemes, button text and other data fields that will be displayed on View.
+The Model contains all the application data. It has the color schemes, button text and other data fields that will be displayed on View.
 
-The Controller processes the received information from user actions. This actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user add one conference to favorite).
+The Controller processes the received information from user actions. This actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
 
 ### Physical architecture
 
