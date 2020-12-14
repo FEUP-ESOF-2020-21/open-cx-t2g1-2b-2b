@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:conf_world/controller/map_conference_controller.dart';
 import 'package:conf_world/model/conference_model.dart';
 

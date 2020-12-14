@@ -20,20 +20,20 @@ class HomePageState extends StatelessWidget {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                   alignment: Alignment.topCenter,
                   width: MediaQuery.of(context).size.width *
                       MediaQuery.of(context).devicePixelRatio *
-                      0.31,
+                      0.32,
                   height: MediaQuery.of(context).size.height *
                       MediaQuery.of(context).devicePixelRatio *
-                      0.15,
+                      0.22,
                   child: Image(image: AssetImage('assets/img/logo.png'))),
               SizedBox(
-                height: 50,
+                height: 0,
               ),
               FlatButton(
                 padding: EdgeInsets.zero,
