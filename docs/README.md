@@ -117,6 +117,9 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### User stories
 
+#### User Story Map
+![User Story Map](./img/user-story-map.png)
+
 #### Story 1
 
 *As a user, I want to open up the map, so that I can see all the available conferences next to me.*
@@ -157,30 +160,42 @@ Scenario:
 **Acceptance tests**.
 ```gherkin
 Scenario:
-  Given I have selected a conference on the Map
-  And I am Logged In.
+  Given I have selected a conference on the map
+  And I am Logged In
   When I tap the save conference button.
   Then The app will save my conference in the cloud
-  And I will be able to access it in the saved menu.
+  And The conference pinpoint will have another color
 ```
 
 ```gherkin
 Scenario:
-  Given I have selected a conference on the Map
-  And I am Logged In.
-  When I tap the save conference button.
+  Given I have selected a conference on the map
+  And I am Logged In
+  When I tap the save conference button
   And the conference is already saved
-  Then The the conference will be removed from my saved conference list
+  Then The conference will be removed from my saved conference list
+  And The conference will appear with a regular color
 ```
 
 ```gherkin
 Scenario:
-  Given I have selected a conference on the Map
-  And I am not Logged In.
-  When I tap the save conference button.
+  Given I have selected a conference on the map
+  And I am not Logged In
+  When I tap the save conference button
   Then The app will save my conference locally
-  And I will be able to access it in the saved menu.
+  And The conference pinpoint will have another color
 ```
+
+```gherkin
+Scenario:
+  Given I have selected a conference on the map
+  And I am not Logged In
+  When I tap the save conference button
+  And the conference is already saved
+  Then The conference will be removed from my saved conference list
+  And The conference will appear with a regular color
+```
+
 
 
 **Value and effort**.
@@ -204,16 +219,16 @@ Scenario:
 ```gherkin
 Scenario:
   Given I have the conference pinpoint on my screen
-  When I tap a conference's pinpoint.
-  Then I will be able to see all the information about it.
+  When I tap a conference's pinpoint
+  Then I will be able to see all the information about it
 ```
 
 ```gherkin
 Scenario:
   Given I have the conference pinpoint on my screen
-  When I tap a conference's pinpoint.
-  And I press the conference website URL.
-  Then I will be redirected to the conference's website.
+  When I tap a conference's pinpoint
+  And I press the conference website URL
+  Then I will be redirected to the conference's website
   
 ```
 
@@ -239,7 +254,7 @@ Scenario:
 ```gherkin
 Scenario:
   Given I am in the Filter Conference Menu
-  When I tap the Date button.
+  When I tap the Date button
   And Enter a timespan
   Then The app will show me all conferences that occurr within that timespawn
 ```
@@ -263,11 +278,11 @@ Scenario:
 **Acceptance tests**.
 ```gherkin
 Scenario:
-  Given I am on the Filtering Menu.
-  When I tap the Type button.
-  And I select a conference type.
-  Then The world map will only show pinpoints with conferences regarding the selected type.
-  And I will be able to select the conference.
+  Given I am on the Filtering Menu
+  When I tap the Type button
+  And I select a conference type
+  Then The world map will only show pinpoints with conferences regarding the selected type
+  And I will be able to select the conference
 ```
 
 **Value and effort**.
@@ -289,29 +304,53 @@ Scenario:
 **Acceptance tests**.
 ```gherkin
 Scenario:
-  Given I am on the Filtering Menu.
-  When I tap the Saved Conferencees button.
+  Given I am on the Filtering Menu
+  When I tap the Saved Conferences button
   And I am logged in
   Then The world map will only show pinpoints with saved conferences on the cloud
-  And I will be able to view my saved conferences.
+  And I will be able to view my saved conferences
 ```
 
 ```gherkin
 Scenario:
-  Given I am on the Filtering Menu.
-  When I tap the Saved Conferencees button.
+  Given I am on the Filtering Menu
+  When I tap the Saved Conferences button
   And I am not logged in
   Then The world map will only show pinpoints with saved conferences locally
-  And I will be able to view my saved conferences.
+  And I will be able to view my saved conferences
 ```
+
+```gherkin
+Scenario:
+  Given I am on the Main Menu
+  When I tap the Saved Conferences button
+  And I am logged in
+  Then It will appear a list with conferences saved on the cloud
+```
+
+```gherkin
+Scenario:
+  Given I am on the Main Menu
+  When I tap the Saved Conferences button
+  And I am not logged in
+  Then It will appear a list with conferences saved locally
+```
+
+```gherkin
+Scenario:
+  Given I am on the Saved Conferences menu
+  When I tap one conference
+  Then I will be redirected to the conference on map
+```
+
 
 **Value and effort**.
 
 *Value:* Should Have
 
-*Effort:* M
+*Effort:* L
 
-*Effort Estimation History (from oldest to newest):* M
+*Effort Estimation History (from oldest to newest):* M, L
 
 **Story #7**
 
@@ -363,46 +402,37 @@ Scenario:
 
 ### Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+![Domain Model Diagram](./img/domain-model.png)
+
+The concepts regarding our domain model are quite simple. We have a map which will render on a certain latitude and longitude. On the map we can have many markers. Each of this markers represent one conference.
+
+Markers that appear on map can be filtered (just one at a time). After the filter, some markers are not displayed.
 
 ---
 
 ## Architecture and Design
-The architecture of a software system encompasses the set of key decisions about its overall organization. 
 
-A well written architecture document is brief but reduces the amount of time it takes new programmers to a project to understand the code to feel able to make modifications and enhancements.
-
-To document the architecture requires describing the decomposition of the system in their parts (high-level components) and the key behaviors and collaborations between them. 
-
-In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
-
-
+The architeture models of a big project can help newcomers to understand it better.
 ### Logical architecture
-The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
-It can be beneficial to present the system both in a horizontal or vertical decomposition:
-* horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
-* vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
-
-![MVC](img/MVC.png)
+![MVC Logical Architecture Diagram](./img/logical-architecture.png)
 
 In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three differente packages: 
 
-* Model: Widgets with conference icons and details
-* View: Responsible for app visualization
-* Controller: Processes received information and updates the model. 
-
-This model is currently in progress, thus there is no actual distinction between View and Controller, although we are planning to soon impement it. 
+* View: Screens and widgets. Responsible for app visualization.
+* Model: Contains all of data of application.
+* Controller: Processes received information from user input which triggers changes both on view and model.
 
 ### Physical architecture
-The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
-It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+![Physical Architecture Diagram](./img/physical-architecture.png)
+
+Our project's physical structure is very simple and relies in only one block. 
+Since all of the app information is stored in a local database, our app will only execute queries to select, update and insert conferences on the SQLite database.
+
+We chose to use SQLite database due to its simplicity and the good integration with flutter. 
 
 ---
-
-We are currently reading conference information from a JSON file.
-We are also planning to store data using a local database.
 
 ### Prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
@@ -412,22 +442,68 @@ In this subsection please describe in more detail which, and how, user(s) story(
 ---
 
 ## Implementation
-Regular product increments are a good practice of product management. 
 
-While not necessary, sometimes it might be useful to explain a few aspects of the code that have the greatest potential to confuse software engineers about how it works. Since the code should speak by itself, try to keep this section as short and simple as possible.
+### Sprint Reviews
+#### First Sprint
 
-Use cross-links to the code repository and only embed real fragments of code when strictly needed, since they tend to become outdated very soon.
+##### User Story 1
+*As a user, I want to open up the map, so that I can see all the available conferences next to me.*
+* Added Main Menu
+* Added World Map
+* Added pinpoints in World Map with conferences. This functionality is currently hard coded.
+
+Sprint Effort: L
+
+#### Second Sprint
+
+##### User Story 3
+*As a user, I want to access a conference’s details, so that I can see the available information about it.*
+* When user presses one conference, the user can see the information about it.
+* There is a link that redirects the user to the webpage.
+##### User Story 5
+
+*As a user, I want to search for conferences that match my interests, so that I can better find what I'm looking for.*
+* When a user goes to the filtering menu, he can filter by type.
+* After choosing the filtered conference type, only conferences of that ype will appear on map.
+##### Miscellaneous
+* Conferences are now read from a JSON file.
+
+Sprint Effort: L
+
+#### Third Sprint
+
+
+##### User Story 2
+*As a user, I want to save a conference I wish to attend, so that I can mark it(save) on the map for easy access.*
+* When user presses one conference, the user can save the conference to favorites.
+* The conference will now appear yellow on world map.
+
+##### User Story 6
+*As a user, I want to view my previously saved conferences.*
+* When a user goes to the filtering menu, he can filter by saved conferences.
+* The user now have a list with all conferences saved.
+
+##### Miscellaneous
+* Now, when user presses the go back button he is always redirected to the main menu.
+* Changed colors of the app!
+* Now things are stored in a local database using SQLite.
+
+Sprint Effort: L
 
 ---
 ## Test
 
-There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
+To ensure the application is working properly, we have decided to add Unit Tests and automated acceptance tests using gherkin.
 
-In this section it is only expected to include the following:
-* test plan describing the list of features to be tested and the testing methods and tools;
-* test case specifications to verify the functionalities, using unit tests and acceptance tests.
- 
-A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
+Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
+
+We have currently not implemented any automated acceptance tests using gherkin.
+
+The planned features to be tested are the following:
+
+- Saved Conferences local database persistent data storage.
+- Conference filtering works accordingly.
+- Pressing a Conference in Saved Conferences Menu redirects to the world map with the chosen conference centered.
 
 ---
 ## Configuration and change management
@@ -436,6 +512,7 @@ Configuration and change management are key activities to control change to, and
 
 For the purpose of ESOF, we will use a very simple approach, just to manage feature requests, bug fixes, and improvements, using GitHub issues and following the [GitHub flow](https://guides.github.com/introduction/flow/).
 
+Also we configured a workflow using github actions to automatically run our unit tests and to build the apk.
 
 ---
 
@@ -445,18 +522,6 @@ Software project management is an art and science of planning and leading softwa
 
 For this project, we are using Github Projects. You can see our board using the following link:
   * [Github Projects](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/projects/1)
-
-
-
-### Sprint Reviews
-##### First Sprint
-
-- First user story, which contains:
-    - Added Main Menu
-    - Added World Map
-    - Added pinpoints in World Map with conferences. This functionality is currently hard coded.
-
-Sprint Effort: L
 
   
 ---
