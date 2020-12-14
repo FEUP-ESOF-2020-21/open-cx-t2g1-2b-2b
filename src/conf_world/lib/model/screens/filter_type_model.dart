@@ -6,10 +6,9 @@ class FilterTypeModel {
   final String appBarName = 'Conference Types';
   final Color appBarBackgroundColor = Color(0xffF4845F);
 
-  // Add dynamicaly
-  final String type1 = 'CS';
-  final String type1Name = 'Computer Science Conferences';
+  List<List<String>> types = [];
 
-  final String type2 = 'MATH';
-  final String type2Name = 'Math Conferences';
+  addType(String type, String name) {
+    types.add([type, name]);
+  }
 }
