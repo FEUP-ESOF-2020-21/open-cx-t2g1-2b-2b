@@ -54,10 +54,6 @@ class FilterByDateState extends State<FilterByDate> {
     }
   }
 
-  Widget buildImage(BuildContext context) {
-    return Image(image: AssetImage('assets/img/calendar.png'));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +71,7 @@ class FilterByDateState extends State<FilterByDate> {
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 0.5,
-              child: buildImage(context)),
+              child: Image(image: AssetImage('assets/img/calendar.png'))),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
