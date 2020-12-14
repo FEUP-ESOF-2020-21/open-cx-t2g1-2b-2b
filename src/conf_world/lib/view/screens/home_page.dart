@@ -32,9 +32,6 @@ class HomePageState extends StatelessWidget {
                       MediaQuery.of(context).devicePixelRatio *
                       0.22,
                   child: Image(image: AssetImage('assets/img/logo.png'))),
-              SizedBox(
-                height: 0,
-              ),
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () => RouteController.navigateWorldMap(context),
