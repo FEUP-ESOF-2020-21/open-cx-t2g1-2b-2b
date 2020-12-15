@@ -51,7 +51,8 @@ class RouteController {
               type: 'false',
               filter: 'false',
               latitude: conference.latitude,
-              longitude: conference.longitude)),
+              longitude: conference.longitude,
+              savedID: conference.id)),
     );
   }
 
