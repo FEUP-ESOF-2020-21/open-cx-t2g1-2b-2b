@@ -19,7 +19,7 @@ class FilterMenu extends GivenWithWorld<FlutterWorld> {
 class SelectConferenceType extends AndWithWorld<FlutterWorld> {
   @override
   Future<void> executeStep() async {
-    final locator = find.byValueKey('CS');
+    final locator = find.byValueKey('Material Engineering');
 
     await FlutterDriverUtils.tap(world.driver, locator);
   }
@@ -31,14 +31,24 @@ class SelectConferenceType extends AndWithWorld<FlutterWorld> {
 class WorldMapType extends ThenWithWorld<FlutterWorld> {
   @override
   Future<void> executeStep() async {
-    final locator = find.byValueKey('CS');
-    final locator1 = find.byValueKey('MATH');
+    final locator = find.byValueKey('Material Engineering');
+    final locator1 = find.byValueKey('General topics about Computer Science');
+    final locator2 = find.byValueKey('Robotics');
+    final locator3 = find.byValueKey('Education');
+    final locator4 = find.byValueKey('Artificial Intelligence');
 
     var locatorExists = await FlutterDriverUtils.isPresent(world.driver, locator);
     var locatorExists1 = await FlutterDriverUtils.isPresent(world.driver, locator1);
+    var locatorExists2 = await FlutterDriverUtils.isPresent(world.driver, locator2);
+    var locatorExists3 = await FlutterDriverUtils.isPresent(world.driver, locator3);
+    var locatorExists4 = await FlutterDriverUtils.isPresent(world.driver, locator4);
+
 
     expectMatch(true, locatorExists);
     expectMatch(false, locatorExists1);
+    expectMatch(false, locatorExists2);
+    expectMatch(false, locatorExists3);
+    expectMatch(false, locatorExists4);
   }
 
   @override
@@ -48,7 +58,7 @@ class WorldMapType extends ThenWithWorld<FlutterWorld> {
 class SelectConference extends AndWithWorld<FlutterWorld> {
   @override
   Future<void> executeStep() async {
-    final locator = find.byTooltip('conference-id=1');
+    final locator = find.byTooltip('conference-id=108');
 
     var locatorExists = await FlutterDriverUtils.isPresent(world.driver, locator);
     await FlutterDriverUtils.tap(world.driver, locator);
