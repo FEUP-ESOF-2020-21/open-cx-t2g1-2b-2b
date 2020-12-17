@@ -3,7 +3,7 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
 import 'step/conference_details.dart';
-import 'step/save_conference.dart';
+import 'step/filter_conference.dart';
 import 'step/open_map.dart';
 import 'step/tap_button.dart';
 

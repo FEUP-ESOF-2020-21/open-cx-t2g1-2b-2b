@@ -1,5 +1,4 @@
 import 'package:conf_world/controller/route_controller.dart';
-import 'package:conf_world/model/screens/filter_date_model.dart';
 import 'package:conf_world/view/widgets/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,6 @@ class FilterByDate extends StatefulWidget {
 }
 
 class FilterByDateState extends State<FilterByDate> {
-  final FilterDateModel model = FilterDateModel();
-
   DateTime start = DateTime.now();
   DateTime end = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 30);
 
@@ -27,17 +24,17 @@ class FilterByDateState extends State<FilterByDate> {
       initialDateRange: _date,
       firstDate: DateTime(2020, 1),
       lastDate: DateTime(2022, 1),
-      helpText: model.helpText,
+      helpText: 'Select a date range',
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData(
             brightness: Brightness.dark,
-            primaryColor: model.dateBackgroundColor,
+            primaryColor: Color(0xFF212121),
             colorScheme: ColorScheme.dark(
-              primary: model.textDateColor,
-              onPrimary: model.dateBackgroundColor,
-              surface: model.dateBackgroundColor,
-              onSurface: model.textDateColor,
+              primary: Color(0xffF4845F),
+              onPrimary: Color(0xFF212121),
+              surface: Color(0xFF212121),
+              onSurface: Color(0xffF4845F),
             ),
           ),
           child: child,
@@ -56,11 +53,11 @@ class FilterByDateState extends State<FilterByDate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: model.backgroundColor,
+      backgroundColor: Color(0xFF303030),
       appBar: AppBar(
-        title: Text(model.appBarName),
+        title: Text('Choose Date'),
         centerTitle: true,
-        backgroundColor: model.appBarBackgroundColor,
+        backgroundColor: Color(0xffF4845F),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -70,7 +67,7 @@ class FilterByDateState extends State<FilterByDate> {
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 0.5,
-              child: Image(image: AssetImage(model.imagePath))),
+              child: Image(image: AssetImage('assets/img/calendar.png'))),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
@@ -81,7 +78,7 @@ class FilterByDateState extends State<FilterByDate> {
                     _date.start.month.toString() +
                     '/' +
                     _date.start.day.toString(),
-                style: TextStyle(color: model.textDateColor, fontSize: 20),
+                style: TextStyle(color: Color(0xffF4845F), fontSize: 20),
               ),
             ),
           ),
@@ -98,7 +95,7 @@ class FilterByDateState extends State<FilterByDate> {
                     _date.end.month.toString() +
                     '/' +
                     _date.end.day.toString(),
-                style: TextStyle(color: model.textDateColor, fontSize: 20),
+                style: TextStyle(color: Color(0xffF4845F), fontSize: 20),
               ),
             ),
           ),
@@ -108,13 +105,13 @@ class FilterByDateState extends State<FilterByDate> {
           FlatButton(
             padding: EdgeInsets.zero,
             onPressed: _selectDate,
-            child: MyButton(name: model.optionA),
+            child: MyButton(name: 'Select Date'),
           ),
           FlatButton(
             padding: EdgeInsets.zero,
             onPressed: () => RouteController.navigateWorldMapFilter(
-                context, model.typeA, _date),
-            child: MyButton(name: model.optionB),
+                context, 'date', _date),
+            child: MyButton(name: 'Apply Date Filter'),
           ),
         ],
       ),

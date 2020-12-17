@@ -3,32 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:conf_world/controller/route_controller.dart';
-import 'package:conf_world/model/screens/filter_type_model.dart';
 import 'package:conf_world/view/widgets/button.dart';
 
 class FilterByType extends StatelessWidget {
-  final FilterTypeModel model = FilterTypeModel();
+  final FilterTypeController controller = FilterTypeController();
 
   FilterByType() {
-    FilterTypeController controller = FilterTypeController(model);
-
     controller.updateConferences();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: model.backgroundColor,
+      backgroundColor: Color(0xFF303030),
       appBar: AppBar(
-        title: Text(model.appBarName),
+        title: Text('Conference Types'),
         centerTitle: true,
-        backgroundColor: model.appBarBackgroundColor,
+        backgroundColor: Color(0xffF4845F),
       ),
       body: Column (
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget> [
-            for(var type in model.types)
+            for(var type in controller.types)
               FlatButton(
                 key: Key(type),
                 padding: EdgeInsets.zero,
