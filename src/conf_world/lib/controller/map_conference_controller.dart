@@ -37,7 +37,7 @@ class MapConferenceController {
     var nFilterConf = <ConferenceModel>[];
 
     DatabaseHelper database = new DatabaseHelper();
-    var allConferences = database.getAllConfs();
+    var allConferences = database.getAllConferences();
 
     for(var conferenceD in allConferences) {
       if(filter == conferenceD.type) {
@@ -52,7 +52,7 @@ class MapConferenceController {
     var nFilterConf = <ConferenceModel>[];
 
     DatabaseHelper database = new DatabaseHelper();
-    var allConferences = database.getAllConfs();
+    var allConferences = database.getAllConferences();
 
     for(var conferenceD in allConferences) {
       if(conferenceD.saved == 1) {
@@ -67,7 +67,7 @@ class MapConferenceController {
     var nFilterConf = <ConferenceModel>[];
 
     DatabaseHelper database = new DatabaseHelper();
-    var allConferences = database.getAllConfs();
+    var allConferences = database.getAllConferences();
 
     for(var conferenceD in allConferences) {
       if (date.start.isBefore(DateTime.parse(conferenceD.submitPaper)) || date.start.isAtSameMomentAs(DateTime.parse(conferenceD.submitPaper))) {
@@ -84,7 +84,7 @@ class MapConferenceController {
     var nFilterConf = <ConferenceModel>[];
 
     DatabaseHelper database = new DatabaseHelper();
-    var allConferences = database.getAllConfs();
+    var allConferences = database.getAllConferences();
 
     for(var conferenceD in allConferences) {
       nFilterConf.add(conferenceD);
@@ -109,16 +109,17 @@ class MapConferenceController {
     for(var conferenceD in conferences) {
       if(conferenceD.id == id) conference = conferenceD;
     }
-
-    showModalBottomSheet(
-      context: context,
-      builder: (builder) {
-        return ConferenceDetails(
-          controller: this,
-          model: conference,
-        );
-      },
-    );
+    if (conference != null) {
+      showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return ConferenceDetails(
+            controller: this,
+            model: conference,
+          );
+        },
+      );
+    }
   }
 
   updateSaved(conference, widget) async {

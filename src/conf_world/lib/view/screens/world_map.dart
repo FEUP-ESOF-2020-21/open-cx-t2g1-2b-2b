@@ -11,11 +11,12 @@ class MapRoute extends StatefulWidget {
   final dynamic filter;
   final double latitude;
   final double longitude;
+  final int savedID;
 
-  const MapRoute({Key key, this.type, this.filter, this.latitude, this.longitude}) : super(key: key);
+  const MapRoute({Key key, this.type, this.filter, this.latitude, this.longitude, this.savedID}) : super(key: key);
 
   @override
-  MapRouteState createState() => MapRouteState(this.type, this.filter, this.latitude, this.longitude);
+  MapRouteState createState() => MapRouteState(this.type, this.filter, this.latitude, this.longitude, this.savedID);
 }
 
 class MapRouteState extends State<MapRoute> {
@@ -23,8 +24,9 @@ class MapRouteState extends State<MapRoute> {
 
   final double latitude;
   final double longitude;
+  int savedID;
 
-  MapRouteState(String type, dynamic filter, this.latitude, this.longitude) {
+  MapRouteState(String type, dynamic filter, this.latitude, this.longitude, this.savedID) {
     this.controller = MapConferenceController(this, type, filter);
   }
 
@@ -34,10 +36,13 @@ class MapRouteState extends State<MapRoute> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => openSavedConferenceDetails(context));
     return new FlutterMap(
       options: new MapOptions(
         center: new LatLng(latitude, longitude),
         zoom: 13.0,
+        minZoom: 5.0,
+        maxZoom: 18.0,
       ),
       layers: [
         new TileLayerOptions(
@@ -49,5 +54,10 @@ class MapRouteState extends State<MapRoute> {
       ],
       key: Key("world-map"),
     );
+  }
+
+  void openSavedConferenceDetails(BuildContext context) {
+    this.controller.showModal(context, this.savedID);
+    this.savedID = -1;
   }
 }

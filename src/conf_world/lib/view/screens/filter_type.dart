@@ -1,3 +1,4 @@
+import 'package:conf_world/controller/filter_type_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,6 +8,12 @@ import 'package:conf_world/view/widgets/button.dart';
 
 class FilterByType extends StatelessWidget {
   final FilterTypeModel model = FilterTypeModel();
+
+  FilterByType() {
+    FilterTypeController controller = FilterTypeController(model);
+
+    controller.updateConferences();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +28,13 @@ class FilterByType extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget> [
-            FlatButton(
-              key: Key(model.type1),
-              padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type1),
-              child: MyButton(name: model.type1Name),
-            ),
-            FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type2),
-              child: MyButton(name: model.type2Name),
-            ),
+            for(var type in model.types)
+              FlatButton(
+                key: Key(type),
+                padding: EdgeInsets.zero,
+                onPressed: () => RouteController.navigateWorldMapFilter(context, "type", type),
+                child: MyButton(name: type),
+              ),
           ]
       ),
     );

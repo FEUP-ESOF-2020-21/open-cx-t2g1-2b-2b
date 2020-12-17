@@ -8,10 +8,6 @@ import 'package:conf_world/view/widgets/button.dart';
 class HomePageState extends StatelessWidget {
   final HomePageModel model = HomePageModel();
 
-  Widget buildImage(BuildContext context) {
-    return Image(image: AssetImage('assets/img/icon.png'));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,21 +20,18 @@ class HomePageState extends StatelessWidget {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                   alignment: Alignment.topCenter,
                   width: MediaQuery.of(context).size.width *
                       MediaQuery.of(context).devicePixelRatio *
-                      0.31,
+                      0.32,
                   height: MediaQuery.of(context).size.height *
                       MediaQuery.of(context).devicePixelRatio *
-                      0.15,
-                  child: buildImage(context)),
-              SizedBox(
-                height: 50,
-              ),
+                      0.22,
+                  child: Image(image: AssetImage(model.image))),
               FlatButton(
                 padding: EdgeInsets.zero,
                 onPressed: () => RouteController.navigateWorldMap(context),
