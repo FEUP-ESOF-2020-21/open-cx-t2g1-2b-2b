@@ -10,11 +10,12 @@ class Navigation extends StatefulWidget {
   final dynamic filter;
   final double latitude;
   final double longitude;
+  final int savedID;
 
-  const Navigation({Key key, this.type, this.filter, this.latitude = 51.52, this.longitude = -0.12}) : super(key: key);
+  const Navigation({Key key, this.type, this.filter, this.latitude = 51.52, this.longitude = -0.12, this.savedID = -1}) : super(key: key);
 
   @override
-  NavigationState createState() => NavigationState(this.type, this.filter, this.latitude, this.longitude);
+  NavigationState createState() => NavigationState(this.type, this.filter, this.latitude, this.longitude, this.savedID);
 }
 
 class NavigationState extends State<Navigation> {
@@ -22,8 +23,8 @@ class NavigationState extends State<Navigation> {
   static List<Widget> _widgetOptions;
   int _selectedIndex = 0;
 
-  NavigationState(String type, dynamic filter, double latitude, double longitude) {
-    _widgetOptions = <Widget>[MapRoute(type: type, filter: filter, latitude: latitude, longitude: longitude), FilterPage()];
+  NavigationState(String type, dynamic filter, double latitude, double longitude, int savedID) {
+    _widgetOptions = <Widget>[MapRoute(type: type, filter: filter, latitude: latitude, longitude: longitude, savedID: savedID), FilterPage()];
   }
 
   void _onItemTapped(int index) {

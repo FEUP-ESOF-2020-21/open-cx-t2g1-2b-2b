@@ -404,9 +404,10 @@ Scenario:
 
 ![Domain Model Diagram](./img/domain-model.png)
 
-The concepts regarding our domain model are quite simple. We have a map which will render on a certain latitude and longitude. On the map we can have many markers. Each of this markers represent one conference.
+The concepts regarding our application are quite simple. Our app consist about conferences spread around the world and the users have filter tools at their disposal to find the more relevant conferences to them. Each one of this conference is represented on the world map by a marker.
 
-Markers that appear on map can be filtered (just one at a time). After the filter, some markers are not displayed.
+After the user opened the map, the world map will render on a certain latitude and longitude and have some markers, where each one represents one conference. 
+Also, the user can just look for specific conferences. In this case, he will apply filters to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead he can see conferences that only appear between a time interval, are saved or are from a predetermined type.
 
 ---
 
@@ -417,11 +418,17 @@ The architeture models of a big project can help newcomers to understand it bett
 
 ![MVC Logical Architecture Diagram](./img/logical-architecture.png)
 
-In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three differente packages: 
+In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three different packages: 
 
-* View: Screens and widgets. Responsible for app visualization.
-* Model: Contains all of data of application.
-* Controller: Processes received information from user input which triggers changes both on view and model.
+* View
+* Model
+* Controller
+
+Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like homepage on the smartphone screen.
+
+The Model contains all the application data. It has the color schemes, button text and other data fields that will be displayed on View.
+
+The Controller processes the received information from user actions. This actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
 
 ### Physical architecture
 
@@ -429,8 +436,10 @@ In order to develop this project, we decided to organize and structure our code 
 
 Our project's physical structure is very simple and relies in only one block. 
 Since all of the app information is stored in a local database, our app will only execute queries to select, update and insert conferences on the SQLite database.
+We decided to use a local storage instead of a cloud storage because the lost data caused by changing devices is not significant. If the user changes their device, losing the saved conferences would not matter too much.
 
 We chose to use SQLite database due to its simplicity and the good integration with flutter. 
+
 
 ---
 
@@ -497,12 +506,28 @@ To ensure the application is working properly, we have decided to add Unit Tests
 
 Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
 
-We have currently not implemented any automated acceptance tests using gherkin.
+Acceptance Tests are used to verify the expected output through statements that describe all of the actions the user must take to permform a task, and the result of those actions. These tests were implemented using *Gherkin* language, through the `flutter_gherkin` dependency.
 
-The planned features to be tested are the following:
+Both these tests involve a large ammount of work, however, they provide a long-term benefit to the project, making it easier to detect bugs in the future.
+
+Implemented acceptance tests:
+  - Conference Details
+  - Filter Conferences By Type
+  - Open World Map
+
+Implemented Unit Tests:
+  - See World Map
+  - Filter Conferences Button
+  - Filter Conferences by Type
+  - See World Map Without Filters
+  - Default Navigation State
+  - Navigation between States 
+  - Switching to Filter Conferences State
+  - Switching to Filter Conferences State and back to Home
+
+There are still many tests that can be tested in the future. The planned features to be tested are the following:
 
 - Saved Conferences local database persistent data storage.
-- Conference filtering works accordingly.
 - Pressing a Conference in Saved Conferences Menu redirects to the world map with the chosen conference centered.
 
 ---

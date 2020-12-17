@@ -13,8 +13,7 @@ class FilterByDateState extends State<FilterByDate> {
   final FilterDateModel model = FilterDateModel();
 
   DateTime start = DateTime.now();
-  DateTime end = DateTime(
-      DateTime.now().year, DateTime.now().month, DateTime.now().day + 30);
+  DateTime end = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 30);
 
   DateTimeRange _date = DateTimeRange(
       start: DateTime.now(),
@@ -28,17 +27,17 @@ class FilterByDateState extends State<FilterByDate> {
       initialDateRange: _date,
       firstDate: DateTime(2020, 1),
       lastDate: DateTime(2022, 1),
-      helpText: 'Select a date range',
+      helpText: model.helpText,
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData(
             brightness: Brightness.dark,
-            primaryColor: Color(0xFF212121),
+            primaryColor: model.dateBackgroundColor,
             colorScheme: ColorScheme.dark(
-              primary: Color(0xffF4845F),
-              onPrimary: Color(0xFF212121),
-              surface: Color(0xFF212121),
-              onSurface: Color(0xffF4845F),
+              primary: model.textDateColor,
+              onPrimary: model.dateBackgroundColor,
+              surface: model.dateBackgroundColor,
+              onSurface: model.textDateColor,
             ),
           ),
           child: child,
@@ -71,7 +70,7 @@ class FilterByDateState extends State<FilterByDate> {
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 0.5,
-              child: Image(image: AssetImage('assets/img/calendar.png'))),
+              child: Image(image: AssetImage(model.imagePath))),
           Align(
             alignment: Alignment.topCenter,
             child: Container(

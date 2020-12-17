@@ -20,7 +20,7 @@ class PinpointScreen extends GivenWithWorld<FlutterWorld> {
 class TapPinpoint extends WhenWithWorld<FlutterWorld> {
   @override
   Future<void> executeStep() async {
-    final locator = find.byTooltip('conference-id=1');
+    final locator = find.byTooltip('conference-id=108');
 
     var locatorExists = await FlutterDriverUtils.isPresent(world.driver, locator);
     expectMatch(true, locatorExists);

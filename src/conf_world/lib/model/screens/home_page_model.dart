@@ -8,4 +8,5 @@ class HomePageModel {
 
   final String optionA = 'See World Map';
   final String optionB = 'My Saved Conferences';
+  final String image = 'assets/img/logo.png';
 }

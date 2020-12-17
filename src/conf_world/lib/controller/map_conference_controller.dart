@@ -109,16 +109,17 @@ class MapConferenceController {
     for(var conferenceD in conferences) {
       if(conferenceD.id == id) conference = conferenceD;
     }
-
-    showModalBottomSheet(
-      context: context,
-      builder: (builder) {
-        return ConferenceDetails(
-          controller: this,
-          model: conference,
-        );
-      },
-    );
+    if (conference != null) {
+      showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return ConferenceDetails(
+            controller: this,
+            model: conference,
+          );
+        },
+      );
+    }
   }
 
   updateSaved(conference, widget) async {
