@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 
 import 'package:conf_world/controller/route_controller.dart';
 import 'package:conf_world/controller/saved_conferences_controller.dart';
-import 'package:conf_world/model/screens/saved_conferences_model.dart';
 
 class SavedConferencesState extends StatelessWidget {
   final SavedConferencesController controller = SavedConferencesController();
-  final SavedConferencesModel model = SavedConferencesModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: model.backgroundColor,
+      backgroundColor: Color(0xFF303030),
       appBar: AppBar(
-        title: Text(model.appBarText),
+        title: Text("My Saved Conferences"),
         centerTitle: true,
-        backgroundColor: model.appBarColor,
+        backgroundColor: Color(0xffF4845F),
       ),
       body: ListView.builder(
         itemCount: controller.savedConferences.length,
@@ -25,7 +23,7 @@ class SavedConferencesState extends StatelessWidget {
           return ListTile(
             title: Text(
               item.name,
-              style: TextStyle(color: model.textColor),
+              style: TextStyle(color: Color(0xffF4845F)),
             ),
             trailing: GestureDetector(
               onTap: () =>
@@ -33,14 +31,14 @@ class SavedConferencesState extends StatelessWidget {
               child: new Container(
                 alignment: Alignment.center,
                 child: Text(
-                  model.boxConferenceText,
-                  style: TextStyle(fontSize: 14, color: model.textColor),
+                  'Go to World Map',
+                  style: TextStyle(fontSize: 14, color: Color(0xffF4845F)),
                   textAlign: TextAlign.center,
                 ),
                 constraints: BoxConstraints.expand(width: 140, height: 45),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: model.boxColor,
+                  color: Color(0xff212121),
                 ),
               ),
             ),
