@@ -519,8 +519,11 @@ Implemented acceptance tests:
 
 Implemented Unit Tests:
   - See World Map
+  - See Saved Conferences
   - Filter Conferences Button
   - Filter Conferences by Type
+  - Filter Conferences by Date
+  - Filter Conferences by Saved Conferences
   - See World Map Without Filters
   - Default Navigation State
   - Navigation between States 
