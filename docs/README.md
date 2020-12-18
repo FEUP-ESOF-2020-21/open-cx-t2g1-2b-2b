@@ -420,15 +420,19 @@ The architeture models of a big project can help newcomers to understand it bett
 
 In order to develop this project, we decided to organize and structure our code using the MVC. The code is divided into three different packages: 
 
+
+* Controller
 * View
 * Model
-* Controller
 
-Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like homepage on the smartphone screen.
-
-The Model contains all the application data. It has the color schemes, button text and other data fields that will be displayed on View.
 
 The Controller processes the received information from user actions. This actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
+
+Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like the homepage on the smartphone screen.
+
+The Model contains all the application data. It represents stored entities managed by the controller, such as a Conference.
+
+
 
 ### Physical architecture
 
