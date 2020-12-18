@@ -404,10 +404,10 @@ Scenario:
 
 ![Domain Model Diagram](./img/domain-model.png)
 
-The concepts regarding our application are quite simple. Our app consist about conferences spread around the world and the users have filter tools at their disposal to find the more relevant conferences to them. Each one of this `conference` is represented on the world map by a `Marker`.
+The concepts regarding our application are quite simple. Our app consists of conferences spread around the world and the user has filtering tools at his disposal that allow him to find the most fitting conferences. Each one of this `conferences` is represented on the world map by a `Marker`.
 
-After the user opened the `Map`, it will render on a certain `latitude` and `longitude` and have some `Markers`, where each one represents one `Conference`. 
-Also, the user can just look for specific conferences. In this case, he will apply a `Filter` to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead the user can filter by `Date`, for `Saved` conferences or by `Type`, but just one at time.
+Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude` and have some `Markers` and each one represents one `Conference`. 
+Also, the user can just look for specific conferences. In this case, he will apply a `Filter` to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead the user can filter by `Date`, for `Saved` conferences or by `Type`, but just one at a time.
 
 ---
 
