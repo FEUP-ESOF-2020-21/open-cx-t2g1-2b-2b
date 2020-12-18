@@ -21,19 +21,19 @@ class FilterByType extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Color(0xffF4845F),
       ),
-      body: Column (
+      body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget> [
-            for(var type in controller.types)
+          children: <Widget>[
+            for (var type in controller.types)
               FlatButton(
                 key: Key(type),
                 padding: EdgeInsets.zero,
-                onPressed: () => RouteController.navigateWorldMapFilter(context, "type", type),
+                onPressed: () => RouteController.navigateWorldMapFilter(
+                    context, "type", type),
                 child: MyButton(name: type),
               ),
-          ]
-      ),
+          ]),
     );
   }
 }

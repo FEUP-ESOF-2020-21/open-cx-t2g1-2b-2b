@@ -25,12 +25,14 @@ class FilterPage extends StatelessWidget {
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: () => RouteController.navigateWorldMapFilter(context, 'saved', "null"),
+            onPressed: () => RouteController.navigateWorldMapFilter(
+                context, 'saved', "null"),
             child: MyButton(name: 'Saved Conferences'),
           ),
           FlatButton(
             padding: EdgeInsets.zero,
-            onPressed: () => RouteController.navigateWorldMapFilter(context, "false", 'false'),
+            onPressed: () => RouteController.navigateWorldMapFilter(
+                context, "false", 'false'),
             child: MyButton(name: 'Without Filters'),
           ),
         ],
@@ -38,5 +40,3 @@ class FilterPage extends StatelessWidget {
     );
   }
 }
-
-
