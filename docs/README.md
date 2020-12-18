@@ -404,10 +404,10 @@ Scenario:
 
 ![Domain Model Diagram](./img/domain-model.png)
 
-The concepts regarding our application are quite simple. Our app consists of conferences spread around the world and the user has filtering tools at his disposal that allow him to find the most fitting conferences. Each one of this `conferences` is represented on the world map by a `Marker`.
+The concepts regarding our application are quite simple. Our app consists of conferences spread around the World `Map` and the user has filtering tools at his disposal that allow him to find the most fitting conferences. Each `Conference` is represented on the world map by a `Marker`.
 
-Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude` and have some `Markers` and each one represents one `Conference`. 
-Also, the user can just look for specific conferences. In this case, he will apply a `Filter` to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead the user can filter by `Date`, for `Saved` conferences or by `Type`, but just one at a time.
+Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude`, have some `Markers`, and each one represents one `Conference`. 
+Also, the user can just look for specific conferences. In this case, he will apply a `Filter` to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead the user can filter by `Date`, by `Saved` conferences or by `Type`, but just one at a time.
 
 ---
 
@@ -426,7 +426,7 @@ In order to develop this project, we decided to organize and structure our code 
 * Model
 
 
-The Controller processes the received information from user actions. This actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
+The Controller processes the received information from user actions. These actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
 
 Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like the homepage on the smartphone screen.
 
@@ -508,7 +508,7 @@ Sprint Effort: L
 
 To ensure the application is working properly, we have decided to add Unit Tests and automated acceptance tests using gherkin.
 
-We used the [github issues](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aopen+is%3Aissue) to organize our project. If you want to see our implementation of user stories you can click [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+label%3A%22user+stories%22+is%3Aclosed) and see the issues that map for every user story.
+We used the [github issues](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+is%3Aclosed+label%3A%22Unit+Tests%22) to organize our project. If you want to see our implementation of user stories you can click [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+label%3A%22user+stories%22+is%3Aclosed) and see the issues that map for every user story.
 
 Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
 
@@ -517,7 +517,7 @@ Acceptance Tests are used to verify the expected output through statements that 
 Both these tests involve a large ammount of work, however, they provide a long-term benefit to the project, making it easier to detect bugs in the future.
 
 Implemented acceptance tests:
-  - Conference Details - [User Story ](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/4)
+  - Conference Details - [User Story 3](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/4)
   - Filter Conferences By Type - [User Story 5](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/5)
   - Open World Map - [User Story 1](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/1)
 
@@ -539,7 +539,7 @@ There are still many tests that can be tested in the future. The planned feature
 - Saved Conferences local database persistent data storage.
 - Pressing a Conference in Saved Conferences Menu redirects to the world map with the chosen conference centered.
 
-We're actually running this tests automatically on [github actions](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/actions). However the pipeline running the gherkin acceptance tests are not running because they need a emulator to have a successfully run.
+We're actually running this tests automatically on [github actions](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/actions). However the pipeline running the gherkin acceptance tests are not running because they need an emulator to have a successfully run.
 
 ---
 ## Configuration and change management
