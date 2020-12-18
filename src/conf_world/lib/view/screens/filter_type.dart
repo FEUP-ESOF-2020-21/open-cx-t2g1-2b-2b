@@ -1,38 +1,39 @@
+import 'package:conf_world/controller/filter_type_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:conf_world/controller/route_controller.dart';
-import 'package:conf_world/model/screens/filter_type_model.dart';
 import 'package:conf_world/view/widgets/button.dart';
 
 class FilterByType extends StatelessWidget {
-  final FilterTypeModel model = FilterTypeModel();
+  final FilterTypeController controller = FilterTypeController();
+
+  FilterByType() {
+    controller.updateConferences();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: model.backgroundColor,
+      backgroundColor: Color(0xFF303030),
       appBar: AppBar(
-        title: Text(model.appBarName),
+        title: Text('Conference Types'),
         centerTitle: true,
-        backgroundColor: model.appBarBackgroundColor,
+        backgroundColor: Color(0xffF4845F),
       ),
-      body: Column (
+      body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget> [
-            FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type1),
-              child: MyButton(name: model.type1Name),
-            ),
-            FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => RouteController.navigateWorldMapFilter(context, "type", model.type2),
-              child: MyButton(name: model.type2Name),
-            ),
-          ]
-      ),
+          children: <Widget>[
+            for (var type in controller.types)
+              FlatButton(
+                key: Key(type),
+                padding: EdgeInsets.zero,
+                onPressed: () => RouteController.navigateWorldMapFilter(
+                    context, "type", type),
+                child: MyButton(name: type),
+              ),
+          ]),
     );
   }
 }

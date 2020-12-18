@@ -12,7 +12,7 @@ class SavedConferencesController {
     var nSavedConf = <ConferenceModel>[];
 
     DatabaseHelper database = new DatabaseHelper();
-    var allConferences = database.getAllConfs();
+    var allConferences = database.getAllConferences();
 
     for (var i = 0; i < allConferences.length; i++) {
       if ((allConferences[i].saved == 1)) {
