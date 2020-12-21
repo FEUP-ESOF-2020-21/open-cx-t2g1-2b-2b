@@ -448,9 +448,11 @@ We chose to use SQLite database due to its simplicity and the good integration w
 ---
 
 ### Prototype
-To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
 
-In this subsection please describe in more detail which, and how, user(s) story(ies) were implemented.
+We decided to use the more relevant user stories to create our aplication prototype. 
+
+
+![Prototype](./docs/prototype.gif)
 
 ---
 
@@ -485,7 +487,6 @@ Sprint Effort: L
 
 #### Third Sprint
 
-
 ##### User Story 2
 *As a user, I want to save a conference I wish to attend, so that I can mark it(save) on the map for easy access.*
 * When user presses one conference, the user can save the conference to favorites.
@@ -500,6 +501,19 @@ Sprint Effort: L
 * Now, when user presses the go back button he is always redirected to the main menu.
 * Changed colors of the app!
 * Now things are stored in a local database using SQLite.
+
+Sprint Effort: L
+
+#### Fourth Sprint
+## User Story 4
+### As a user I want to select a timespan, so that I can see all available conferences in that timespan.
+* I can select a timespan to search for conferences
+
+## Miscellaneous
+- Conferences are scrapped from the webpage [Call 4 Papers](www.call4papers.com)
+- Implemented Gherkin Acceptance Tests
+- Finished Unit Tests
+- Changed the theme and created a logo for the app
 
 Sprint Effort: L
 
@@ -521,6 +535,8 @@ Implemented acceptance tests:
   - Filter Conferences By Type - [User Story 5](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/5)
   - Open World Map - [User Story 1](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/1)
 
+This acceptance tests where implemented in this [pull request](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/pull/35).
+
 Implemented Unit Tests:
   - See World Map
   - See Saved Conferences
@@ -533,6 +549,8 @@ Implemented Unit Tests:
   - Navigation between States 
   - Switching to Filter Conferences State
   - Switching to Filter Conferences State and back to Home
+
+This unit tests where implemented in this [pull request](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/pull/40).
 
 There are still many tests that can be tested in the future. The planned features to be tested are the following:
 
@@ -564,4 +582,4 @@ For this project, we are using Github Projects. You can see our board using the 
 
 ## Evolution - contributions to open-cx
 
-Describe your contribution to open-cx (iteration 5), linking to the appropriate pull requests, issues, documentation.
+We feel that our app can integrate the Open-CX in the future, helping everyone to find conferences around the world that can fit in their schedules and be combined with other projects to create an app that improves the user experience in conferences and events.
