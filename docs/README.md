@@ -24,10 +24,10 @@ Please contact us!
 
 Thank you!
 
-*Bernardo António Magalhães Ferreira*
-*Diogo Ferreira de Sousa*
-*Diogo Samuel Gonçalves Fernandes*
-*Hugo Miguel Monteiro Guimarães*
+- *Bernardo António Magalhães Ferreira*
+- *Diogo Ferreira de Sousa*
+- *Diogo Samuel Gonçalves Fernandes*
+- *Hugo Miguel Monteiro Guimarães*
 
 ---
 
@@ -429,7 +429,7 @@ The Controller processes the received information from user actions. These actio
 
 Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like the homepage on the smartphone screen.
 
-The Model contains all the application data. It represents stored entities managed by the controller. In our case, it represents the conferences.
+The Model contains all the application data. It represents stored entities managed by the controller, such as a Conference.
 
 
 ### Physical architecture
