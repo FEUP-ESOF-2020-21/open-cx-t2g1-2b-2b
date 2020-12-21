@@ -53,8 +53,15 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 
 * **Normal Flow**. 
     1. The user presses one conference on the map.
-    2. The user presses the save conference button which appears next to the conference website hyperlink.
-    3. The conference is saved.
+    2. The conference is not saved.
+    3. The user presses the save conference button which appears next to the conference website hyperlink.
+    4. The conference is saved.
+
+* **Alternative Flow**. 
+    1. The user presses one conference on the map.
+    2. The conference is already saved.
+    3. The user presses the save conference button which appears next to the conference website hyperlink.
+    4. The conference is removed form the saved list.
 
 #### See Map
 * **Actor**. User
@@ -73,6 +80,9 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 * **Actor**. User
 
 * **Description**. The user can filter the conferences in order that only relevant ones appear. The user can filter them using the follow criteria.
+
+* **Preconditions**. The user should be in the Filter Conferences menu.
+
 
 * **Postconditions**. After using the filter, only certain conferences around the world will appear.
 
@@ -309,7 +319,7 @@ Scenario:
 ```gherkin
 Scenario:
   Given I am on the Main Menu
-  When I tap the Saved Conferences button
+  When I tap the My Saved Conferences button
   And I am logged in
   Then It will appear a list with conferences saved on the cloud
 ```
@@ -317,7 +327,7 @@ Scenario:
 ```gherkin
 Scenario:
   Given I am on the Main Menu
-  When I tap the Saved Conferences button
+  When I tap the My Saved Conferences button
   And I am not logged in
   Then It will appear a list with conferences saved locally
 ```
@@ -434,8 +444,11 @@ We chose to use SQLite database due to its simplicity and the good integration w
 
 ### Prototype
 
-We decided to use the more relevant user stories to create our aplication prototype. 
+For the application prototype, we have created a video traversing through the possible menus and options of our app, triggering the expected app flows related to our User stories when pressing buttons.
 
+At we started developing the app, we did it in a specific logical order, starting by implementing the world map and the conference pinpoints.
+
+Then, we implemented the conference details. Afterwards, we created the main filters (filter by type, date and saved conferences) associated with the newly added details.
 
 ![Prototype](./img/prototype.gif)
 
