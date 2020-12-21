@@ -2,8 +2,6 @@
 
 Welcome to the documentation pages of the *Conf World* of **openCX**!
 
-You can find here detailed about the (sub)product, hereby mentioned as module, from a high-level vision to low-level implementation decisions, a kind of Software Development Report (see [template](https://github.com/softeng-feup/open-cx/blob/master/docs/templates/Development-Report.md)), organized by discipline (as of RUP): 
-
 * Business modeling 
   * [Product Vision](#Product-Vision)
   * [Elevator Pitch](#Elevator-Pitch)
@@ -44,10 +42,6 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 ---
 ## Requirements
 
-In this section, you should describe all kinds of requirements for your module: functional and non-functional requirements.
-
-Start by contextualizing your module, describing the main concepts, terms, roles, scope and boundaries of the application domain addressed by the project.
-
 ### Use Case Diagram 
 ![Use Case Diagram](img/use-case.png)
 #### Save Conference
@@ -55,17 +49,12 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Description**. The user may be more interested in some conferences than others. Thus he is capable of saving conferences.
 
-* **Preconditions and Postconditions**. Before saving conferences the user should be logged in. After saving the conference, it will appear in the map with a yellow pinpoint.
+* **Preconditions and Postconditions**. After saving the conference, it will appear in the map with a yellow pinpoint.
 
 * **Normal Flow**. 
     1. The user presses one conference on the map.
     2. The user presses the save conference button which appears next to the conference website hyperlink.
-    3. If the user is logged in, the conference is saved.
-
-* **Exception**. 
-    1. The user presses one conference on the map
-    2. The user presses the save conference button which appears next to the conference website hyperlink.
-    3. The user isn't logged in, an error message will appear
+    3. The conference is saved.
 
 #### See Map
 * **Actor**. User
@@ -89,31 +78,28 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
     ##### Conference Type
 
-    * **Preconditions**.
+    * **Preconditions**. The user should press the button Filter by Type.
 
     * **Normal Flow**.
         1. The user selects the option that shows the conference types.
-        2. On the map, only conferences occurring between these two dates will appear.
+        2. On the map, the user will only see the conferences of that type.
             
     ##### Date
 
-    * **Preconditions**. Before filtering by date, the user should press the button to filter conferences.
+    * **Preconditions**. The user should press the button Filter by Date.
     
     * **Normal Flow**. 
         1. The user scrolls the sidebar, selecting the start and deadline date.
-        2. On the map, only conferences that occur between these two dates will appear. 
+        1. The user selects the button Apply Date Filter.
+        1. On the map, only conferences that occur between these two dates will appear. 
         
     ##### Saved Conferences
 
-    * **Preconditions**. Before filtering by saved conferences the user should be logged in and have at least one saved conference.
-
+    * **Preconditions**. The user should press the button Saved Conferences.
     * **Normal Flow**.
         1. The user selects the option to only show the saved conferences.
-        1. If the user is logged in, only the saved conferences will appear on the map.
+        1. Only the saved conferences will appear on the map.
 
-    * **Exception Flow**. 
-        1. The user selects the option to only show the saved conferences.
-        3. If the user isn't logged in or doesn't have any saved conference, nothing will happen.
 
 ### User stories
 
@@ -297,9 +283,9 @@ Scenario:
 *As a user, I want to view my previously saved conferences.*
 
 **User interface mockups**.
-| Filter Conferences  |
-| ------------ |
-| ![Save](./img/mockups/filter-conference.png)|
+| Main Menu | Filter Conferences  |
+| ------------- | ------------ |
+| ![Main Menu](./img/mockups/main-menu.png) | ![Save](./img/mockups/filter-conference.png)|
 
 **Acceptance tests**.
 ```gherkin
@@ -340,7 +326,7 @@ Scenario:
 Scenario:
   Given I am on the Saved Conferences menu
   When I tap one conference
-  Then I will be redirected to the conference on map
+  Then I will be redirected to the conference details on the map
 ```
 
 
@@ -406,7 +392,7 @@ Scenario:
 
 The concepts regarding our application are quite simple. Our app consists of conferences spread around the World `Map` and the user has filtering tools at his disposal that allow him to find the most fitting conferences. Each `Conference` is represented on the world map by a `Marker`.
 
-Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude`, have some `Markers`, and each one represents one `Conference`. 
+Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude`, have some `Markers`, and each represents one `Conference`. 
 Also, the user can just look for specific conferences. In this case, he will apply a `Filter` to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead the user can filter by `Date`, by `Saved` conferences or by `Type`, but just one at a time.
 
 ---
@@ -426,12 +412,11 @@ In order to develop this project, we decided to organize and structure our code 
 * Model
 
 
-The Controller processes the received information from user actions. These actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
+The Controller processes the received information from user actions. These actions trigger changes both in the view (for example, changing the current screen displayed) and in the model (for example, when the user saves a conference).
 
 Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like the homepage on the smartphone screen.
 
-The Model contains all the application data. It represents stored entities managed by the controller, such as a Conference.
-
+The Model contains all the application data. It represents stored entities managed by the controller. In our case, it represents the conferences.
 
 
 ### Physical architecture
@@ -505,11 +490,11 @@ Sprint Effort: L
 Sprint Effort: L
 
 #### Fourth Sprint
-## User Story 4
-### As a user I want to select a timespan, so that I can see all available conferences in that timespan.
-* I can select a timespan to search for conferences
+##### User Story 4
+##### As a user I want to select a timespan, so that I can see all available conferences in that timespan.
+* The user can select a timespan to search for conferences.
 
-## Miscellaneous
+##### Miscellaneous
 - Conferences are scrapped from the webpage [Call 4 Papers](www.call4papers.com)
 - Implemented Gherkin Acceptance Tests
 - Finished Unit Tests
@@ -520,9 +505,9 @@ Sprint Effort: L
 ---
 ## Test
 
-To ensure the application is working properly, we have decided to add Unit Tests and automated acceptance tests using gherkin.
+To ensure the application is working properly, we have decided to add unit tests and automated acceptance tests using gherkin.
 
-We used the [github issues](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+is%3Aclosed+label%3A%22Unit+Tests%22) to organize our project. If you want to see our implementation of user stories you can click [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+label%3A%22user+stories%22+is%3Aclosed) and see the issues that map for every user story.
+We used the github issues to organize our project. If you want to see our implementation of user stories you can click [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+is%3Aclosed) and choose the label `User Stories` to see the issues that map for every user story.
 
 Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
 
@@ -530,7 +515,7 @@ Acceptance Tests are used to verify the expected output through statements that 
 
 Both these tests involve a large ammount of work, however, they provide a long-term benefit to the project, making it easier to detect bugs in the future.
 
-Implemented acceptance tests:
+Implemented acceptance tests and their respective user story:
   - Conference Details - [User Story 3](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/4)
   - Filter Conferences By Type - [User Story 5](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/5)
   - Open World Map - [User Story 1](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/1)
@@ -538,7 +523,7 @@ Implemented acceptance tests:
 This acceptance tests where implemented in this [pull request](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/pull/35).
 
 Implemented Unit Tests:
-  - See World Map
+  - See World Map 
   - See Saved Conferences
   - Filter Conferences Button
   - Filter Conferences by Type
@@ -580,6 +565,6 @@ For this project, we are using Github Projects. You can see our board using the 
   
 ---
 
-## Evolution - contributions to open-cx
+## Evolution - Contributions to open-cx
 
-We feel that our app can integrate the Open-CX in the future, helping everyone to find conferences around the world that can fit in their schedules and be combined with other projects to create an app that improves the user experience in conferences and events.
+We feel that our app can integrate the Open-CX in the future, helping everyone finding conferences around the world that can fit in their schedules, combining it with other projects.
