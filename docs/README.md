@@ -2,8 +2,6 @@
 
 Welcome to the documentation pages of the *Conf World* of **openCX**!
 
-You can find here detailed about the (sub)product, hereby mentioned as module, from a high-level vision to low-level implementation decisions, a kind of Software Development Report (see [template](https://github.com/softeng-feup/open-cx/blob/master/docs/templates/Development-Report.md)), organized by discipline (as of RUP): 
-
 * Business modeling 
   * [Product Vision](#Product-Vision)
   * [Elevator Pitch](#Elevator-Pitch)
@@ -26,10 +24,10 @@ Please contact us!
 
 Thank you!
 
-*Bernardo António Magalhães Ferreira*
-*Diogo Ferreira de Sousa*
-*Diogo Samuel Gonçalves Fernandes*
-*Hugo Miguel Monteiro Guimarães*
+- *Bernardo António Magalhães Ferreira*
+- *Diogo Ferreira de Sousa*
+- *Diogo Samuel Gonçalves Fernandes*
+- *Hugo Miguel Monteiro Guimarães*
 
 ---
 
@@ -44,10 +42,6 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 ---
 ## Requirements
 
-In this section, you should describe all kinds of requirements for your module: functional and non-functional requirements.
-
-Start by contextualizing your module, describing the main concepts, terms, roles, scope and boundaries of the application domain addressed by the project.
-
 ### Use Case Diagram 
 ![Use Case Diagram](img/use-case.png)
 #### Save Conference
@@ -55,27 +49,33 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Description**. The user may be more interested in some conferences than others. Thus he is capable of saving conferences.
 
-* **Preconditions and Postconditions**. Before saving conferences the user should be logged in. After saving the conference, it will appear in the map with a yellow pinpoint.
+* **Preconditions**. The user is navigating the world map.
+
+* **Postconditions**. After saving the conference, it will appear in the map with a yellow pinpoint.
 
 * **Normal Flow**. 
     1. The user presses one conference on the map.
-    2. The user presses the save conference button which appears next to the conference website hyperlink.
-    3. If the user is logged in, the conference is saved.
+    2. The conference is not saved.
+    3. The user presses the save conference button which appears next to the conference website hyperlink.
+    4. The conference is saved.
 
-* **Exception**. 
-    1. The user presses one conference on the map
-    2. The user presses the save conference button which appears next to the conference website hyperlink.
-    3. The user isn't logged in, an error message will appear
+* **Alternative Flow**. 
+    1. The user presses one conference on the map.
+    2. The conference is already saved.
+    3. The user presses the save conference button which appears next to the conference website hyperlink.
+    4. The conference is removed form the saved list.
 
 #### See Map
 * **Actor**. User
 
 * **Description**. This use case exists so that the client can see where conferences are located.
 
-* **Preconditions and Postconditions**. The client should press the Open Map button at the main menu. After pressing it, the app will show the global map with many pinpoints, each one representing one conference.
+* **Preconditions** The client should be in the Main Menu.
+
+* **Postconditions**. The app will show the global map with many pinpoints, each one representing one conference.
 
 * **Normal Flow**. 
-    1. The client presses the  *Open Map* button to open the world map.
+    1. The client presses the *Open Map* button to open the world map.
     2. Now the user can search around the world for conferences
     3. When the user finds the desired conference (marked on the map with a pinpoint), the user can press it and view its information
     4. The user can click on the conference hyperlink to go to its website.  
@@ -85,35 +85,34 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Description**. The user can filter the conferences in order that only relevant ones appear. The user can filter them using the follow criteria.
 
+* **Preconditions**. The user should be in the Filter Conferences menu.
+
 * **Postconditions**. After using the filter, only certain conferences around the world will appear.
 
     ##### Conference Type
 
-    * **Preconditions**.
+    * **Preconditions**. The user should press the button Filter by Type.
 
     * **Normal Flow**.
         1. The user selects the option that shows the conference types.
-        2. On the map, only conferences occurring between these two dates will appear.
+        2. On the map, the user will only see the conferences of that type.
             
     ##### Date
 
-    * **Preconditions**. Before filtering by date, the user should press the button to filter conferences.
+    * **Preconditions**. The user should press the button Filter by Date.
     
     * **Normal Flow**. 
         1. The user scrolls the sidebar, selecting the start and deadline date.
-        2. On the map, only conferences that occur between these two dates will appear. 
+        1. The user selects the button Apply Date Filter.
+        1. On the map, only conferences that occur between these two dates will appear. 
         
     ##### Saved Conferences
 
-    * **Preconditions**. Before filtering by saved conferences the user should be logged in and have at least one saved conference.
-
+    * **Preconditions**. The user should press the button Saved Conferences.
     * **Normal Flow**.
         1. The user selects the option to only show the saved conferences.
-        1. If the user is logged in, only the saved conferences will appear on the map.
+        1. Only the saved conferences will appear on the map.
 
-    * **Exception Flow**. 
-        1. The user selects the option to only show the saved conferences.
-        3. If the user isn't logged in or doesn't have any saved conference, nothing will happen.
 
 ### User stories
 
@@ -297,9 +296,9 @@ Scenario:
 *As a user, I want to view my previously saved conferences.*
 
 **User interface mockups**.
-| Filter Conferences  |
-| ------------ |
-| ![Save](./img/mockups/filter-conference.png)|
+| Main Menu | Filter Conferences  |
+| ------------- | ------------ |
+| ![Main Menu](./img/mockups/main-menu.png) | ![Save](./img/mockups/filter-conference.png)|
 
 **Acceptance tests**.
 ```gherkin
@@ -323,7 +322,7 @@ Scenario:
 ```gherkin
 Scenario:
   Given I am on the Main Menu
-  When I tap the Saved Conferences button
+  When I tap the My Saved Conferences button
   And I am logged in
   Then It will appear a list with conferences saved on the cloud
 ```
@@ -331,7 +330,7 @@ Scenario:
 ```gherkin
 Scenario:
   Given I am on the Main Menu
-  When I tap the Saved Conferences button
+  When I tap the My Saved Conferences button
   And I am not logged in
   Then It will appear a list with conferences saved locally
 ```
@@ -340,7 +339,7 @@ Scenario:
 Scenario:
   Given I am on the Saved Conferences menu
   When I tap one conference
-  Then I will be redirected to the conference on map
+  Then I will be redirected to the conference details on the map
 ```
 
 
@@ -406,7 +405,7 @@ Scenario:
 
 The concepts regarding our application are quite simple. Our app consists of conferences spread around the World `Map` and the user has filtering tools at his disposal that allow him to find the most fitting conferences. Each `Conference` is represented on the world map by a `Marker`.
 
-Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude`, have some `Markers`, and each one represents one `Conference`. 
+Once the user has opened the `Map`, it will render on a certain `latitude` and `longitude`, have some `Markers`, and each represents one `Conference`. 
 Also, the user can just look for specific conferences. In this case, he will apply a `Filter` to the world map, but just one filter can be applied for the whole map at a time. The user can see the map without filters, seeing all the available conferences, or instead the user can filter by `Date`, by `Saved` conferences or by `Type`, but just one at a time.
 
 ---
@@ -426,12 +425,11 @@ In order to develop this project, we decided to organize and structure our code 
 * Model
 
 
-The Controller processes the received information from user actions. These actions triggers changes both in the view (for example, changing the the current screen displayed) and in the model (for example, when the user saves a conference).
+The Controller processes the received information from user actions. These actions trigger changes both in the view (for example, changing the current screen displayed) and in the model (for example, when the user saves a conference).
 
 Our View is responsible for the concrete display of the app to the user. It renders our widgets and different pages, like the homepage on the smartphone screen.
 
 The Model contains all the application data. It represents stored entities managed by the controller, such as a Conference.
-
 
 
 ### Physical architecture
@@ -448,9 +446,14 @@ We chose to use SQLite database due to its simplicity and the good integration w
 ---
 
 ### Prototype
-To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
 
-In this subsection please describe in more detail which, and how, user(s) story(ies) were implemented.
+For the application prototype, we have created a video traversing through the possible menus and options of our app, triggering the expected app flows related to our User stories when pressing buttons.
+
+At we started developing the app, we did it in a specific logical order, starting by implementing the world map and the conference pinpoints.
+
+Then, we implemented the conference details. Afterwards, we created the main filters (filter by type, date and saved conferences) associated with the newly added details.
+
+![Prototype](./img/prototype.gif)
 
 ---
 
@@ -485,7 +488,6 @@ Sprint Effort: L
 
 #### Third Sprint
 
-
 ##### User Story 2
 *As a user, I want to save a conference I wish to attend, so that I can mark it(save) on the map for easy access.*
 * When user presses one conference, the user can save the conference to favorites.
@@ -503,12 +505,25 @@ Sprint Effort: L
 
 Sprint Effort: L
 
+#### Fourth Sprint
+##### User Story 4
+##### As a user I want to select a timespan, so that I can see all available conferences in that timespan.
+* The user can select a timespan to search for conferences.
+
+##### Miscellaneous
+- Conferences are scrapped from the webpage [Call 4 Papers](www.call4papers.com)
+- Implemented Gherkin Acceptance Tests
+- Finished Unit Tests
+- Changed the theme and created a logo for the app
+
+Sprint Effort: L
+
 ---
 ## Test
 
-To ensure the application is working properly, we have decided to add Unit Tests and automated acceptance tests using gherkin.
+To ensure the application is working properly, we have decided to add unit tests and automated acceptance tests using gherkin.
 
-We used the [github issues](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+is%3Aclosed+label%3A%22Unit+Tests%22) to organize our project. If you want to see our implementation of user stories you can click [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+label%3A%22user+stories%22+is%3Aclosed) and see the issues that map for every user story.
+We used the github issues to organize our project. If you want to see our implementation of user stories you can click [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues?q=is%3Aissue+is%3Aclosed) and choose the label `User Stories` to see the issues that map for every user story.
 
 Unit Tests are used to verify the expected output after the user interacts with the application and have been implemented using the `flutter_test` dependency.
 
@@ -516,13 +531,15 @@ Acceptance Tests are used to verify the expected output through statements that 
 
 Both these tests involve a large ammount of work, however, they provide a long-term benefit to the project, making it easier to detect bugs in the future.
 
-Implemented acceptance tests:
+Implemented acceptance tests and their respective user story:
   - Conference Details - [User Story 3](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/4)
   - Filter Conferences By Type - [User Story 5](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/5)
   - Open World Map - [User Story 1](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/issues/1)
 
+This acceptance tests where implemented in this [pull request](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/pull/35).
+
 Implemented Unit Tests:
-  - See World Map
+  - See World Map 
   - See Saved Conferences
   - Filter Conferences Button
   - Filter Conferences by Type
@@ -533,6 +550,8 @@ Implemented Unit Tests:
   - Navigation between States 
   - Switching to Filter Conferences State
   - Switching to Filter Conferences State and back to Home
+
+This unit tests where implemented in this [pull request](https://github.com/FEUP-ESOF-2020-21/open-cx-t2g1-2b-2b/pull/40).
 
 There are still many tests that can be tested in the future. The planned features to be tested are the following:
 
@@ -562,6 +581,6 @@ For this project, we are using Github Projects. You can see our board using the 
   
 ---
 
-## Evolution - contributions to open-cx
+## Evolution - Contributions to open-cx
 
-Describe your contribution to open-cx (iteration 5), linking to the appropriate pull requests, issues, documentation.
+We feel that our app can integrate the Open-CX in the future, helping everyone finding conferences around the world that can fit in their schedules, combining it with other projects.
