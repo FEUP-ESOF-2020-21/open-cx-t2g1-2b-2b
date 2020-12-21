@@ -452,7 +452,7 @@ We chose to use SQLite database due to its simplicity and the good integration w
 We decided to use the more relevant user stories to create our aplication prototype. 
 
 
-![Prototype](./docs/prototype.gif)
+![Prototype](./img/prototype.gif)
 
 ---
 
