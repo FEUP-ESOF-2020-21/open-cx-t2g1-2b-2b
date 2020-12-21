@@ -49,7 +49,9 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 
 * **Description**. The user may be more interested in some conferences than others. Thus he is capable of saving conferences.
 
-* **Preconditions and Postconditions**. After saving the conference, it will appear in the map with a yellow pinpoint.
+* **Preconditions**. The user is navigating the world map.
+
+* **Postconditions**. After saving the conference, it will appear in the map with a yellow pinpoint.
 
 * **Normal Flow**. 
     1. The user presses one conference on the map.
@@ -68,10 +70,12 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 
 * **Description**. This use case exists so that the client can see where conferences are located.
 
-* **Preconditions and Postconditions**. The client should press the Open Map button at the main menu. After pressing it, the app will show the global map with many pinpoints, each one representing one conference.
+* **Preconditions** The client should be in the Main Menu.
+
+* **Postconditions**. The app will show the global map with many pinpoints, each one representing one conference.
 
 * **Normal Flow**. 
-    1. The client presses the  *Open Map* button to open the world map.
+    1. The client presses the *Open Map* button to open the world map.
     2. Now the user can search around the world for conferences
     3. When the user finds the desired conference (marked on the map with a pinpoint), the user can press it and view its information
     4. The user can click on the conference hyperlink to go to its website.  
@@ -82,7 +86,6 @@ Have you ever felt that most conference finding apps struggle at keeping up with
 * **Description**. The user can filter the conferences in order that only relevant ones appear. The user can filter them using the follow criteria.
 
 * **Preconditions**. The user should be in the Filter Conferences menu.
-
 
 * **Postconditions**. After using the filter, only certain conferences around the world will appear.
 
